@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.313">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Stephen Connor">
 <title>Introduction to Probability and Statistics - Computer Lab 1</title>
@@ -125,7 +125,7 @@ window.MathJax = {
     tags: 'ams'
   }
 };
-</script>
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 </head>
 <body class="nav-sidebar floating">
 
@@ -184,6 +184,9 @@ window.MathJax = {
 <li><a href="#introduction-to-r-and-rstudio-lab_1-1" id="toc-introduction-to-r-and-rstudio-lab_1-1" class="nav-link active" data-scroll-target="#introduction-to-r-and-rstudio-lab_1-1">Introduction to R and RStudio </a></li>
   <li><a href="#the-data-dr.-arbuthnots-baptism-records" id="toc-the-data-dr.-arbuthnots-baptism-records" class="nav-link" data-scroll-target="#the-data-dr.-arbuthnots-baptism-records">The Data: Dr.&nbsp;Arbuthnot’s Baptism Records</a></li>
   <li><a href="#some-exploration" id="toc-some-exploration" class="nav-link" data-scroll-target="#some-exploration">Some Exploration</a></li>
+  <li><a href="#a-newer-data-set" id="toc-a-newer-data-set" class="nav-link" data-scroll-target="#a-newer-data-set">A newer data set</a></li>
+  <li><a href="#simulating-a-probability-experiment" id="toc-simulating-a-probability-experiment" class="nav-link" data-scroll-target="#simulating-a-probability-experiment">Simulating a probability experiment</a></li>
+  <li><a href="#on-your-own-computer" id="toc-on-your-own-computer" class="nav-link" data-scroll-target="#on-your-own-computer">On your own computer</a></li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sbconnor/sbconnor.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
@@ -304,6 +307,185 @@ Exercise
 </div>
 <p>Can you figure out how to produce a plot that shows both the points and the lines connecting them?</p>
 <p>Notice that the help file replaces the plot in the lower right panel. You can toggle between plots and help files using the tabs at the top of that panel.</p>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Is there an apparent trend in the number of girls baptized over the years? Answer quiz question 2. Can you also guess, just by looking at the graph, when the English civil war started?</p>
+</div>
+</div>
+<p>Now, suppose we want to plot the total number of baptisms. To compute this, we could use the fact that R is really just a big calculator. We can type in mathematical expressions like</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">5218</span> <span class="op">+</span> <span class="fl">4683</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>to see the total number of baptisms in 1629. We could repeat this once for each year, but there is a faster way. If we add the vector for baptisms for boys and girls, R will compute all sums simultaneously.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">arbuthnot</span><span class="op">$</span><span class="va">boys</span> <span class="op">+</span> <span class="va">arbuthnot</span><span class="op">$</span><span class="va">girls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What you will see are 82 numbers (in that packed display, because we aren’t looking at a data frame here), each one representing the sum we’re after. Take a look at a few of them and verify that they are right.</p>
+<p>We can now make a plot of the total number of baptisms per year with the command</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">arbuthnot</span><span class="op">$</span><span class="va">year</span>, <span class="va">arbuthnot</span><span class="op">$</span><span class="va">boys</span> <span class="op">+</span> <span class="va">arbuthnot</span><span class="op">$</span><span class="va">girls</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This time, note that we left out the names of the first two arguments. We can do this because the help file shows that the default for <code>plot</code> is for the first argument to be the x-variable and the second argument to be the y-variable.</p>
+<p>Next we calculate the proportion of the baptized children that are boys. We can do this for the year 1629 with the command</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">5218</span> <span class="op">/</span> <span class="op">(</span><span class="fl">5218</span> <span class="op">+</span> <span class="fl">4683</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>but this may also be computed for all years simultaneously:</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">arbuthnot</span><span class="op">$</span><span class="va">boys</span> <span class="op">/</span> <span class="op">(</span><span class="va">arbuthnot</span><span class="op">$</span><span class="va">boys</span> <span class="op">+</span> <span class="va">arbuthnot</span><span class="op">$</span><span class="va">girls</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that with R, as with your calculator, you need to be conscious of the order of operations. Here, we want to divide the number of boys by the total number of newborns, so we have to use parentheses. Without them, R will first do the division, then the addition, giving you something that is not a proportion.</p>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now, make a plot of the proportion of boys over time. The command for making the plot will be similar to the plot command you used earlier, just with a different expression for the y argument. Tip: If you use the up and down arrow keys, you can scroll through your previous commands, your so-called command <em>history</em>. You can also access it by clicking on the history tab in the upper right panel. This will save you a lot of typing in the future. Now answer quiz question 3.</p>
+</div>
+</div>
+<p>In addition to simple mathematical operators like subtraction and division, you can ask R to make comparisons like greater than, <span class="math inline">\(&gt;\)</span>, less than, <span class="math inline">\(&lt;\)</span>, and equality, <span class="math inline">\(==\)</span> (Note that it has to be a double equal sign, not a single equal sign). For example, we can ask if boys outnumber girls in each year with the expression</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">arbuthnot</span><span class="op">$</span><span class="va">boys</span> <span class="op">&gt;</span> <span class="va">arbuthnot</span><span class="op">$</span><span class="va">girls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This command returns 82 values of either <code>TRUE</code> if that year had more boys than girls, or <code>FALSE</code> if that year did not (the answer may surprise you). This output shows a different kind of data than we have considered so far. In the <code>arbuthnot</code> data frame our values are numerical (the year, the number of boys and girls). Here, we’ve asked R to create <em>logical</em> data, data where the values are either <code>TRUE</code> or <code>FALSE</code>. In general, data analysis will involve many different kinds of data types, and one reason for using R is that it is able to represent and compute with many of them.</p>
+<p>You can count the number of entries for which the condition is <code>TRUE</code> by just summing the entries in the vector</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">arbuthnot</span><span class="op">$</span><span class="va">boys</span> <span class="op">&gt;</span> <span class="va">arbuthnot</span><span class="op">$</span><span class="va">girls</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The reason this works is that R automatically converts <code>TRUE</code> to 1 and <code>FALSE</code> to 0 when asked to do a numerical calculation with these values.</p>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Above you have seen how to calculate the proportion of newborns that are boys. You have also learned how to count the number of entries in the data that satisfy a particular condition. Now combine those two to answer quiz question 4.</p>
+</div>
+</div>
+</section><section id="a-newer-data-set" class="level2"><h2 class="anchored" data-anchor-id="a-newer-data-set">A newer data set</h2>
+<p>In the previous few pages, you recreated some of the displays and preliminary analysis of Arbuthnot’s baptism data. To practice your new skills, you will now repeat these steps, but for present day birth records in the United States. Load up the present day data with the following command.</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"http://www.openintro.org/stat/data/present.R"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data are stored in a data frame called <code>present</code>.</p>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>What years are included in this data set? What are the dimensions of the data frame and what are the variable or column names?</p></li>
+<li><p>How do these counts compare to Arbuthnot’s? Are they on a similar scale?</p></li>
+<li><p>Does Arbuthnot’s observation about boys being born in greater proportion than girls hold up in the U.S.?</p></li>
+<li><p>Make a plot that displays the boy-to-girl ratio for every year in the data set. What do you see?</p></li>
+<li><p>What was the largest total number of births in a single year in the U.S. during the period covered by the dataset? You can refer to the help files or the <a href="http://cran.r-project.org/doc/contrib/Short-refcard.pdf">R reference card</a> to find helpful commands.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now answer questions 5 and 6 in the quiz.</p>
+</div>
+</div>
+<p>These data come from a report by the <a href="https://www.cdc.gov/nchs/data/nvsr/nvsr53/nvsr53_20.pdf">Centers for Disease Control</a>. Check it out if you would like to read more about an analysis of sex ratios at birth in the United States.</p>
+<p>The above has given you a glimpse of how to work with data in R. Next we will get a glimpse of how R can simulate probability experiments.</p>
+</section><section id="simulating-a-probability-experiment" class="level2"><h2 class="anchored" data-anchor-id="simulating-a-probability-experiment">Simulating a probability experiment</h2>
+<p>We will use R to simulate the probability experiment from Example 2.17 from the lecture. The experiment consisted of drawing one ball at random from a bag containing 4 red, 6 green and 3 blue balls.</p>
+<p>We can use the <code>rep</code> function to create a vector with repeated entries. For example <code>rep("red", 4)</code>.</p>
+<p>Note that in this section the worksheet also shows the output of the commands, in the lines starting with <code>#&gt;</code>, so that you can compare with what you get when you run the commands yourself.</p>
+<p>We can use the <code>c</code> function to <em>concatenate</em> several vectors. We can combine these two commands to create our bag; we will store this in a variable, that we choose to call <code>bag</code>, so that we can use it in what follows.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bag</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"green"</span>, <span class="fl">6</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note how this variable also shows up in the Environment tab in RStudio.</p>
+<p>Now we can use the <code>sample</code> function to draw a single ball from the bag: <code>sample(bag, size = 1)</code>. The <code>size</code> argument specifies that we want to draw a single ball. Now when you run this command, you may get a different answer, just as when you draw an actual ball from an actual bag.</p>
+<p>If you run the above argument repeatedly, you will get lots of different outcomes. We can easily repeat the experiment 100 times.</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">bag</span>, size <span class="op">=</span> <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;   [1] "red"   "blue"  "blue"  "green" "green" "green" "red"   "green" "red"  
+#&gt;  [10] "green" "green" "green" "blue"  "green" "red"   "green" "green" "blue" 
+#&gt;  [19] "red"   "green" "red"   "blue"  "green" "green" "green" "red"   "blue" 
+#&gt;  [28] "red"   "green" "blue"  "green" "red"   "blue"  "green" "green" "green"
+#&gt;  [37] "red"   "green" "green" "green" "green" "blue"  "blue"  "blue"  "red"  
+#&gt;  [46] "green" "green" "blue"  "green" "green" "red"   "red"   "green" "blue" 
+#&gt;  [55] "red"   "red"   "green" "red"   "red"   "blue"  "blue"  "green" "blue" 
+#&gt;  [64] "green" "blue"  "red"   "green" "red"   "red"   "red"   "red"   "red"  
+#&gt;  [73] "red"   "red"   "green" "green" "green" "green" "green" "green" "blue" 
+#&gt;  [82] "red"   "green" "red"   "green" "blue"  "red"   "red"   "blue"  "green"
+#&gt;  [91] "green" "red"   "green" "green" "green" "green" "green" "red"   "red"  
+#&gt; [100] "green"</code></pre>
+</div>
+</div>
+<p>This was a lot faster than by hand taking a ball out of a bag, recording its colour, putting it back and then repeating that 100 times. In the above command the <code>replace = TRUE</code> argument meant that the ball was replaced before the next draw was made.</p>
+<p>Now let us repeat the experiment 10000 times and calculate the frequency with which we get a red ball.</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">bag</span>, size <span class="op">=</span> <span class="fl">10000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.3083</code></pre>
+</div>
+</div>
+<p>This gives us an estimate of the probability of drawing a red ball, for reasons that we will discuss theoretically later in the module. We can obviously do the same for the other colours:</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.462</code></pre>
+</div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.2297</code></pre>
+</div>
+</div>
+<p>Here we’ve also used the <code>length</code> command to calculate the number of entries in <code>x</code>; we know this is 10,000, of course, but using this command helps to prevent the possibility of making a typo and dividing by 1,000 or 100,000, etc.</p>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now add five additional yellow balls to the bag you used so far. Then record the outcome of 100,000 repetitions of the experiment of drawing a ball from that bag. Calculate the proportion of those 100,000 draws that gave a yellow ball. Then answer the last quiz question.</p>
+</div>
+</div>
+<p>` That was a short introduction to R and RStudio, but we will provide you with more functions and a more complete sense of the language as the course progresses. Feel free to browse around the websites for <a href="https://www.r-project.org/">R</a> and <a href="https://rstudio.com/products/rstudio/">RStudio</a> if you’re interested in learning more.</p>
+<p>To exit RStudio you can click the <code>x</code> in the upper right corner of the whole window. You will be prompted to save your workspace. If you click <code>save</code>, RStudio will save the history of your commands and all the objects in your workspace so that the next time you launch RStudio, you will see <code>arbuthnot</code> and you will have access to the commands you typed in your previous session.</p>
+</section><section id="on-your-own-computer" class="level2"><h2 class="anchored" data-anchor-id="on-your-own-computer">On your own computer</h2>
+<p>If you would like to work on your own computer, you can download and install R from <a href="http://cran.rstudio.com/">here</a> and then download and install RStudio from <a href="https://www.rstudio.com/products/rstudio/download/#download">here</a>. Both are free and open-source and available for Windows, Mac and Linux.</p>
+<p>It is also possible to use R from within a browser window in case you find yourself on a computer that does not have R installed. The best option for that is probably <a href="https://cocalc.com">CoCalc</a>, which offers an online notebook interface not only to R but also to Sage (an open source alternative to Maple) and many other tools useful for mathematicians.</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
