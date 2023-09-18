@@ -209,7 +209,20 @@ Note
 </div>
 <p>The panel in the upper right of the RStudio window contains your <em>Environment</em> as well as a <em>History</em> of the commands that you’ve previously entered. The lower right panel has several tabs, including <em>Plots</em> where any plots that you generate will show up.</p>
 <p>The panel on the left is where the action happens. It’s called the <em>Console</em>. Every time you launch RStudio, it will have text at the top of the console giving lots of information that you can mostly ignore, including the version of R that you’re running. Below that information is the <em>prompt</em>. As its name suggests, this prompt is really a request, a request for a command. Initially, interacting with R is all about typing commands and interpreting the output. These commands and their syntax have evolved over decades (literally) and now provide what many users feel is a fairly natural way to access data and organize, describe, and invoke statistical computations.</p>
-<p>To get you started, enter the following command at the R prompt (i.e.&nbsp;right after <code>&gt;</code> on the console). You can either type it in manually or copy and paste it from this document. (If you’re using the html version of this document, then to copy the code you can simply hover your mouse over the box below: you should see a ‘Copy to clipboard’ symbol appear in the top right corner of the box – click on this, and then paste what you’ve copied into RStudio.)</p>
+<p>To get you started, enter the following command at the R prompt (i.e.&nbsp;right after <code>&gt;</code> on the console). You can either type it in manually or copy and paste it from this document.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you’re using the html version of this document, then to copy the code you can simply hover your mouse over the box below: you should see a ‘Copy to clipboard’ symbol appear in the top right corner of the box – click on this, and then paste what you’ve copied into RStudio.</p>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"http://www.openintro.org/stat/data/arbuthnot.R"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -260,7 +273,7 @@ Tip
 <p>In the html version of this document, the word <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> in the code block above is <u>underlined</u> (as is the command <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> further up the page). Clicking on an R command which is underlined will take you to its online documentation, where you can read more about how to use it.</p>
 </div>
 </div>
-<p>Note that the row numbers in the first column are not part of Arbuthnot’s data. R adds them as part of its printout to help you make visual comparisons. You can think of them as the index that you see on the left side of a spreadsheet. In fact, the comparison to a spreadsheet will generally be helpful. R has stored Arbuthnot’s data in a kind of spreadsheet or table called a <em>data frame</em>.</p>
+<p>Note that the row numbers in the first column are not part of Arbuthnot’s data. R adds them as part of its printout to help you make visual comparisons. You can think of them as the index that you see on the left side of a spreadsheet. In fact, the comparison to a spreadsheet will generally be helpful. R has stored Arbuthnot’s data in a kind of spreadsheet or table called a <strong>data frame</strong>.</p>
 <p>You can see the dimensions of this data frame by typing:</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">arbuthnot</span><span class="op">)</span></span>
@@ -292,7 +305,7 @@ Your turn
 </div>
 </div>
 <p>Notice that the way R has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data are no longer structured in a table with other variables, so they are displayed one right after another.</p>
-<p>Objects that print out in this way are called <em>vectors</em>; they represent a set of numbers. R has added numbers in [brackets] along the left side of the printout to indicate locations within the vector. For example, <code>5218</code> follows <code>[1]</code>, indicating that <code>5218</code> is the first entry in the vector. And if <code>[43]</code> starts a line, then that would mean the first number on that line would represent the 43<sup>rd</sup> entry in the vector.</p>
+<p>Objects that print out in this way are called <strong>vectors</strong>; they represent a set of numbers. R has added numbers in [brackets] along the left side of the printout to indicate locations within the vector. For example, <code>5218</code> follows <code>[1]</code>, indicating that <code>5218</code> is the first entry in the vector. And if <code>[43]</code> starts a line, then that would mean the first number on that line would represent the 43<sup>rd</sup> entry in the vector.</p>
 <p>R has some powerful functions for making graphics. We can create a simple plot of the number of girls baptised per year with the command</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">arbuthnot</span><span class="op">$</span><span class="va">year</span>, y <span class="op">=</span> <span class="va">arbuthnot</span><span class="op">$</span><span class="va">girls</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
