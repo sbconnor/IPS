@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Stephen Connor">
+<title>Introduction to Probability and Statistics - Lab 3: Data and distributions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../assignments/assignments.html" rel="next">
+<link href="../labs/lab2.html" rel="prev">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../css/ips.scss">
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/labs.html">Computer labs</a></li><li class="breadcrumb-item"><a href="../labs/lab3.html">Lab 3: Data and distributions</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Introduction to Probability and Statistics</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/sbconnor/sbconnor.github.io/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Introduction-to-Probability-and-Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../labs/labs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computer labs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/intro-lab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro Lab: Meeting R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Script files and simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Introduction to data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 3: Data and distributions</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Written assignments</span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#numerical-summaries-of-data" id="toc-numerical-summaries-of-data" class="nav-link active" data-scroll-target="#numerical-summaries-of-data">Numerical summaries of data</a>
+  <ul class="collapse">
+<li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#types-of-variables" id="toc-types-of-variables" class="nav-link" data-scroll-target="#types-of-variables">Types of variables</a></li>
+  <li><a href="#central-value-of-a-variable" id="toc-central-value-of-a-variable" class="nav-link" data-scroll-target="#central-value-of-a-variable">Central value of a variable</a></li>
+  <li><a href="#amount-of-variability-in-a-variable" id="toc-amount-of-variability-in-a-variable" class="nav-link" data-scroll-target="#amount-of-variability-in-a-variable">Amount of variability in a variable</a></li>
+  <li><a href="#empirical-quantiles-quartiles-and-iqr" id="toc-empirical-quantiles-quartiles-and-iqr" class="nav-link" data-scroll-target="#empirical-quantiles-quartiles-and-iqr">Empirical quantiles, quartiles, and IQR</a></li>
+  </ul>
+</li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  <li>
+<a href="#data-and-probability-distributions" id="toc-data-and-probability-distributions" class="nav-link" data-scroll-target="#data-and-probability-distributions">Data and probability distributions</a>
+  <ul class="collapse">
+<li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link" data-scroll-target="#the-normal-distribution">The normal distribution</a></li>
+  <li><a href="#skewness" id="toc-skewness" class="nav-link" data-scroll-target="#skewness">Skewness</a></li>
+  <li><a href="#using-q-q-plots" id="toc-using-q-q-plots" class="nav-link" data-scroll-target="#using-q-q-plots">Using Q-Q plots</a></li>
+  <li><a href="#normal-probabilities" id="toc-normal-probabilities" class="nav-link" data-scroll-target="#normal-probabilities">Normal probabilities</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sbconnor/sbconnor.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-lab3" class="quarto-section-identifier">Lab 3: Data and distributions</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This tutorial is adapted from OpenIntro and is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> license. This lab was written for OpenIntro by Andrew Bray and Mine etinkaya-Rundel, extended for the University of York by Gustav Delius, and subsequently extended by Stephen Connor.</p>
+</div>
+</div>
+</div>
+<p>In the first part of this worksheet you will look in more detail at various numerical and graphical summaries of data. This reinforces, and slightly expands on, what you have already met in <a href="lab2.html">Lab 2</a> and is closely related to the material from chapter 16 in the textbook.</p>
+<p>In the second part you will get a first glimpse at how statistics makes a connection between probability theory and data: you will model the height variable in a dataset as a normally distributed random variable.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remember!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As always, you should start the lab by creating a script file (with a sensible name), and then adding each line of code to this file as you go, so that you can easily re-run it later if necessary. Add your own comments to remind you what each chunk of code does!</p>
+</div>
+</div>
+<section id="numerical-summaries-of-data" class="level2"><h2 class="anchored" data-anchor-id="numerical-summaries-of-data">Numerical summaries of data</h2>
+<section id="datasets" class="level3"><h3 class="anchored" data-anchor-id="datasets">Datasets</h3>
+<p>Data, according to The American Heritage Dictionary, is “Information, especially information organised for analysis or used as the basis for a decision”. Data comes in all sizes and shapes. Often it is disorganised and difficult to work with. The first step in data analysis is then to clean and organise the data. We will assume that the data has already been organised into what we call a dataset. A dataset consists of a number <span class="math inline">\(n\)</span> of observations of the values of one or more variables.</p>
+<p>Here is an example of a small multivariate dataset, collected from a previous year of IPS students:</p>
+<table class="table">
+<thead><tr class="header">
+<th>Height(cm)</th>
+<th>Age(years)</th>
+<th>Eye colour</th>
+<th># of textbooks</th>
+<th>Likes Stats</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>175</td>
+<td>19</td>
+<td>Green</td>
+<td>1</td>
+<td>Very much</td>
+</tr>
+<tr class="even">
+<td>160</td>
+<td>23</td>
+<td>Brown</td>
+<td>2</td>
+<td>Not at all</td>
+</tr>
+<tr class="odd">
+<td>180</td>
+<td>21</td>
+<td>Blue</td>
+<td>1</td>
+<td>A bit</td>
+</tr>
+<tr class="even">
+<td>159</td>
+<td>18</td>
+<td>Brown</td>
+<td>7</td>
+<td>A bit</td>
+</tr>
+</tbody>
+</table>
+<p>This dataset contains <span class="math inline">\(n=4\)</span> observations of five different variables. The variables are the height, the age and the eye colour of students in the class, the number of probability textbooks they had looked at for this course, and the answer to the question: “How much do you like Statistics?”.</p>
+<p>Below you will see how this data is stored in R as a data frame. A data frame is just like the above table, but with a bit of extra information about the types of the different variables.</p>
+</section><section id="types-of-variables" class="level3"><h3 class="anchored" data-anchor-id="types-of-variables">Types of variables</h3>
+<p>Recall from <a href="lab2.html">Lab 2</a> that a variable is either <strong>quantitative</strong> or <strong>qualitative</strong>. It is important to distinguish between different types of variables since methods for viewing and summarising data are dependent on variable type.</p>
+<p>The quantitative variables in our example dataset are “Height”, “Age” and “Number of textbooks”. Of these “Height” and “Age” are continuous variables; even if the height might be given rounded to the nearest centimetre it would still be thought of as a continuous variable because non-integer values would make sense. The “Number of textbooks” variable is discrete.</p>
+<p>Let us tell R about the values of these quantitative variables:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">height</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">175</span>, <span class="fl">160</span>, <span class="fl">180</span>, <span class="fl">159</span><span class="op">)</span> </span>
+<span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">19</span>, <span class="fl">23</span>, <span class="fl">21</span>, <span class="fl">18</span><span class="op">)</span> </span>
+<span><span class="va">num_books</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The R function <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> binds together its arguments into a vector. You already know how to work with such vectors. For example, to get the height of the 3rd student you evaluate</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">height</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> </span>
+<span><span class="co">#&gt; [1] 180</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The qualitative variables in our example dataset are “Eye colour” and “Likes Stats”. Of these, “Eye colour” is nominal and “Likes Stats” is ordinal. R refers to categorical variables as <strong>factors</strong>. We can tell R that a variable is qualitative with the <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> function as follows:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eye_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Green'</span>, <span class="st">'Brown'</span>, <span class="st">'Blue'</span>, <span class="st">'Brown'</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you look for the <code>eye_col</code> variable in the <em>Environment</em> tab of your RStudio window you will see that it is listed as: <code>Factor w/ 3 levels "Blue","Brown",...: 3 2 1 2</code>.</p>
+<p>For the “Likes Stats” variable we also need to tell R how to order the categories.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">likes_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Very much'</span>, <span class="st">'Not at all'</span>, <span class="st">'A bit'</span>, <span class="st">'A bit'</span><span class="op">)</span>, </span>
+<span>                      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Not at all'</span>, <span class="st">'A bit'</span>, <span class="st">'Very much'</span><span class="op">)</span>, </span>
+<span>                      ordered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This allows R to know whether the second student likes statistics more than the fourth for example:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">likes_stats</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">&gt;</span> <span class="va">likes_stats</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now bind all these variables together into a data frame:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">height</span>, <span class="va">age</span>, <span class="va">eye_col</span>, <span class="va">num_books</span>, <span class="va">likes_stats</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Given a dataset, we want to make sense of it. We begin by summarizing the distribution of the variables in the dataset. The first questions one would ask are: are the values centred around a particular value, and then how much variation around that central value is there?</p>
+</section><section id="central-value-of-a-variable" class="level3"><h3 class="anchored" data-anchor-id="central-value-of-a-variable">Central value of a variable</h3>
+<p>The most important way to define a “central” value for a collection of values for a quantitative variable is the <strong>mean</strong>, which is an average of the values. If we have <span class="math inline">\(n\)</span> observations of a variable <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(x_1,x_2, \dots, x_n\)</span>, then the mean is</p>
+<p><span class="math display">\[ \bar{x}_n=(x_1+\dots+x_n)/n.\]</span></p>
+<p>Take the variable “Age” from our example dataset. There we have</p>
+<p><span class="math display">\[ \bar{x}_4=(19+23+21+18)/4=81/4=20.25.\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">students</span><span class="op">$</span><span class="va">age</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 20.25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>One drawback of using the mean to define the centre of a dataset is that the mean can get very much affected by extreme values. For example, if we added a fifth datapoint to the above dataset, a mature student aged 58, then the mean would change to</p>
+<p><span class="math display">\[\bar{x}_5=(19+23+21+18+58)/5=139/5=27.8.\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">xl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">58</span><span class="op">)</span> <span class="co"># this appends the number 58 to the end of the vector x</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">xl</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 27.8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This value is outside the cluster of values around <span class="math inline">\(20\)</span>. An alternative to the mean that is less affected by such outliers is the <strong>median</strong>. To define this we first list the values in ascending order. We enclose the indices in this <em>ordered</em> set in parentheses to distinguish them from the indices of the values in the <em>unordered</em> dataset. So we have the values</p>
+<p><span class="math display">\[ x_{(1)}\leq x_{(2)}\leq\cdots\leq x_{(n)}.\]</span></p>
+<p>The k<sup>th</sup> value <span class="math inline">\(x_{(k)}\)</span> is often referred to as the <strong>k<sup>th</sup> order statistic</strong>. In our example</p>
+<p><span class="math display">\[x_{(1)}=18, x_{(2)}=19, x_{(3)}=21, x_{(4)}=23, x_{(5)}=58.\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">xl</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 18 19 21 23 58</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The median is defined as</p>
+<p><span class="math display">\[
+\text{Med}_n=\begin{cases}x_{((n+1)/2)}&amp;\text{ if $n$ is odd}\\\frac{1}{2}\left(x_{(n/2)}+x_{(n/2+1)}\right)&amp;\text{ if $n$ is even}\end{cases}
+\]</span></p>
+<p>So for our small dataset of four age values we have</p>
+<p><span class="math display">\[
+\text{Med}_4=\frac{1}{2}\left(x_{(2)}+x_{(3)}\right)=\frac{1}{2}\left(19+21\right)=20.
+\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For the larger dataset of five values including the outlier, we have</p>
+<p><span class="math display">\[\text{Med}=x_{(3)}=21 \]</span></p>
+<p>still quite close to the centre of the cluster of values.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">xl</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the median height of the first four students?<br><strong>Answer quiz question 1.</strong></p>
+</div>
+</div>
+</section><section id="amount-of-variability-in-a-variable" class="level3"><h3 class="anchored" data-anchor-id="amount-of-variability-in-a-variable">Amount of variability in a variable</h3>
+<p>The most important measure of the variability in the data around the central value is the <strong>sample variance</strong></p>
+<p><span class="math display">\[
+s_n^2=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x}_n)^2.
+\]</span></p>
+<p>For our sample data we get</p>
+<p><span class="math display">\[
+  \begin{split}
+  s_4^2 &amp;= \frac{1}{3}\sum_{i=1}^4(x_i-\bar{x}_4)^2 \\
+  &amp;=\frac{1}{3}\left((19-20.25)^2+(23-20.25)^2+(21-20.25)^2+(18-20.25)^2\right)\\
+  &amp;=\frac{1}{3}\left(\left(\frac{5}{4}\right)^2+\left(\frac{11}{4}\right)^2+\left(\frac{3}{4}\right)^2+\left(\frac{9}{4}\right)^2\right)\\
+  &amp;=\frac{236}{48}\approx 4.917.
+  \end{split}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 4.916667</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The age was measured in years. The variance is therefore measured in square years. It is often useful to have a measure of the variability that has the same units as the variable itself. Therefore one defines the <strong>sample standard deviation</strong> <span class="math inline">\(s_n\)</span> to be the square root of the sample variance, <span class="math inline">\(s_n=\sqrt{s_n^2}\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; [1] 2.217356</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Like the mean, the variance is affected very much by outliers. In our example with the extra datapoint <span class="math inline">\(x_5=58\)</span> we find</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">xl</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; [1] 288.7</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">xl</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 16.99117</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A measure that is less affected by outliers is the <strong>median of absolute deviations</strong>,</p>
+<p><span class="math display">\[ \text{MAD}_n=\text{Med}\left(|x_1-\text{Med}_n|,\dots,|x_n-\text{Med}_n|\right).\]</span></p>
+<p>In our example datasets</p>
+<p><span class="math display">\[\text{MAD}_4=\text{Med}\left(|19-20|,|23-20|,|21-20|,|18-20|\right)=\text{Med}(1,3,1,2)=1.5,\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\text{MAD}_5=\text{Med}\left(|19-21|,|23-21|,|21-21|,|18-21|,|50-21|\right)=\text{Med}(2,2,0,3,29)=2.
+\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/mad.html">mad</a></span><span class="op">(</span><span class="va">x</span>, constant<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.5</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/mad.html">mad</a></span><span class="op">(</span><span class="va">xl</span>, constant<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We see that the outlier does not affect the median of absolute deviation nearly as much as it affects the standard deviation.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the variance in the height of the first four students?<br><strong>Answer quiz question 2.</strong></p>
+</div>
+</div>
+</section><section id="empirical-quantiles-quartiles-and-iqr" class="level3"><h3 class="anchored" data-anchor-id="empirical-quantiles-quartiles-and-iqr">Empirical quantiles, quartiles, and IQR</h3>
+<p>We now introduce the <strong>quantiles</strong> which give us more detailed information about the distribution of values. The <span class="math inline">\(p\)</span>-th quantile is a value so that a proportion <span class="math inline">\(p\)</span> of the values in the dataset is below or equal to this value.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because there are gaps between the values in the dataset, there is not a unique such value. R provides nine different types of quantiles. We present here the one that R uses as its default.</p>
+</div>
+</div>
+<p>For <span class="math inline">\(p\in[0,1]\)</span> we define the <span class="math inline">\(p\)</span>-th quantile as</p>
+<p><span class="math display">\[ q_n(p)=x_{(k)}+\alpha\left(x_{(k+1)}-x_{(k)}\right) \]</span></p>
+<p>where</p>
+<p><span class="math display">\[ k=\lfloor h\rfloor,~~~\alpha=h-\lfloor h\rfloor,~~~\text{ with }h=(n-1)p+1.\]</span></p>
+<p>Recall that <span class="math inline">\(\lfloor{x}\rfloor\)</span> (the <em>floor</em> of <span class="math inline">\(x\)</span>) denotes the largest integer smaller or equal to <span class="math inline">\(x\)</span>.</p>
+<p>The <span class="math inline">\(p\)</span>-th quantile is also referred to as the <span class="math inline">\(100p\)</span>-th <em>percentile</em>. Three percentiles are given special names:</p>
+<ul>
+<li>lower quartile = 25<sup>th</sup> percentile <span class="math inline">\(=q_n(0.25)\)</span>
+</li>
+<li>median = 50<sup>th</sup> percentile <span class="math inline">\(=q_n(0.5)\)</span>
+</li>
+<li>upper quartile = 75<sup>th</sup> percentile <span class="math inline">\(=q_n(0.75)\)</span>.</li>
+</ul>
+<p>We calculate the upper and lower quartiles in our example dataset containing the age of <span class="math inline">\(n=4\)</span> students. For the lower quartile we have <span class="math inline">\(p=1/4\)</span> and we calculate</p>
+<p><span class="math display">\[ h=(n-1)p+1=\frac{3}{4}+1, ~~~k=\lfloor h\rfloor] = 1,~~~\alpha=h-\lfloor h\rfloor = \frac34.\]</span> Then</p>
+<p><span class="math display">\[ q_4(0.25)=x_{(1)}+\alpha\left(x_{(2)}-x_{(1)}\right)=18+0.75(19-18)=18.75.\]</span></p>
+<p>For the upper quartile, <span class="math inline">\(p=3/4\)</span>, we find similarly</p>
+<p><span class="math display">\[ h=(n-1)p+1=3\frac{3}{4}+1, ~~~k=\lfloor h\rfloor] = 3,~~~\alpha=h-\lfloor h\rfloor = \frac14, \]</span> and <span class="math display">\[ q_4(0.75)=x_{(3)}+\alpha\left(x_{(4)}-x_{(3)}\right)=21+0.25(23-21)=21.5.\]</span></p>
+<p>To let R do the calculation for us we use</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    0%   25%   50%   75%  100% </span></span>
+<span><span class="co">#&gt; 18.00 18.75 20.00 21.50 23.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The 0% quantile is the <em>minimum</em> value and the 100% quantile the <em>maximum</em> value. These are also known as the <strong>range</strong> of the data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 18 23</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>By default the <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> command gives us the quartiles. To get a particular quantile use</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">0.35</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  35% </span></span>
+<span><span class="co">#&gt; 19.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Our textbook uses a different convention for the quantiles that has <span class="math inline">\(h=(n+1)p\)</span>, which is type 6 in R.</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span>, type<span class="op">=</span><span class="fl">6</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    0%   25%   50%   75%  100% </span></span>
+<span><span class="co">#&gt; 18.00 18.25 20.00 22.50 23.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the command <code><a href="https://rdrr.io/r/stats/quantile.html">?quantile</a></code> in R to get more information. When there are many values in the dataset then the difference between the alternative conventions will be negligible.</p>
+</div>
+</div>
+<p>The <strong>interquartile range</strong>, abbreviated as IQR, is the difference between the upper and the lower quartile:</p>
+<p><span class="math display">\[ IQR=q_n(0.75)-q_n(0.25).\]</span></p>
+<p>In our example we find <span class="math inline">\(IQR=2.75\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.75</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="the-data" class="level2"><h2 class="anchored" data-anchor-id="the-data">The data</h2>
+<p>This week we’ll be working with measurements of body dimensions. This dataset contains measurements from 247 men and 260 women, most of whom were considered healthy young adults. The data is saved in an RData file. We download it from the internet and then load it into R.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"http://www.openintro.org/stat/data/bdims.RData"</span>, </span>
+<span>              destfile <span class="op">=</span> <span class="st">"bdims.RData"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"bdims.RData"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s take a quick peek at the first few rows of the data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">bdims</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You’ll see that for every observation we have 25 measurements, many of which are either diameters or girths. A key to the variable names can be found <a href="http://www.openintro.org/stat/data/bdims.php">here</a>, but we’ll be focusing on just three columns to get started: weight in kg (<code>wgt</code>), height in cm (<code>hgt</code>), and <code>sex</code> (1 indicates male, 0 indicates female).</p>
+<p>Since males and females tend to have different body dimensions, it will be useful to create two additional datasets: one with only men and another with only women.</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mdims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">bdims</span>, <span class="va">bdims</span><span class="op">$</span><span class="va">sex</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">fdims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">bdims</span>, <span class="va">bdims</span><span class="op">$</span><span class="va">sex</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us take a quick look at some summary statistics of the women’s height.</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span> </span>
+<span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">#&gt;   147.2   160.0   164.5   164.9   169.5   182.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that this summary gives rounded results only. If you want more exact results you should use the functions we introduced above, for example</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 164.8723</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Answer quiz question 3.</strong></p>
+</div>
+</div>
+<p>A so-called <strong>stem-and-leaf plot</strong> is one way of getting a quick view of the data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   The decimal point is at the |</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   146 | 2</span></span>
+<span><span class="co">#&gt;   148 | 59</span></span>
+<span><span class="co">#&gt;   150 | 11</span></span>
+<span><span class="co">#&gt;   152 | 0044444</span></span>
+<span><span class="co">#&gt;   154 | 4599008</span></span>
+<span><span class="co">#&gt;   156 | 0002250055555555</span></span>
+<span><span class="co">#&gt;   158 | 028800124455588</span></span>
+<span><span class="co">#&gt;   160 | 000000000000000000002277790022233333334</span></span>
+<span><span class="co">#&gt;   162 | 00112556666666666666688900222255888</span></span>
+<span><span class="co">#&gt;   164 | 0013455501111111111111157</span></span>
+<span><span class="co">#&gt;   166 | 00244488015666666666666666668</span></span>
+<span><span class="co">#&gt;   168 | 223599999999004555</span></span>
+<span><span class="co">#&gt;   170 | 0000002222222222355948</span></span>
+<span><span class="co">#&gt;   172 | 15777777790224</span></span>
+<span><span class="co">#&gt;   174 | 0000000022233333</span></span>
+<span><span class="co">#&gt;   176 | 2255558</span></span>
+<span><span class="co">#&gt;   178 | 089</span></span>
+<span><span class="co">#&gt;   180 | 3</span></span>
+<span><span class="co">#&gt;   182 | 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here the integer part of each data point is use as the <em>stem</em> and listed vertically. The last digit (the <em>leaf</em>) is printed behind the vertical bar, one for each observation with the same stem.</p>
+<p>The <strong>box-and-whisker plot</strong>, or <strong>boxplot</strong> for short, is an aptly named graphical representation of the summary statistics we have just introduced. It consists of a box that extends in the vertical direction from the lower to the upper quartile, with a horizontal line through the box at the median.</p>
+<p><em>Whiskers</em> may extend from the box:</p>
+<ul>
+<li>the upper whisker extends to the highest value in the dataset no more than 1.5 IQR above the upper quartile. If there is no value in the dataset in this range then there will be no upper whisker.</li>
+<li>similarly the lower whisker extends to the lowest value in the dataset no more than 1.5 IQR below the lower quartile.</li>
+</ul>
+<p>Finally, any value in the dataset that falls outside the box and whiskers is drawn as a dot: these values are referred to as <strong>outliers</strong>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab3_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The purpose of a boxplot is to provide a thumbnail sketch of a variable for the purpose of comparing across several categories. So we can, for example, compare the heights of men and women with</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">bdims</span><span class="op">$</span><span class="va">hgt</span> <span class="op">~</span> <span class="va">bdims</span><span class="op">$</span><span class="va">sex</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab3_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The notation here is new. The <code>~</code> character can be read “versus” or “as a function of”. So we’re asking R to give us box plots of heights where the groups are defined by sex.</p>
+</section><section id="data-and-probability-distributions" class="level2"><h2 class="anchored" data-anchor-id="data-and-probability-distributions">Data and probability distributions</h2>
+<p>It is natural to try to make a connection between variables in a dataset and random variables and between observations of the variable in a dataset and a random sample from the random variable. So we will think of the observations in the dataset as being produced by a probability experiment. Or, said differently, we model the real-world variable as a random variable. The task of Statistics is to determine what the distribution of that random variable should be to best match the distribution of observed values in the dataset.</p>
+<section id="the-normal-distribution" class="level3"><h3 class="anchored" data-anchor-id="the-normal-distribution">The normal distribution</h3>
+<p>In this lab we’ll investigate the probability distribution that is most central to statistics: the normal distribution. If we are confident that a variable in our dataset is well described by a normally distributed random variable, that opens the door to many powerful statistical methods. Here we’ll use the graphical tools of R to assess the normality of our data.</p>
+<p>We’ll be working with women’s heights. We will try to model this as a normal random variable. To see how accurate that description is, we can plot a normal distribution curve on top of a histogram of the observed values to see how closely the data follow a normal distribution. This normal curve should have the same mean and standard deviation as the data. Let’s calculate these statistics so that we can easily use them later.</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fhgtmean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span>
+<span><span class="va">fhgtsd</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the standard deviation (in cm) in the observations of the women’s heights in the dataset?<br><strong>Answer quiz question 4.</strong></p>
+</div>
+</div>
+<p>Next we make a density histogram to use as the backdrop and use the <code>lines</code> function to overlay a normal probability curve. The difference between a <strong>frequency histogram</strong> and a <strong>density histogram</strong> is that while in a frequency histogram the <em>heights</em> of the bars add up to the total number of observations, in a density histogram the <em>areas</em> of the bars add up to 1. Frequency and density histograms both display the same exact shape; they only differ in their y-axis. Using a density histogram allows us to properly overlay a density function curve over the histogram since it too is normalised to have an area of 1 under the curve. To produce a density histogram we use the <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> command, and include the parameter <code>probability = TRUE</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">140</span><span class="op">:</span><span class="fl">190</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">fhgtmean</span>, sd <span class="op">=</span> <span class="va">fhgtsd</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab3_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In the second and third lines of the above code we created the x- and y-coordinates for the normal curve. We chose the x range as 140 to 190 in order to span the entire range of <code>fheight</code>. To create <code>y</code>, we used <code>dnorm</code> to calculate the density of each of those x-values in a distribution that is normal with mean <code>fhgtmean</code> and standard deviation <code>fhgtsd</code>. The final command draws a curve on the existing plot (the density histogram) by connecting each of the points specified by <code>x</code> and <code>y</code>. The argument <code>col</code> simply sets the colour for the line to be drawn.If we left it out, the line would be drawn in black.</p>
+<p>The top of the curve is cut off because the limits of the x- and y-axes are set to best fit the histogram. To adjust the y-axis you can add the <code>ylim</code> argument to the histogram function. We also put a better label on the x-axis and a better title.</p>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>,  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.06</span><span class="op">)</span>, </span>
+<span>     xlab<span class="op">=</span><span class="st">"Women's height (in cm)"</span>, </span>
+<span>     main<span class="op">=</span><span class="st">"Histogram of women's height"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab3_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Based on the this plot, it appears that the data are pretty well approximated by a normal distribution.</p>
+</section><section id="skewness" class="level3"><h3 class="anchored" data-anchor-id="skewness">Skewness</h3>
+<p>Next let us make a similar plot for the female age variable.</p>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">age</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>     xlab<span class="op">=</span><span class="st">"Women's age (in years)"</span>, </span>
+<span>     main<span class="op">=</span><span class="st">"Histogram of women's age"</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span><span class="op">:</span><span class="fl">70</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">age</span><span class="op">)</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">age</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab3_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The age is clearly <em>not</em> normally distributed. The distribution of age is skewed towards the left, towards younger age.</p>
+<p>Such an assymmetry in a distribution is measured by the coefficient of <strong>skewness</strong>. A distribution like the one above that has a heavier or longer tail on the right has a positive skewness. This is the first time that we meet a common phenomenon in R: much of R’s functionality is provided by additional packages. If you search for <code>skewness</code> in the R help system, you will see that there are two packages installed on the campus PCs that define a <code>skewness</code> function, the <code>e1071</code> package and the <code>timeDate</code> packages. We will use the former.</p>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">e1071</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.185329</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>If you are working on your own computer</strong>, the package <code>e1071</code> may not be installed yet. In that case you have to issue the following command before the above code will work:</p>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"e1071"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Note how the function name is preceded by the name of the package and two colons. An alternative way to use functions from a package is to <strong>load the package library</strong>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we can use the function without a prefix:</p>
+<div class="cell">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.185329</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Data that has a distribution with a large skewness can not be well described by the normal distribution because the normal distribution is symmetric and hence has no skewness.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the skewness in the observations of the men’s age in the dataset?<br><strong>Answer quiz question 5.</strong></p>
+</div>
+</div>
+</section><section id="using-q-q-plots" class="level3"><h3 class="anchored" data-anchor-id="using-q-q-plots">Using Q-Q plots</h3>
+<p>Eyeballing the shape of the histogram is one way to determine if the data appear to be nearly normally distributed, but it can be frustrating to decide just how close the histogram is to the curve. An alternative approach involves constructing a so-called <strong>Q-Q plot</strong> (Q-Q stands for “Quantile-Quantile”). In a Q-Q plot the quantiles of one distribution are plotted against the quantiles of another: if the two distributions agree, then this should produce a straight line.</p>
+<p>In our case we want to plot the quantiles of the women’s height distribution against those of the normal distribution. This is known as a <strong>normal Q-Q plot</strong>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab3_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The quantiles of the standard normal distribution are plotted on the horizontal axis and the observed quantiles on the vertical axis. To see better how close this is to the straight line that would arise if the distribution was perfectly normal, R has a function to plot this straight line:</p>
+<div class="cell">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This plot for female heights shows points that tend to follow the line but with some errant points towards the tails.</p>
+<p>We’re left with the same problem that we encountered with the histogram above: how close is close enough?</p>
+<p>A useful way to address this question is to rephrase it as: what would the probability plots look like if the data really came from a normal distribution? We can answer this by simulating data from a normal distribution using <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">sim_norm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span>, mean <span class="op">=</span> <span class="va">fhgtmean</span>, sd <span class="op">=</span> <span class="va">fhgtsd</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here the first argument indicates how many numbers you’d like to generate. We want this to be the same as the number of heights in the <code>fdims</code> dataset, which we can determine using the <code>length</code> function. The next two arguments to <code>rnorm</code> determine the mean and standard deviation of the normal distribution from which the simulated sample will be generated. We can take a look at the shape of our simulated dataset, <code>sim_norm</code>, as well as its normal probability plot.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make a normal Q-Q plot of <code>sim_norm</code>. Do all of the points fall on the line? How does this plot compare to the probability plot for the real data?</p>
+</div>
+</div>
+<p>Even better than comparing the original plot to a plot generated from a <em>single</em> sample from the normal distribution is to compare it to many more plots using the <a href="https://rdocumentation.org/packages/openintro/versions/2.4.0/topics/qqnormsim"><code>qqnormsim()</code></a> function.</p>
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">qqnormsim</span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It may be helpful to click the <em>Zoom</em> button in the plot window, in order to see these plots more clearly.</p>
+</div>
+</div>
+<p>This command produces a 3x3 array of Q-Q plots: the first one (top-left) is the Q-Q plot of the data, which we have already seen above. The other eight plots arise from simulating random normal data with the same mean, standard deviation, and length as the data. (So if you run this command multiple times the first plot shouldn’t change, but the others will as new random numbers are used in the simulations each time.)</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Does the normal probability plot for <code>fdims$hgt</code> look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?<br></p>
+<p>Now analyse the data for female weights.<br><strong>Answer quiz questions 6 and 7.</strong></p>
+</div>
+</div>
+</section><section id="normal-probabilities" class="level3"><h3 class="anchored" data-anchor-id="normal-probabilities">Normal probabilities</h3>
+<p>Once we decide that the distribution of values of a variable is approximately normal, we can answer all sorts of questions about that variable related to probability by modelling that variable as a normally distributed random variable. Take, for example, the question of, “What is the probability that a randomly chosen young adult female is taller than 164 cm?” <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>If we assume that female heights are normally distributed (a very close approximation is also okay), we can model the height in cm as a normally distributed random variable <span class="math inline">\(H\)</span> with the mean given by the sample mean and the variance given by the sample variance. Then the probability that a randomly chosen young adult female is taller than 164 cm is given by <span class="math display">\[
+\mathbb{P}(H&gt;164) = 1-\mathbb{P}(H\leq 164) = 1 - F_H(164)\,.
+\]</span></p>
+<p>In R, the distribution function of a normal random variable is calculated with the function <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> and thus we obtain the desired probability with</p>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">164</span>, mean <span class="op">=</span> <span class="va">fhgtmean</span>, sd <span class="op">=</span> <span class="va">fhgtsd</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.5530166</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Thus assuming a normal distribution has allowed us to calculate a theoretical probability. If we want to calculate the probability <em>empirically</em>, we simply need to determine how many observations fall above 164, then divide this number by the total sample size, as you’ve seen before:</p>
+<div class="cell">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span> <span class="op">&gt;</span> <span class="fl">164</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">fdims</span><span class="op">$</span><span class="va">hgt</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.5153846</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Although the probabilities are not exactly the same, they are reasonably close. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Answer quiz question 8.</strong></p>
+</div>
+</div>
+
+
+</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>The study that published this dataset is clear to point out that the sample was not random and therefore inference to a general population is not suggested. We do so here only as an exercise.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../labs/lab2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 2: Introduction to data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../assignments/assignments.html" class="pagination-link">
+        <span class="nav-page-text">Written assignments</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Created by <a href="http://www-users.york.ac.uk/~sbc502/">Stephen Connor</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+</body></html>

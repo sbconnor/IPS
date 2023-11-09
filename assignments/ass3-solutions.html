@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Connor">
+
+<title>IPS: Assignment 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="ass3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ass3_files/libs/quarto-html/quarto.js"></script>
+<script src="ass3_files/libs/quarto-html/popper.min.js"></script>
+<script src="ass3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="ass3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="ass3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ass3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="ass3_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="ass3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="ass3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="ass3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="ass3_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="ass3_files/libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
+<link href="ass3_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="ass3_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../css/ips.scss">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Menu</h2>
+   
+  <ul>
+  <li><a href="#starter" id="toc-starter" class="nav-link active" data-scroll-target="#starter">Starter</a></li>
+  <li><a href="#main-course" id="toc-main-course" class="nav-link" data-scroll-target="#main-course">Main course</a></li>
+  <li><a href="#dessert" id="toc-dessert" class="nav-link" data-scroll-target="#dessert">Dessert</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ass3-solutions.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IPS: Assignment 3</h1>
+<p class="subtitle lead">Due date: 10am, 09/11/23</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stephen Connor </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="section" class="level22">
+<p class="heading"></p>
+</section>
+<section id="starter" class="level2">
+<h2 class="anchored" data-anchor-id="starter">Starter</h2>
+<p><em>These questions should help you to gain confidence with the basics.</em></p>
+<section id="section-1" class="level7">
+<p class="heading"></p>
+<p><strong>S1.</strong> Each morning a (fictional) student rolls a die and starts studying if she throws 6. Otherwise, she stays in bed. However, during the four months of exams, she tosses a coin instead of rolling a die and studies if she tosses Heads. On a (randomly chosen) morning, the student is studying. What is the probability that it is exam period? (Assume for simplicity that each month has the same number of days!)</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(W=\{\text{student is working}\}\)</span> and} <span class="math inline">\(E=\{\text{exam period}\}\)</span>. Then Bayes’ theorem tells us that<br>
+<span class="math display">\[
+\begin{split}
+\mathbb{P}(E\,|\,W)&amp;=\frac{\mathbb{P}(W\,|\,E)\mathbb{P}(E)}{\mathbb{P}(W\,|\,E)\mathbb{P}(E)+\mathbb{P}(W\,|\,E^c)\mathbb{P}(E^c)}\\
+&amp;=\frac{\dfrac{1}{2}\cdot\dfrac{1}{3}}{\dfrac{1}{2}\cdot\dfrac{1}{3}+\dfrac{1}{6}\cdot\dfrac{2}{3}}
+=\frac{3}{5}.
+\end{split}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-2" class="level7">
+<p class="heading"></p>
+<p><strong>S2.</strong> Consider a discrete random variable <span class="math inline">\(V\)</span> taking values in <span class="math inline">\(\{1,2,3,4\}\)</span> with mass function <span class="math inline">\(p_V\)</span> given by <span class="math display">\[
+p_V(x) = \begin{cases}
+            xc^x &amp; \quad\text{if $x=1,2$} \\
+            c(5-x) &amp; \quad\text{if $x=3,4$}.
+          \end{cases}
+\]</span> What value of <span class="math inline">\(c\)</span> makes <span class="math inline">\(p_V\)</span> a mass function?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>To be a mass function, we need <span class="math inline">\(p_V(x)\geq 0\)</span> for all <span class="math inline">\(x\)</span> and <span class="math inline">\(\sum_x p_V(x) = 1\)</span>. For the second of these constraints we need <span class="math inline">\(c + 2c^2 + 2c + c = 1\)</span>, and so <span class="math inline">\(c = -1 \pm \sqrt{6}/2\)</span>. But if we take <span class="math inline">\(c=-1-\sqrt{6}/2\)</span> then we get (for example) <span class="math inline">\(p_V(3)&lt;0\)</span>, which isn’t allowed. Therefore, we have to take <span class="math inline">\(c=-1+\sqrt{6}/2&gt;0\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-3" class="level7">
+<p class="heading"></p>
+<p><strong>S3.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br>
+</strong>Consider the probability space corresponding to throwing a fair die. Give an example of a random variable <span class="math inline">\(X\)</span> whose image is <span class="math inline">\(\{1, 2, 3\}\)</span> and for which <span class="math inline">\(F_X(\pi/2)=1/2\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>There are lots of possibilities. The only important thing is that exactly three outcomes are mapped to <span class="math inline">\(1\)</span> so that <span class="math inline">\(F_X(\pi/2)=P(X\leq \pi/2)=P(X=1)=1/2\)</span>. One possibility is <span class="math inline">\(X(1)=X(2)=X(3)=1, X(4)=X(5)=2,X(6)=3\)</span>. <strong>[3 for a correct example; 2 for some sort of reasoning]</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-4" class="level7">
+<p class="heading"></p>
+<p><strong>S4.</strong> What is the probability that exactly 3 heads are obtained in 5 tosses of a fair coin?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X\)</span> denote the number of heads obtained. Then <span class="math inline">\(X\sim\mbox{\textup{Bin}}(5,1/2)\)</span>, and <span class="math display">\[
+\mathbb{P}(X=3) = {5\choose 3}(\frac{1}{2})^5 = 0.3125 \,.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5" class="level7">
+<p class="heading"></p>
+<p><strong>S5.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br>
+</strong>Let <span class="math inline">\(\lambda&gt;0\)</span> be some positive number. Find <span class="math inline">\(c\)</span> such that the following function is a density function: <span class="math display">\[
+f(x) =ce^{-\lambda \left\vert x\right\vert }\,, \quad x\in \mathbb{R}.
+\]</span></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>For <span class="math inline">\(f\)</span> to be a density, it must be non-negative on <span class="math inline">\(\mathbb{R}\)</span> and satisfy <span class="math inline">\(\int_{-\infty}^\infty f(x) dx = 1\)</span>. Since the exponential function is non-negative, <span class="math inline">\(f\)</span> is non-negative everywhere as long as <span class="math inline">\(c\geq 0\)</span> <strong>[1]</strong>.</p>
+<p>Note that <span class="math display">\[
+\begin{split}
+\int_{-\infty}^{\infty}e^{-\lambda |x|}dx &amp;= \int_{-\infty}^0e^{\lambda x}dx+\int_0^{\infty}e^{-\lambda x}dx\\
+&amp;=\frac{1}{\lambda}[e^{\lambda x}]_{-\infty}^0-\frac{1}{\lambda}[e^{-\lambda x}]_0^{\infty}=\frac{2}{\lambda}\,.
+\end{split}
+\]</span> <strong>[3]</strong></p>
+<p>So <span class="math inline">\(f(\cdot)\)</span> is a density if and only if <span class="math inline">\(c=\lambda/2\)</span>. <strong>[1]</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-6" class="level7">
+<p class="heading"></p>
+<p><strong>S6.</strong> Let <span class="math inline">\(Y\sim\mbox{\textup{Poisson}}(2)\)</span>. Write down the mass function for <span class="math inline">\(Y\)</span>. What is <span class="math inline">\(\mathbb{P}(Y\geq 2)\)</span>?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The probability mass function is given by <span class="math display">\[
+p_Y(k)=\frac{2^k}{k!}e^{-2}\,.
+\]</span> We can then calculate <span class="math display">\[
+\mathbb{P}(Y\geq 2)=1-\mathbb{P}(Y&lt;2)=1-(\mathbb{P}(Y=0)+\mathbb{P}(Y=1))=1-\left(1+2\right)e^{-2}.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-7" class="level7">
+<p class="heading"></p>
+<p><strong>S7.</strong> Recall the Chevalier de Méré’s problem: two dice are thrown 24 times – you win £1 if at least one double 6 is thrown, otherwise you lose £1. How much do you expect to win on average? Is this a good bet?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The probability of throwing a double 6 with one throw of two dice is <span class="math inline">\(1/36\)</span>. The probability of there being <em>no</em> occurrences of a double 6 in 24 throws of two dice is therefore <span class="math inline">\((35/36)^{24} \approx 0.509\)</span>. Letting <span class="math inline">\(X\)</span> denote your winnings from the game, this is a random variable satisfying <span class="math display">\[
+\mathbb{P}(X=1) \approx 0.491\,, \quad \text{and} \quad \mathbb{P}(X=-1) \approx 0.509 \,.
+\]</span></p>
+<p>Your expected winnings are hence given by <span class="math display">\[
+\mathbb{E}[X] \approx 0.491  - 0.509\approx 0.018 \ &lt;0 \,.
+\]</span> Since you expect to lose on average, this isn’t a good bet to make!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-8" class="level7">
+<p class="heading"></p>
+<p><strong>S8.</strong> The probability density function <span class="math inline">\(f_X\)</span> of a continuous random variable <span class="math inline">\(X\)</span> is given by <span class="math display">\[
+f_X(x)=\begin{cases}-\frac{6(x^2+7x-c)}{25}&amp; \text{ if }0\leq x\leq 1\\0&amp;\text{ otherwise }\end{cases}
+\]</span> Compute <span class="math inline">\(c\)</span>. Give the distribution function of <span class="math inline">\(X\)</span> in the interval <span class="math inline">\([0,1]\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The constant <span class="math inline">\(c\)</span> is determined by the requirement that the integral of the density function over the entire real line is equal to one: <span class="math display">\[
+1=\int_{-\infty}^\infty f_X(x)dx=\int_0^1-\frac{6(x^2+7x-c)}{25}dx=\left[-\frac{6(x^3/3+7x^2/2-cx)}{25}\right]_0^1=\frac{6c-23}{25}.
+\]</span> This implies that <span class="math inline">\(c=8\)</span>. Note that for this value of <span class="math inline">\(c\)</span> the function <span class="math inline">\(f_X\)</span> is non-negative everywhere, which is also required in order for it to be a density.</p>
+<p>The distribution function is obtained as an integral over the density function, but not over the whole real line but only from <span class="math inline">\(-\infty\)</span> up to <span class="math inline">\(x\)</span>: <span class="math display">\[
+F_X(x)=\int_{-\infty}^xf_X(s)ds=\int_0^x -\frac{6(x^2+7x-8)}{25}dx=-\frac{6(x^3/3+7x^2/2-8x)}{25}.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-9" class="level7">
+<p class="heading"></p>
+<p><strong>S9.</strong> A continuous random variable <span class="math inline">\(X\)</span> has a distribution function <span class="math inline">\(F\)</span> which satisfies <span class="math display">\[
+F(x) = \begin{cases}0 &amp;\text{ for } x &lt; 0\\\frac{4x^2+3x}{7}  &amp;\text{ for } 0 \leq x \leq 1\\ 1 &amp;\text{ for } x &gt; 1\,. \end{cases}
+\]</span> Determine <span class="math inline">\(\mathbb{E}[X]\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The probability density function of <span class="math inline">\(X\)</span> is given by <span class="math display">\[
+f(x)=\frac{d}{dx}F(x)=\frac{8x+3}{7}
+\]</span> for <span class="math inline">\(0\leq x \leq 1\)</span>, and <span class="math inline">\(f(x)=0\)</span> elsewhere. So <span class="math display">\[
+\mathbb{E}[X]=\int_{-\infty}^\infty xf(x)dx=\int_0^1\left(\frac{8x^2+3x}{7}\right)dx=\frac{25}{42}.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="section-10" class="level22">
+<p class="heading"></p>
+</section>
+</section>
+</section>
+<section id="main-course" class="level2">
+<h2 class="anchored" data-anchor-id="main-course">Main course</h2>
+<p><em>These are important, and cover some of the most substantial parts of the course.</em></p>
+<section id="section-11" class="level7">
+<p class="heading"></p>
+<p><strong>M1.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br>
+</strong>Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent events. Show that <span class="math inline">\(A^c\)</span> and <span class="math inline">\(B^c\)</span> are independent.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>We need to show that <span class="math inline">\(\mathbb{P}(A^c\cap B^c) = \mathbb{P}(A^c)\mathbb{P}(B^c)\)</span> <strong>[1]</strong>. <span class="math display">\[
+\begin{split}
+\mathbb{P}(A^c\cap B^c)&amp;=\mathbb{P}((A\cup B)^c) \qquad\text{(De Morgan)}\\
+  &amp;=1-\mathbb{P}(A\cup B) \qquad\text{(P4)}\\
+  &amp;=1-(\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)) \qquad\text{(P6)}\\
+  &amp;=(1-\mathbb{P}(A))-\mathbb{P}(B)+\mathbb{P}(A)\mathbb{P}(B)  \qquad\text{(independence of $A$ and $B$)}\\
+  &amp;=\mathbb{P}(A^c)-\mathbb{P}(B)[1-\mathbb{P}(A)]  \qquad\text{(P4)}\\
+  &amp;=\mathbb{P}(A^c)-\mathbb{P}(B)\mathbb{P}(A^c)  \qquad\text{(P4)}\\
+  &amp;=\mathbb{P}(A^c)[1-\mathbb{P}(B)]\\
+  &amp;=\mathbb{P}(A^c)\mathbb{P}(B^c).  \qquad\text{(P4)}\\
+\end{split}
+\]</span> <strong>[4; some justification of reasoning needs to be given for high marks]</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-12" class="level7">
+<p class="heading"></p>
+<p><strong>M2.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br>
+</strong> A box contains four coins: one has a Head on both sides; one has a Tail on both sides; the other two coins are normal and fair. A coin is chosen at random from the box and tossed three times. What is the probability that the two-Headed coin was chosen, given that all three tosses are Heads?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(A_1=\{\text{two-Headed coin chosen}\}\)</span>, <span class="math inline">\(A_2=\{\text{two-Tailed coin chosen}\}\)</span>, <span class="math inline">\(A_3 = \{\text{fair coin chosen}\}\)</span>, and <span class="math inline">\(B=\{\text{obtain three Heads}\}\)</span> <strong>[1 for setting up some notation]</strong>.</p>
+<p>Then <span class="math display">\[
+\begin{split}
+\mathbb{P}(B)&amp;=\sum_{i=1}^3\mathbb{P}(B\,|\,A_i)\mathbb{P}(A_i) = 1 \cdot \frac{1}{4}+ 0 \cdot\frac{1}{4} + \left(\frac{1}{2}\right)^3\cdot \frac{1}{2}=\frac{5}{16}\,.
+\end{split}
+\]</span> <strong>[2]</strong> Finally, we can use Bayes’ theorem: <span class="math display">\[
+\begin{split}
+\mathbb{P}(A_1\,|\,B)&amp;=\frac{\mathbb{P}(A_1\cap B)}{\mathbb{P}(B)}=\frac{\mathbb{P}(A_1\cap B)}{\mathbb{P}(A_1)}\frac{\mathbb{P}(A_1)}{\mathbb{P}(B)}\\                  &amp;=\mathbb{P}(B\,|\,A_1)\frac{\mathbb{P}(A_1)}{\mathbb{P}(B)}=1\cdot\frac{1/4}{5/16}=\frac{4}{5}.
+\end{split}
+\]</span> <strong>[2]</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-13" class="level7">
+<p class="heading"></p>
+<p><strong>M3.</strong> Consider a discrete random variable <span class="math inline">\(Y\)</span> taking values in the set <span class="math inline">\(\{0,1,\dots,8\}\)</span> and with probability mass function <span class="math inline">\(p_Y\)</span> given by <span class="math display">\[
+p_Y(k) = \begin{cases}
+  c\,a &amp; \quad\text{if $k=0,1,2,3,4,5$} \\
+  c\,a^2 &amp; \quad\text{if $k=6,7$} \\
+  c(1-a)^2 &amp; \quad\text{if $k=8$,}
+\end{cases}
+\]</span> where <span class="math inline">\(a\)</span> is some fixed number between 0 and 1 and <span class="math inline">\(c\)</span> is a constant to be determined. What value of <span class="math inline">\(c\)</span> makes <span class="math inline">\(p_Y\)</span> a mass function? (The answer is a function of <span class="math inline">\(a\)</span>.)</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>To be a mass function, we need <span class="math inline">\(\sum_k p_Y(k) = 1\)</span>. That is, <span class="math display">\[
+c[6a  + 2a ^2 + (1-a )^2] = 1 \,,\]</span> and so the required value of <span class="math inline">\(c\)</span> is <span class="math display">\[c= \frac{1}{(3a +1)(a +1)} \,.\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-14" class="level7">
+<p class="heading"></p>
+<p><strong>M4.</strong> Let <span class="math inline">\(X\sim\mbox{\textup{Bern}}(p)\)</span>. Let <span class="math inline">\(Y=1-X\)</span> and <span class="math inline">\(V=X^2\)</span>. Show that</p>
+<ol type="a">
+<li><span class="math inline">\(Y\sim\mbox{\textup{Bern}}(1-p)\)</span>;</li>
+<li><span class="math inline">\(V\sim\mbox{\textup{Bern}}(p)\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The mass function of <span class="math inline">\(X\)</span> is <span class="math display">\[p_X(x) = \begin{cases}
+            1-p &amp; \quad\text{if $x=0$} \\
+            p &amp; \quad\text{if $x=1$} \\
+            0 &amp; \quad\text{if $x\neq 0,1$.}
+          \end{cases}
+\]</span></p>
+<ol type="a">
+<li><p>Thus we see that <span class="math display">\[
+\begin{split}
+\mathbb{P}(Y=0) &amp;= \mathbb{P}(1-X=0) = \mathbb{P}(X=1) = p \\
+               \text{and}\qquad \mathbb{P}(Y=1) &amp;= \mathbb{P}(1-X=1) = \mathbb{P}(X=0) = 1-p \,.
+\end{split}
+\]</span> Furthermore, <span class="math inline">\(\mathbb{P}(Y=x) = 0\)</span> if <span class="math inline">\(x\neq 0,1\)</span>. Thus <span class="math inline">\(Y\sim\mbox{\textup{Bern}}(1-p)\)</span>, as required.</p></li>
+<li><p>Similarly, <span class="math display">\[
+\begin{split}
+\mathbb{P}(V=0) &amp;= \mathbb{P}(X^2=0) = \mathbb{P}(X=0) = 1-p \\
+               \text{and}\qquad \mathbb{P}(V=1) &amp;= \mathbb{P}(X^2=1) = \mathbb{P}(X=1) = p \,,
+\end{split}
+\]</span> and so <span class="math inline">\(V\sim\mbox{\textup{Bern}}(p)\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="section-15" class="level7">
+<p class="heading"></p>
+<p><strong>M5.</strong> A fair die is thrown until the sum of the results of the throws exceeds 6. The random variable <span class="math inline">\(X\)</span> is the number of throws needed for this. Let <span class="math inline">\(F_X\)</span> be the distribution function of <span class="math inline">\(X\)</span>. Determine <span class="math inline">\(F_X(1)\)</span>, <span class="math inline">\(F_X(2)\)</span> and <span class="math inline">\(F_X(7)\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>There is no possibility to exceed <span class="math inline">\(6\)</span> already on the first throw because the die only has numbers up to <span class="math inline">\(6\)</span>. So <span class="math inline">\(F_X(1)=\mathbb{P}(X\leq 1)=0.\)</span></p>
+<p>There are, however, <span class="math inline">\(21\)</span> outcomes of the throw of two dice that give a sum greater than <span class="math inline">\(6\)</span>. These can be read off easily from Table 4.1 in the textbook. There are <span class="math inline">\(36\)</span> outcomes altogether, all equally likely, so <span class="math display">\[
+F_X(2)=\mathbb{P}(X\leq 2)=\mathbb{P}(X= 2)=\frac{21}{36}=\frac{7}{12}\,.
+\]</span> Finally, there is no way to avoid getting a sum of more than six once one has more than six throws, because each die will show at least one. So <span class="math inline">\(F_X(7)=\mathbb{P}(X\leq 7)=1-\mathbb{P}(X&gt;7)=1-0=1\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-16" class="level7">
+<p class="heading"></p>
+<p><strong>M6.</strong> Consider a roulette wheel, with numbers 00, 0, 1, 2, 3, …, 36 (38 numbers in total). A ball is thrown onto the wheel as it is spinning, and comes to rest by one of the numbers. You always bet that the ball will stop on one of the numbers 1, 2, …, 12. Let <span class="math inline">\(N\)</span> be the random variable giving the number of bets that you lose <em>before</em> your first win. Give <span class="math inline">\(p_N(5)\)</span> and <span class="math inline">\(F_N(5)\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The probability of winning on a particular bet is <span class="math inline">\(12/38\)</span> because 12 of the 38 outcomes lead to a win and all outcomes are equally likely. The probability of losing on a particular bet is therefore <span class="math inline">\(26/38\)</span>. The individual spins of the roulette wheel are independent. So the probability of losing the first 5 first bets and then winning on the next is <span class="math inline">\(p_N(5)=\mathbb{P}(N=5)=(26/38)^5\cdot 12/38\approx 0.047\)</span>. Also <span class="math inline">\(F_N(5)=\mathbb{P}(N\leq 5) = 1-\mathbb{P}(N\geq 6)\)</span> is the probability of not losing all first 6 bets. So <span class="math inline">\(F_N(5)=1-(26/38)^6\approx 0.90\)</span>. We notice that <span class="math inline">\((N+1)\sim\mbox{\textup{Geom}}(12/38)\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-17" class="level7">
+<p class="heading"></p>
+<p><strong>M7.</strong> <span class="math inline">\(N\geq 3\)</span> people go for coffee. Each person flips a fair coin: if all but one of the coins shows the same face (Head or Tail), then the odd person out pays for all the drinks; if not then the coins are tossed again until this event occurs. How many times on average must each person toss their coin before somebody is selected in this way?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>We first calculate the probability that there is an odd person out on the first (or indeed, any) flip of the coins. This happens if</p>
+<ol type="a">
+<li><span class="math inline">\(N-1\)</span> people get Tails and one person gets a Head; or</li>
+<li><span class="math inline">\(N-1\)</span> people get Heads and one person gets a Tail.</li>
+</ol>
+<p>Clearly these two events have equal probability (since the coins are all fair). Thinking of case (a), there are <span class="math inline">\(N\)</span> ways in which we can choose the person who gets a Head, and the probability that this person gets a Head and the rest get tails equals <span class="math inline">\((1/2)^N\)</span>. So the probability of (a) happening is <span class="math inline">\(N/2^N\)</span>, and since (b) has the same probability we obtain <span class="math display">\[
+p = \mathbb{P}(\text{odd person out on any particular flip}) = \frac{N}{2^{N-1}} \,.
+\]</span> Now, the number of flips needed for there to be an odd person out, <span class="math inline">\(X\)</span>, follows a <span class="math inline">\(\mbox{\textup{Geom}}(p)\)</span> distribution, and so we obtain <span class="math display">\[\text{expected number of tosses} = \mathbb{E}[X] = \frac{2^{N-1}}{N} \,.\]</span> This gets pretty big as <span class="math inline">\(N\)</span> gets large!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-18" class="level7">
+<p class="heading"></p>
+<p><strong>M8.</strong> Prove the memoryless property of the exponential distribution which states that if <span class="math inline">\(X\sim\mbox{\textup{Exp}}(\lambda)\)</span> then for any <span class="math inline">\(t,s\geq 0\)</span>, <span class="math display">\[
+\mathbb{P}(X&gt;t+s\,|\,X&gt;s)=\mathbb{P}(X&gt;t).
+\]</span></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{split}
+            \mathbb{P}(X&gt;t+s\,|\,X&gt;s)&amp;=\frac{\mathbb{P}(\{X&gt;t+s\}\cap\{X&gt;s\})}{\mathbb{P}(X&gt;s)}\\
+            &amp;=\frac{\mathbb{P}(X&gt;t+s)}{\mathbb{P}(X&gt;s)}\\
+            &amp;=\frac{1-\mathbb{P}(X\leq t+s)}{1-\mathbb{P}(X\leq s)}\\
+            &amp;=\frac{1-F_X(t+s)}{1-F_X(s)}=\frac{e^{-\lambda(t+s)}}{e^{-\lambda s}}=e^{-\lambda t}\\
+            &amp;=1-F_X(t)=\mathbb{P}(X&gt;t).
+\end{split}
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="section-19" class="level22">
+<p class="heading"></p>
+</section>
+</section>
+</section>
+<section id="dessert" class="level2">
+<h2 class="anchored" data-anchor-id="dessert">Dessert</h2>
+<p><em>Still hungry for more? Try these if you want to push yourself further.</em></p>
+<section id="section-20" class="level7">
+<p class="heading"></p>
+<p><strong>D1.</strong> <span class="math inline">\(N\)</span> people go for coffee. Each person flips a coin, of which <span class="math inline">\(N-1\)</span> are fair, and one has probability <span class="math inline">\(q\)</span> of coming up Heads (for some <span class="math inline">\(q\in[0,1]\)</span>): if all but one of the coins shows the same face (Head or Tail), then the odd person out pays for all the drinks; if not then the coins are tossed again until this event occurs. How does the expected number of coin tosses each person makes vary with <span class="math inline">\(q\)</span>?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>It doesn’t vary with <span class="math inline">\(q\)</span> – the expected number of tosses is always <span class="math inline">\(2^{N-1}/N\)</span>! Why? <span class="math display">\[
+\begin{split}
+\mathbb{P}(\text{odd person out on any given flip}) &amp;= q{{N-1}\choose{N-2}}\left(\frac{1}{2}\right)^{N-2}\left(\frac{1}{2}\right) +\left(\frac{1}{2}\right)^{N-1} \\
+&amp;\qquad+ (1-q){{N-1}\choose{N-2}}\left(\frac{1}{2}\right)^{N-2}\left(\frac{1}{2}\right) + \left(\frac{1}{2}\right)^{N-1} \,,
+\end{split}
+\]</span> where the first quantity is the probability that the person with the strange coin gets a Head, and either <span class="math inline">\(N-2\)</span> people also get Heads (with one Tail), or everybody else gets a Tail, etc. So the probability of having one odd person out in any given round is <span class="math inline">\(p=N/2^{N-1}\)</span>, irrespective of the value of <span class="math inline">\(q\)</span>. The number of rounds needed until there’s one odd person out has a <span class="math inline">\(\mbox{\textup{Geom}}(p)\)</span> distribution, with mean <span class="math inline">\(2^{N-1}/N\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-21" class="level7">
+<p class="heading"></p>
+<p><strong>D2.</strong> Alice and Bob decide to duel, using just one six-shot revolver, and one bullet, between them. They decide to duel in the following way: with the bullet inserted into the revolver, Alice will spin the cylinder and shoot at Bob (killing him if the gun fires); if Alice misses, Bob will spin the cylinder and shoot at Alice. Assuming there is a <span class="math inline">\(1/6\)</span> probability that the revolver will fire each time (since the revolver has 6 chambers), what is</p>
+<ol type="a">
+<li>the distribution of the number of turns <span class="math inline">\(T\)</span> until the gun fires?</li>
+<li>the probability that Alice wins the duel?</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>The time until the gun fires follows a <span class="math inline">\(\mbox{\textup{Geom}}(1/6)\)</span> distribution: <span class="math inline">\(T\sim\mbox{\textup{Geom}}(1/6)\)</span>.</p></li>
+<li><p>Alice wins if:</p></li>
+</ol>
+<ul>
+<li>the gun fires first time; or</li>
+<li>the gun doesn’t fire on the first two goes, but fires on the third; or</li>
+<li>the gun doesn’t fire on the first four goes, but fires on the fifth; or…</li>
+</ul>
+<p>That is, Alice wins if the gun fires at an <em>odd</em> time: <span class="math display">\[
+\mathbb{P}(\text{Alice wins}) = \mathbb{P}(T \text{ is odd}) \,.  
+\]</span></p>
+<p>Since <span class="math inline">\(\mathbb{P}(T=n) = (5/6)^{n-1}(1/6)\)</span>, we require <span class="math display">\[
+\begin{split}
+\mathbb{P}(T \text{ is odd}) &amp;= \frac{1}{6}\left[ 1+ \left(\frac{5}{6}\right)^2 + \left(\frac{5}{6}\right)^4 + \dots\right] \\
+                                          &amp;= \frac{1}{6} \left[\frac{1}{1-\left(\frac{5}{6}\right)^2}\right] \\
+                                          &amp;= \frac{6}{11} \,,
+\end{split}
+\]</span> where the middle equality follows from the usual formula for a geometric series. So Alice has the greater chance of winning (because she gets to take the first shot!).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-22" class="level7">
+<p class="heading"></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At time 0, an urn contains 1 Red and 1 Black ball. Just before each time <span class="math inline">\(n=1,2,3,\dots\)</span>, a ball is chosen at random from the urn and then replaced, <em>along with a new ball of the same colour</em>. For <span class="math inline">\(n=0,1,2,\dots\)</span> and <span class="math inline">\(1\leq r\leq n+1\)</span>, let <span class="math display">\[
+p_{n,r} = \mathbb{P}(\text{at time $n$, the urn contains exactly $r$ Red balls}) \,.
+\]</span></p>
+<ol type="a">
+<li>Write down the values of <span class="math inline">\(p_{0,1}\)</span>, <span class="math inline">\(p_{1,1}\)</span> and <span class="math inline">\(p_{1,2}\)</span>;</li>
+<li>By conditioning on the possible numbers of red balls at time 1, calculate <span class="math inline">\(p_{2,r}\)</span> for <span class="math inline">\(r=1,2,3\)</span>;</li>
+<li>Can you find (and prove!) a general formula for <span class="math inline">\(p_{n,r}\)</span>? [HINT: guess at the right answer using your findings from parts (a) and (b). (Calculate <span class="math inline">\(p_{3,r}\)</span> explicitly if you can’t see a pattern.) Then use induction.]</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
