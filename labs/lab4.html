@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Stephen Connor">
+<title>Introduction to Probability and Statistics - Lab 4: Sampling distributions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../assignments/assignments.html" rel="next">
+<link href="../labs/lab3.html" rel="prev">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../css/ips.scss">
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/labs.html">Computer labs</a></li><li class="breadcrumb-item"><a href="../labs/lab4.html">Lab 4: Sampling distributions</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Introduction to Probability and Statistics</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/sbconnor/sbconnor.github.io/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Introduction-to-Probability-and-Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../labs/labs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computer labs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/intro-lab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro Lab: Meeting R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Script files and simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Introduction to data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Data and distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 4: Sampling distributions</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Written assignments</span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#independent-and-identically-distributed-i.i.d.-samples" id="toc-independent-and-identically-distributed-i.i.d.-samples" class="nav-link active" data-scroll-target="#independent-and-identically-distributed-i.i.d.-samples">Independent and identically distributed (i.i.d.) samples</a></li>
+  <li>
+<a href="#estimating-the-expectation" id="toc-estimating-the-expectation" class="nav-link" data-scroll-target="#estimating-the-expectation">Estimating the expectation</a>
+  <ul class="collapse">
+<li><a href="#sampling-distribution-of-the-sample-mean" id="toc-sampling-distribution-of-the-sample-mean" class="nav-link" data-scroll-target="#sampling-distribution-of-the-sample-mean">Sampling distribution of the sample mean</a></li>
+  <li><a href="#interlude-the-for-loop" id="toc-interlude-the-for-loop" class="nav-link" data-scroll-target="#interlude-the-for-loop">Interlude: the <code>for</code> loop</a></li>
+  <li><a href="#sample-size-and-the-sampling-distribution" id="toc-sample-size-and-the-sampling-distribution" class="nav-link" data-scroll-target="#sample-size-and-the-sampling-distribution">Sample size and the sampling distribution</a></li>
+  </ul>
+</li>
+  <li><a href="#estimating-the-variance" id="toc-estimating-the-variance" class="nav-link" data-scroll-target="#estimating-the-variance">Estimating the variance</a></li>
+  <li>
+<a href="#real-estate-data" id="toc-real-estate-data" class="nav-link" data-scroll-target="#real-estate-data">Real-estate data</a>
+  <ul class="collapse">
+<li><a href="#taking-a-sample" id="toc-taking-a-sample" class="nav-link" data-scroll-target="#taking-a-sample">Taking a sample</a></li>
+  <li><a href="#sampling-distribution" id="toc-sampling-distribution" class="nav-link" data-scroll-target="#sampling-distribution">Sampling distribution</a></li>
+  <li><a href="#effect-of-the-size-of-the-sample" id="toc-effect-of-the-size-of-the-sample" class="nav-link" data-scroll-target="#effect-of-the-size-of-the-sample">Effect of the size of the sample</a></li>
+  </ul>
+</li>
+  <li><a href="#you-only-have-one-sample" id="toc-you-only-have-one-sample" class="nav-link" data-scroll-target="#you-only-have-one-sample">You only have one sample</a></li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sbconnor/sbconnor.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-lab4" class="quarto-section-identifier">Lab 4: Sampling distributions</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This tutorial is adapted from OpenIntro and is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> license. This lab was written for OpenIntro by Andrew Bray and Mine etinkaya-Rundel, extended for the University of York by Gustav Delius, and subsequently extended by Stephen Connor.</p>
+</div>
+</div>
+</div>
+<p>This practical is about i.i.d. samples from random variables and drives home the fact that the sample mean and the sample variance are themselves random variables with a distribution. You will investigate this distribution and how it is affected by the sample size.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remember!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As always, you should start the lab by creating a script file (with a sensible name), and then adding each line of code to this file as you go, so that you can easily re-run it later if necessary. Add your own comments to remind you what each chunk of code does!</p>
+</div>
+</div>
+<section id="independent-and-identically-distributed-i.i.d.-samples" class="level2"><h2 class="anchored" data-anchor-id="independent-and-identically-distributed-i.i.d.-samples">Independent and identically distributed (i.i.d.) samples</h2>
+<p>An i.i.d. sample of size <span class="math inline">\(n\)</span> is a collection of <span class="math inline">\(n\)</span> independent random variables <span class="math inline">\(X_1,X_2,\dots,X_n\)</span>, each with the same distribution. (We use the notation <span class="math inline">\(X\)</span> to refer to a generic random variable having the same distribution as any of the <span class="math inline">\(X_i\)</span>.) If we perform the probability experiment and measure all these random variables, we will get a collection of <span class="math inline">\(n\)</span> numbers <span class="math inline">\(x_1,x_2,\dots,x_n\)</span>. The topic of this worksheet is how to learn something about the distribution of the random variable <span class="math inline">\(X\)</span> from the distribution of the values of this sample. This follows on from our investigations into <em>simulation</em> during <a href="@sec-lab1">Lab 1</a>.</p>
+<p>We saw in that lab that we can ask R to simulate an i.i.d. sample using the function <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>. There we did it for pulling coloured balls out of bags, or sampling faulty light bulbs. But it should come as no surprise that R can simulate random numbers from a wide range of discrete and continuous distributions. Let us here consider i.i.d. samples from the exponential distribution. Recall that if <span class="math inline">\(X\sim\mbox{\textup{Exp}}(\lambda)\)</span> then its density function is <span class="math display">\[ f_X(x) = \lambda e^{-\lambda x}\,, \quad x\ge 0 \,. \]</span></p>
+<p>The following command simulates a measurement of a sample of size <span class="math inline">\(n=100\)</span> from the exponential distribution with parameter <span class="math inline">\(\lambda =1\)</span>.</p>
+<div class="cell" data-execute="true">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">100</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us look at the distribution of the values in this sample by making a histogram.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should now see a histogram displayed in the <em>Plots</em> panel at the lower right of the RStudio window. R automatically chooses the width of the bins in the histogram, based on the range of the data, using something called Sturge’s rule by default. We can suggest to R to use more bins if we want to get a more detailed view. We can also specify the <code>probability = TRUE</code> option so that the vertical axis shows the proportion of values in each bin instead of the number.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">x</span>, breaks <span class="op">=</span> <span class="fl">20</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us compare this to the density of the exponential distribution by plotting that on top of the histogram.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create a sequence of evenly  spaced values between 0 and 5</span></span>
+<span><span class="va">xx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0.05</span><span class="op">)</span> </span>
+<span><span class="co"># plot the density of the Exp(1) distribution at each value</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">xx</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">dexp</a></span><span class="op">(</span><span class="va">xx</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let us assume we did not already know that this sample was from an exponential distribution with parameter 1. Let us instead assume that we were just given these 100 numbers, and believe that they come from an <span class="math inline">\(\mbox{\textup{Exp}}(\lambda)\)</span> distribution: we want to use these numbers to estimate <span class="math inline">\(\lambda\)</span>.</p>
+</section><section id="estimating-the-expectation" class="level2"><h2 class="anchored" data-anchor-id="estimating-the-expectation">Estimating the expectation</h2>
+<p>In this lab we will in particular look at estimating the expectation of the underlying distribution. We of course know that an exponentially distributed random variable <span class="math inline">\(X\)</span> with parameter <span class="math inline">\(\lambda\)</span> has an expectation <span class="math inline">\(\mathbb{E}[X]=1/\lambda\)</span>. So if we can estimate <span class="math inline">\(\mathbb{E}[X]\)</span> we can also estimate the parameter <span class="math inline">\(\lambda\)</span>.</p>
+<p>We have seen that the sample mean <span class="math display">\[\bar{X}_{n}=(X_1+\cdots +X_{n})/n\]</span> is going to be a good estimator of the expectation of <span class="math inline">\(X\)</span>. The <strong>law of large numbers</strong> says that this estimator gets better and better as <span class="math inline">\(n\to\infty\)</span>. But for finite sample size <span class="math inline">\(n\)</span> there will be some uncertainty in the estimate of <span class="math inline">\(\mathbb{E}[X]\)</span>.</p>
+<p>Let us calculate the value <span class="math inline">\(\bar{x}_{100}\)</span> that the sample mean <span class="math inline">\(\bar{X}_{100}\)</span> takes in the realisation of the sample that we simulated above. When I ran <code>mean(x)</code> on my computer I obtained <span class="math inline">\(\bar{x}_{100}=\)</span> 0.9069584. However, you will get a different estimate for <span class="math inline">\(\mathbb{E}[X]\)</span> because the random number generator will have given you a different set of numbers <span class="math inline">\(x_1,\dots, x_{100}\)</span>. As you know, you will get different random numbers each time you ask R for random numbers, <em>except</em> if you set the <strong>seed</strong> of the random number generator to a specific value right before you ask R for the random numbers. So if we run the code</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">100</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>we will all get the same set of values <span class="math inline">\(x_1,\dots,x_{100}\)</span>, and thus the same estimate <span class="math inline">\(\mathbb{E}[X]\approx\)</span> 1.0306764.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Answer quiz question 1.</strong></p>
+</div>
+</div>
+<section id="sampling-distribution-of-the-sample-mean" class="level3"><h3 class="anchored" data-anchor-id="sampling-distribution-of-the-sample-mean">Sampling distribution of the sample mean</h3>
+<p>It is not surprising that every time we take another realisation of the i.i.d. sample, we get a different value for the sample mean. After all, the sample mean <span class="math inline">\(\bar{X}_n\)</span> is a random variable. It is useful to get a sense of just how much variability we should expect when estimating the expectation value this way. The distribution of sample means <span class="math inline">\(\bar{X}_n\)</span>, called the <strong>sampling distribution of the sample mean</strong>, can help us understand this variability.</p>
+<p>We will visualise the sampling distribution of the sample mean by plotting the histogram from a large number of realisations of <span class="math inline">\(\bar{X}_n\)</span>. Such a histogram gives an approximation to the probability density function of the random variable <span class="math inline">\(\bar{X}_n\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50000</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span> </span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50000</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">50</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span>  <span class="va">sample_means50</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we use R to create 50,000 realisations of the samples of size <span class="math inline">\(n=50\)</span>, calculate the value of the sample mean <span class="math inline">\(\bar{x}_{50}\)</span> for each realisation, and store all the results in a vector called <code>sample_means50</code>. In the next subsection we’ll review how these lines of code work. For now let’s plot a histogram of the values:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sample_means50</span>, breaks <span class="op">=</span> <span class="fl">40</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="interlude-the-for-loop" class="level3"><h3 class="anchored" data-anchor-id="interlude-the-for-loop">Interlude: the <code>for</code> loop</h3>
+<p>Let’s take a break from the statistics for a moment to let that earlier block of code sink in. You have just run your first <code>for</code> loop, a cornerstone of computer programming. The idea behind the <code>for</code> loop is <em>iteration</em>: it allows you to execute code as many times as you want without having to type out every iteration. In the case above, we wanted to iterate the two lines of code inside the curly braces that simulates an i.i.d. sample of size 50 then save the mean of that realisation into the <code>sample_means50</code> vector. Without the for loop, this would be painful:</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50000</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">50</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">sample_means50</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">50</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">sample_means50</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">50</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">sample_means50</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and so on, 50,000 times.</p>
+<p>With the <code>for</code> loop, these thousands of lines of code are compressed into a handful of lines.</p>
+<p>To follow a bit more closely what is going on, I have added one extra line to the code below, which prints the variable <code>i</code> during each iteration of the loop. Run this code.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50000</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span> </span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50000</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">50</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span>  <span class="va">sample_means50</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span> </span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s consider this code line by line to figure out what it does. In the first line we <em>initialized a vector</em>. In this case, we created a vector of 50,000 zeros called <code>sample_means50</code>. This vector will store values generated within the <code>for</code> loop. In the second line we set the seed for the random number generator.</p>
+<p>The third line calls the <code>for</code> loop itself. The syntax can be loosely read as, “for every element <code>i</code> from 1 to 50,000, run the following lines of code”. You can think of <code>i</code> as the counter that keeps track of which step of the iteration you are on. Therefore, more precisely, the loop will run once when <code>i=1</code>, then once when <code>i=2</code>, and so on up to <code>i=50000</code>.</p>
+<p>The body of the <code>for</code> loop is the part inside the curly braces, and this set of code is run for each value of <code>i</code>. Here, on every loop, we take an i.i.d. sample <code>x</code> of size 50 from the exponential distribution, take its mean, and store it as the i<sup>th</sup> element of <code>sample_means50</code>.</p>
+<p>In order to display that this is really happening, we asked R to print <code>i</code> at each iteration. This line of code is optional and is only used for displaying what’s going on while the <code>for</code> loop is running.</p>
+<p>The <code>for</code> loop allows us not only to run the code 50,000 times, but to neatly package the results, element by element, into the vector that we initialized at the outset.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To make sure you understand what you’ve done in this loop, try running a smaller version. Initialize a vector of 100 zeros called <code>sample_means_small</code>. Set the seed to 0 and run a loop that on each iteration takes a realisation of a sample of size 50 from the exponential distribution with parameter 1 and stores the sample mean in <code>sample_means_small</code>, but only iterate from 1 to 100. Print the output to your screen (type <code>sample_means_small</code> into the console and press Enter). How many elements are there in this object called <code>sample_means_small</code>? What does each element represent?<br><strong>Answer quiz question 2.</strong></p>
+</div>
+</div>
+</section><section id="sample-size-and-the-sampling-distribution" class="level3"><h3 class="anchored" data-anchor-id="sample-size-and-the-sampling-distribution">Sample size and the sampling distribution</h3>
+<p>Mechanics aside, let’s return to the purpose for running the loop: to compute a sampling distribution, specifically, this one:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sample_means50</span>, breaks <span class="op">=</span> <span class="fl">25</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The sampling distribution that we computed tells us much about estimating <span class="math inline">\(\mathbb{E}[X]\)</span>. By looking at the histogram we see that most of the time we are going to get an estimate close to the true value of 1 but that there is some non-negligible probability of getting an estimate that is off by as much as 0.2.</p>
+<p>Indeed we can estimate the probability that the estimate is off by as much as 0.2 from the sampling distribution by calculating the proportion of the 50,000 values in <code>sample_means50</code> that are more than 0.2 away from 1.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">sample_means50</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0.2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also determine the <strong>empirical distribution function</strong> <span class="math inline">\(F_{50}\)</span> for <span class="math inline">\(\bar{X}_{50}\)</span>. This is a step function that jumps by <span class="math inline">\(1/n\)</span> at every value that is represented in the sample (or by multiples of <span class="math inline">\(1/n\)</span> if a value occurs multiple times), where <span class="math inline">\(n\)</span> is the sample size. The function <code><a href="https://rdrr.io/r/stats/ecdf.html">ecdf()</a></code> returns the empirical distribution function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">F50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html">ecdf</a></span><span class="op">(</span><span class="va">sample_means50</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s plot this distribution function</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">F50</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The name <code>ecdf</code> stands for “empirical cumulative distribution function”. That it is called <em>cumulative</em> contains no extra information, it just so happens that some people refer to the distribution function as the “cumulative” distribution function to highlight the fact that a distribution function at <span class="math inline">\(x\)</span> accumulates all the contributions from values up to <span class="math inline">\(x\)</span>.</p>
+</div>
+</div>
+<p>We can now for example look at the probability that, when using a sample of size 50, we are going to get an estimate for <span class="math inline">\(\mathbb{E}[X]\)</span> that is more than 0.2 away from the true value of <span class="math inline">\(\mathbb{E}[X]=1\)</span>.</p>
+<p><span class="math display">\[
+  \begin{split}
+    \mathbb{P}(|\bar{X}_{50}-\mathbb{E}[X]|&gt;0.2) &amp;= \mathbb{P}(\bar{X}_{50}&lt;0.8)+\mathbb{P}(\bar{X}_{50}&gt;1.2) \\
+    &amp;= \mathbb{P}(\bar{X}_{50}&lt;0.8)+1-\mathbb{P}(\bar{X}_{50}\leq 1.2) \\
+    &amp;=F_{\bar{X}_{50}}(0.8)+1-F_{\bar{X}_{50}}(1.2).
+  \end{split}
+\]</span></p>
+<p>We can estimate that from the empirical distribution function as follows:</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">F50</span><span class="op">(</span><span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu">F50</span><span class="op">(</span><span class="fl">1.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Thus, if we want to estimate <span class="math inline">\(\mathbb{E}[X]\)</span> with a precision of better than <span class="math inline">\(\pm 0.2\)</span> we should use a larger sample, because the chance of getting an answer outside the desired precision is about 16%.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Answer quiz question 3.</strong></p>
+</div>
+</div>
+<p>To get a sense of the effect that the sample size has on the sampling distribution, let’s build up two more sampling distributions: one based on a sample size of 100 and another based on a sample size of 200.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means100</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50000</span><span class="op">)</span> </span>
+<span><span class="va">sample_means200</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50000</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span> </span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50000</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">100</span>, rate<span class="op">=</span><span class="fl">1</span><span class="op">)</span> </span>
+<span>  <span class="va">sample_means100</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">200</span>, rate<span class="op">=</span><span class="fl">1</span><span class="op">)</span> </span>
+<span>  <span class="va">sample_means200</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span>
+<span><span class="op">}</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we are able to use a single <code>for</code> loop to build two distributions by adding additional lines inside the curly braces. Don’t worry about the fact that <code>x</code> is used for the name of two different objects: in the second command of the <code>for</code> loop, the mean of <code>x</code> is saved to the relevant place in the vector <code>sample_means100</code>; with the mean saved, we’re now free to overwrite the object <code>x</code> with a new sample, this time of size 200. In general, any time you create an object using a name that is already in use, the old object will get replaced with the new one.</p>
+<p>To see the effect that different sample sizes have on the sampling distribution, plot the three distributions above each other. First increase the size of the <em>Plots</em> pane in RStudio by clicking the icon at the top-right of the pane.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figs/expand.png" class="img-fluid figure-img" alt="Screenshot showing the &quot;expand pane&quot; button"></p>
+</figure>
+</div>
+<p>Then use the commands</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">xlimits</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">sample_means50</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sample_means50</span>, breaks <span class="op">=</span> <span class="fl">50</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>, xlim <span class="op">=</span> <span class="va">xlimits</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sample_means100</span>, breaks <span class="op">=</span> <span class="fl">50</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>, xlim <span class="op">=</span> <span class="va">xlimits</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sample_means200</span>, breaks <span class="op">=</span> <span class="fl">50</span>, probability <span class="op">=</span> <span class="cn">TRUE</span>, xlim <span class="op">=</span> <span class="va">xlimits</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first command specifies that you’d like to divide the plotting area into 3 rows and 1 column of plots. The <code>breaks</code> argument specifies the number of bins used in constructing the histogram. The <code>xlim</code> argument specifies the range of the x-axis of the histogram, and by setting it equal to <code>xlimits</code> for each histogram, we ensure that all three histograms will be plotted with the same limits on the x-axis.</p>
+<p>To return to the default setting of plotting one plot at a time, run the following command:</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When the sample size is larger, what happens to the centre of the sampling distribution? What about the spread?<br><strong>Answer quiz question 4.</strong></p>
+</div>
+</div>
+<p>Looking at the histogram for the sample mean of size 200, one gets the impression that it looks very much like a normal distribution. Why would the sample mean for the exponential distribution have a normal distribution? This is the <strong>Central Limit Theorem</strong> in action!</p>
+</section></section><section id="estimating-the-variance" class="level2"><h2 class="anchored" data-anchor-id="estimating-the-variance">Estimating the variance</h2>
+<p>As we will see in lectures, we can also estimate the variance <span class="math inline">\(\textup{Var}(X)\)</span> of a random variable from the sample variance. The sample variance is calculated with the R function <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">50</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Evaluate the above code a few times to see the wide range of estimates we get. Then set the seed to 0 and use a <code>for</code> loop to create 50,000 realisations of the i.i.d. sample of size 50 from an <span class="math inline">\(\mbox{\textup{Exp}}(1)\)</span> distribution, calculate the variance of each and store these in an array <code>sample_variances50</code>. Then plot a histogram of these values of the sample variance using the command <code>hist(sample_variances50, breaks=50, probability=TRUE)</code>.<br><strong>Answer quiz question 5.</strong><br></p>
+</div>
+</div>
+<p>Notice that the sampling distribution for the sample variance does not look at all like a normal distribution. The central limit theorem can be used to show that for sufficiently large sample sizes the sampling distribution will again look normal; however a sample size of 50 is clearly not enough for that.</p>
+<!-- ::: exercise -->
+<!-- Plot the histogram for the sampling distribution of the sample variance using samples of size 200. -->
+<!-- You will see that it is a little closer to being normal, but is still skewed. -->
+<!-- Calculate the coefficient of skewness using the `e1071::skewness()` command.\ -->
+<!-- **Answer quiz question 6.**\ -->
+<!-- ::: -->
+</section><section id="real-estate-data" class="level2"><h2 class="anchored" data-anchor-id="real-estate-data">Real-estate data</h2>
+<p>Now let’s look at some real data. This week we’ll consider real estate data from the city of Ames, Iowa. The details of every real estate transaction in Ames is recorded by the City Assessor’s office.<br>
+Our particular focus for this lab will be all residential home sales in Ames between 2006 and 2010. Let’s load the data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"http://www.openintro.org/stat/data/ames.RData"</span>, </span>
+<span>              destfile <span class="op">=</span> <span class="st">"ames.RData"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"ames.RData"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see in the <em>Environment</em> panel in RStudio, there is now a variable <code>ames</code> with 2930 observations of 82 variables. Let’s take a look at the names of the variables in this dataset.</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">ames</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will focus our attention on two of the variables: the above ground living area of the house in square feet (<code>Gr.Liv.Area</code>) and the sale price (<code>SalePrice</code>). To save some effort throughout the lab, create two variables with short names that represent these two variables.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">area</span> <span class="op">&lt;-</span> <span class="va">ames</span><span class="op">$</span><span class="va">Gr.Liv.Area</span></span>
+<span><span class="va">price</span> <span class="op">&lt;-</span> <span class="va">ames</span><span class="op">$</span><span class="va">SalePrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We refer to the collection of all the house sales in Ames as the “population”. The term “population” is used by statisticians not only to refer to populations of people but to any complete collection of observations.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Answer quiz question 6.</strong></p>
+</div>
+</div>
+<p>In this lab we have access to the entire population, but this is rarely the case in real life. Gathering information on an entire population is often extremely costly or impossible. Because of this, we often take a sample of the population and use that to understand the properties of the population.</p>
+<section id="taking-a-sample" class="level3"><h3 class="anchored" data-anchor-id="taking-a-sample">Taking a sample</h3>
+<p>If we were interested in estimating the mean living area of houses sold in Ames, but did not have access to the data from all house sales, we could randomly select a smaller number of sales to survey and collect the data only for those. Then we could use that sample as the basis of our estimation. Let us assume we only have enough resources to observe 50 randomly selected house sales. We can simulate taking such a random sample with the command</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">samp1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">area</span>, <span class="fl">50</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This command randomly chooses 50 entries from the vector <code>area</code>, and this is then assigned to the variable <code>samp1</code>. (You will remember the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function from <a href="@sec-lab1">Lab 1</a>, where we used it to generate random numbers by making it sample from the entries of the vector <code>1:6</code>. The difference here is that we are using the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function <em>without</em> the <code>replace=TRUE</code> option, so that we do not get the same element more than once.)</p>
+<p>Theoretically we model such a sample with a sequence of i.i.d. random variables <span class="math inline">\(X_1,\dots, X_{50}\)</span>. This is now a sample from the distribution of the area among all houses.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because we are sampling without replacement from a finite population, the <span class="math inline">\(X_i\)</span> are not strictly independent. But we often assume that the population is so large compared to the sample size that the dependence is negligible.</p>
+</div>
+</div>
+<p>The vector <code>samp1</code> contains a particular realisation of those random variables <span class="math inline">\(X_1,\dots, X_{50}\)</span>. The estimator that we use to estimate the average living area in homes in Ames is the sample mean, i.e., the random variable <span class="math display">\[\bar{X}_{50}=(X_1+\cdots + X_{50})/50.\]</span> For our realisation of the sample it takes the value</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">samp1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Depending on which 50 homes you randomly selected, your estimate could be a bit above or a bit below the true population mean of 1499.69 square feet. In general, though, the sample mean turns out to be a pretty good estimate of the average living area, and we were able to get it by sampling less than 3% of the population.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Take a second realisation of the sample, also of size 50, and call it <code>samp2</code>. How does the mean of <code>samp2</code> compare with the mean of <code>samp1</code>? Take two more samples, one of size 100 and one of size 1,000. Which would you think would provide a more accurate estimate of the “true” mean?<br><strong>Answer quiz question 7.</strong></p>
+</div>
+</div>
+</section><section id="sampling-distribution" class="level3"><h3 class="anchored" data-anchor-id="sampling-distribution">Sampling distribution</h3>
+<p>Not surprisingly, every time we take another random sample, we get a different value for the sample mean. It is useful to get a sense of just how much variability we should expect when estimating the expected value this way, just as when we were working with simulated data from an exponential distribution earlier in this lab. So we again want to understand the <strong>sampling distribution of the sample mean</strong> <span class="math inline">\(\bar{X}_{50}\)</span>.</p>
+<p>We will visualise the sampling distribution by plotting the histogram for 5,000 realisations of <span class="math inline">\(\bar{X}_{50}\)</span>. As we know, such a histogram gives an approximation to the probability density function.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Possibility of confusion: we are taking a sample of size 5,000 from the sampling distribution of the sample mean of a sample of size 50!</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">area_sample_means50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5000</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5000</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="va">samp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">area</span>, <span class="fl">50</span><span class="op">)</span> </span>
+<span>  <span class="va">area_sample_means50</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">samp</span><span class="op">)</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">area_sample_means50</span>, breaks <span class="op">=</span> <span class="fl">25</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we use R to create 5,000 realisations of the samples of size 50, calculate the value of the sample mean for each, and store each result in a vector called <code>area_sample_means50</code>.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Answer quiz question 8.</strong> (Be careful not to overwrite the variable <code>area_sample_means50</code> because we still want to use it below.)</p>
+</div>
+</div>
+<p>The sampling distribution that we computed tells us much about estimating the average living area of homes in Ames. Because the sample mean is an <strong>unbiased estimator</strong> (we’ll be learning about what this means next week!), the sampling distribution has its mean at the true average living area, and the spread of the distribution indicates how much variability is induced by sampling only 50 homes.</p>
+<p>We can also determine the empirical distribution function <span class="math inline">\(F_{50}\)</span> for <span class="math inline">\(\bar{X}_{50}\)</span>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Farea50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html">ecdf</a></span><span class="op">(</span><span class="va">area_sample_means50</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">Farea50</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now for example look at the probability that, when using a sample of size 50, we are going to get an estimate for <span class="math inline">\(\mathbb{E}[X]\)</span> that is more than 100 away from the true population mean area of 1499.69:</p>
+<p><span class="math display">\[
+  \begin{split}
+    \mathbb{P}(|\bar{X}_{50}-1499.69|&gt;100) &amp;= \mathbb{P}(\bar{X}_{50}&lt;1399.69)+ \mathbb{P}(\bar{X}_{50}&gt;1599.69) \\
+    &amp;= \mathbb{P}(\bar{X}_{50}&lt;1399.69)+1-\mathbb{P}(\bar{X}_{50}\leq 1599.69) \\
+    &amp;= F_{\bar{X}_{50}}(1399.69)+1-F_{\bar{X}_{50}}(1599.69).
+  \end{split}
+\]</span></p>
+<p>We can estimate that from the empirical distribution function as follows:</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">Farea50</span><span class="op">(</span><span class="fl">1399.69</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu">Farea50</span><span class="op">(</span><span class="fl">1599.69</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; [1] 0.1468</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Thus, if we want to estimate <span class="math inline">\(\mathbb{E}[X]\)</span> with a precision of better than <span class="math inline">\(\pm\)</span> 100 we should use a larger sample, because the chance of getting an answer outside the desired accuracy is about 14.68%.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your turn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Answer quiz question 9.</strong></p>
+</div>
+</div>
+</section><section id="effect-of-the-size-of-the-sample" class="level3"><h3 class="anchored" data-anchor-id="effect-of-the-size-of-the-sample">Effect of the size of the sample</h3>
+<p>To get a sense of the effect that sample size has on the sampling distribution, let’s build up two more sampling distributions: one based on a sample size of 10 and another based on a sample size of 100.</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">area_sample_means10</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5000</span><span class="op">)</span> </span>
+<span><span class="va">area_sample_means100</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5000</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5000</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="va">samp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">area</span>, <span class="fl">10</span><span class="op">)</span> </span>
+<span>  <span class="va">area_sample_means10</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">samp</span><span class="op">)</span> </span>
+<span>  <span class="va">samp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">area</span>, <span class="fl">100</span><span class="op">)</span> </span>
+<span>  <span class="va">area_sample_means100</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">samp</span><span class="op">)</span> </span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- Here we are able to use a single `for()` loop to build two distributions by adding additional lines inside the curly braces. -->
+<!-- You have seen very similar code last time. -->
+<p>To see the effect that different sample sizes have on the sampling distribution, we plot the three distributions above each other.</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">xlimits</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">area_sample_means10</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">area_sample_means10</span>, breaks <span class="op">=</span> <span class="fl">20</span>, xlim <span class="op">=</span> <span class="va">xlimits</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">area_sample_means50</span>, breaks <span class="op">=</span> <span class="fl">20</span>, xlim <span class="op">=</span> <span class="va">xlimits</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">area_sample_means100</span>, breaks <span class="op">=</span> <span class="fl">20</span>, xlim <span class="op">=</span> <span class="va">xlimits</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Questions:</strong></p>
+<ol type="1">
+<li><p>When the sample size is larger, what happens to the centre?</p></li>
+<li><p>What about the spread?</p></li>
+</ol>
+<p><strong>Answers:</strong></p>
+<ol type="1">
+<li><p>The centre does not really change. We are using an unbiased estimator, so the expectation of the sampling distribution always stays at the true population mean.</p></li>
+<li><p>The spread decreases. More precisely, the variance of the sampling distribution is <em>inversely proportional</em> to the sample size. So as the sample size changes by a factor of 10, the variance of the sampling distribution should change by a factor of 1/10.</p></li>
+</ol>
+<p>Let us check this last claim:</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">area_sample_means10</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">area_sample_means100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Why is the ratio not <em>exactly</em> 10? This is because we are only estimating the variance of the sampling distribution from the sample variance in a sample of size 5,000 and that estimate is not exact.</p>
+<!-- ::: callout-warning -->
+<!-- If you want to blow your mind, you could now go and look at the sampling distribution of the sample variance in a sample of size 5,000 from the sampling distribution of the sample mean in a sample of size 10 from the distribution of the house area. -->
+<!-- You could go ad infinitum like that... -->
+<!-- ::: -->
+</section></section><section id="you-only-have-one-sample" class="level2"><h2 class="anchored" data-anchor-id="you-only-have-one-sample">You only have one sample</h2>
+<p>In practice, of course, you will only have the resources to take a <em>single</em> sample. You will not be able to build up a picture of the sampling distribution as we have done here by taking thousands of samples. But without knowing the sampling distribution, you have no way of knowing how precise your estimate is likely to be. This is a problem.</p>
+<p>How confident can you be in your estimate from a sample if you do not know the sampling distribution? This is something we will discuss in lectures.</p>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../labs/lab3.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 3: Data and distributions</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../assignments/assignments.html" class="pagination-link">
+        <span class="nav-page-text">Written assignments</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Created by <a href="http://www-users.york.ac.uk/~sbc502/">Stephen Connor</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+</body></html>

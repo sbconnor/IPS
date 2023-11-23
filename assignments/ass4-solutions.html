@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Stephen Connor">
+<title>IPS: Assignment 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+<script src="ass4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ass4_files/libs/quarto-html/quarto.js"></script>
+<script src="ass4_files/libs/quarto-html/popper.min.js"></script>
+<script src="ass4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="ass4_files/libs/quarto-html/anchor.min.js"></script>
+<link href="ass4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ass4_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="ass4_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="ass4_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="ass4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="ass4_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="ass4_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="ass4_files/libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
+<link href="ass4_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="ass4_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../css/ips.scss">
+</head>
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Menu</h2>
+   
+  <ul>
+<li><a href="#starter" id="toc-starter" class="nav-link active" data-scroll-target="#starter">Starter</a></li>
+  <li><a href="#main-course" id="toc-main-course" class="nav-link" data-scroll-target="#main-course">Main course</a></li>
+  <li><a href="#dessert" id="toc-dessert" class="nav-link" data-scroll-target="#dessert">Dessert</a></li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ass4-solutions.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">IPS: Assignment 4</h1>
+<p class="subtitle lead">Due date: 10am, 23/11/23</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stephen Connor </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header><section id="section" class="level22"><p class="heading"></p>
+</section><section id="starter" class="level2"><h2 class="anchored" data-anchor-id="starter">Starter</h2>
+<p><em>These questions should help you to gain confidence with the basics.</em></p>
+<section id="section-1" class="level7"><p class="heading"></p>
+<p><strong>S1.</strong> Let <span class="math inline">\(X\)</span> be a random variable with <span class="math inline">\(\mathbb{E}[X]=5\)</span>. What is the expectation of <span class="math inline">\(3X+5\)</span>? If furthermore <span class="math inline">\(\mathbb{E}[X^2]=30\)</span>, what is the variance of <span class="math inline">\(X\)</span>?</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>We can use the linearity of expectation to find that <span class="math inline">\(\mathbb{E}[3X+5] =3\mathbb{E}[X]+5=20\)</span>. The variance is <span class="math inline">\(\textup{Var}(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=30-5^2=5\)</span>.</p>
+</div>
+</div>
+</div>
+</section><section id="section-2" class="level7"><p class="heading"></p>
+<p><strong>S2.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br></strong> Buses leave campus for the train station every 20 minutes, at 0, 20 and 40 minutes past the hour. If a student arrives at the bus stop at a time that is uniformly distributed between 10.00 and 10.45, find the probability that they wait</p>
+<ol type="a">
+<li>less than 5 minutes for a bus;</li>
+<li>more than 10 minutes for a bus.</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(Y\)</span> denote the number of minutes past 10.00 that the student arrives at the bus stop: <span class="math inline">\(Y\sim\mbox{\textup{Uniform}}[0,45]\)</span>. <strong>[1]</strong></p>
+<ol type="a">
+<li>They will wait less than 5 minutes if and only <span class="math inline">\(15\leq Y\leq 20\)</span> or <span class="math inline">\(35\leq Y\leq 40\)</span>. This occurs with probability</li>
+</ol>
+<p><span class="math display">\[
+\mathbb{P}(15\leq Y\leq 20) + \mathbb{P}(35\leq Y\leq 40) = \int_{15}^{20}\frac{1}{45}dy + \int_{35}^{40}\frac{1}{45}dy = \frac{2}{9}\,.
+\]</span></p>
+<p><strong>[2]</strong></p>
+<ol start="2" type="a">
+<li>Similarly, they will wait for more than 10 minutes if they arrive between 10.00 and 10.10, between 10.20 and 10.30, or between 10.40 and 10.45. This has probability <span class="math inline">\(5/9\)</span>. <strong>[2]</strong>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</section><section id="section-3" class="level7"><p class="heading"></p>
+<p><strong>S3.</strong> A random variable <span class="math inline">\(Z\)</span> has probability density function <span class="math display">\[
+f_Z(x) = \begin{cases}
+  \frac{6}{5675}(5x^2+3x+11)&amp; \qquad \text{for } 3\leq x\leq 8\\
+  0&amp; \qquad \text{otherwise.}
+  \end{cases}
+\]</span> Would you expect <span class="math inline">\(\mathbb{E}[Z]\)</span> to lie closer to 3 or to 8? Calculate <span class="math inline">\(\mathbb{E}[Z]\)</span> and check whether your intuition was correct.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Since <span class="math inline">\(f_Z\)</span> is increasing on the interval <span class="math inline">\([3, 8]\)</span> we know from the interpretation of expectation as centre of gravity that the expectation should lie closer to 8 than to 3. The computation: <span class="math display">\[\mathbb{E}[Z] = \int_3^8 x f_Z(x) dx = \frac{6}{5675}\int_3^8 \left(5x^3+3x^2+11x\right) dx = \frac{2787}{454} = 6.14.\]</span></p>
+</div>
+</div>
+</div>
+</section><section id="section-4" class="level7"><p class="heading"></p>
+<p><strong>S4.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br></strong> Let <span class="math inline">\(X\sim\mbox{\textup{Geom}}(p)\)</span>. Calculate <span class="math inline">\(\mathbb{E}[h(X)]\)</span>, where <span class="math inline">\(h(x) = e^{tx}\)</span> for some <span class="math inline">\(t&gt;0\)</span>. For what values of <span class="math inline">\(t\)</span> is <span class="math inline">\(\mathbb{E}[h(X)]&lt;\infty\)</span>?<br>
+Hint: use the result for infinite geometric series.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>We use the formula for the expectation of a function of a discrete random variable: <span class="math display">\[
+\begin{split}
+\mathbb{E}[h(X)] &amp;= \sum_{k=1}^\infty h(k)p(1-p)^{k-1} = \sum_{k=1}^\infty e^{tk}p(1-p)^{k-1} \\
+                    &amp;= pe^t \sum_{k=1}^\infty [e^t(1-p)]^{k-1} = pe^t \sum_{k=0}^\infty [e^t(1-p)]^k \\
+                    &amp;= \frac{pe^t}{1-e^t(1-p)}\,.
+\end{split}
+\]</span> <strong>[4]</strong></p>
+<p>This final step requires <span class="math inline">\(e^t(1-p)&lt;1\)</span>. (Otherwise the geometric sum does not converge to a finite limit.) <strong>[1]</strong></p>
+</div>
+</div>
+</div>
+</section><section id="section-5" class="level7"><p class="heading"></p>
+<p><strong>S5.</strong> Suppose that you have a lecture at 14.00, and that the time taken to travel from your room to the lecture theatre is normally distributed with mean 30 minutes and standard deviation 4 minutes. What is the latest time you should leave your room if you want to be 99% certain that you will not miss the start of the lecture? (Hint: if <span class="math inline">\(Z\sim\mbox{\textup{N}}(0,1)\)</span> then the R function <code>qnorm(p)</code> returns the value <span class="math inline">\(z\in\mathbb{R}\)</span> such that <span class="math inline">\(\mathbb{P}(Z\le z) = p\)</span>.)</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X\)</span> denote the travel time to the lecture: <span class="math inline">\(X\sim\mbox{\textup{N}}(30,16)\)</span>. We wish to find <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mathbb{P}(X\leq x) = 0.99\)</span>. Now, <span class="math display">\[
+\mathbb{P}(X\leq x) = \mathbb{P}(\frac{X-30}{4} \leq \frac{x-30}{4}) = \mathbb{P}(Z\leq \frac{x-30}{4})
+\]</span> where <span class="math inline">\(Z\sim\mbox{\textup{N}}(0,1)\)</span>.</p>
+<p>We can get hold of this value of <span class="math inline">\(x\)</span> by using R (or by consulting statistical tables): <code>qnorm(0.99)</code> gives the value 2.326, meaning that <span class="math inline">\(\mathbb{P}(Z\leq 2.326) = 0.99\)</span>. Thus we require <span class="math inline">\((x-30)/4 = 2.326 \iff x=39.3\)</span>. Thus the latest you should leave your room is 39.3 minutes before the start of the lecture: i.e.&nbsp;at 13:20.</p>
+</div>
+</div>
+</div>
+</section><section id="section-6" class="level7"><p class="heading"></p>
+<p><strong>S6.</strong> Give an example of a joint probability table for two discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, each having only two possible values, so that <span class="math inline">\(F_{X,Y}(5,6)=0.4, F_X(5)=0.5, F_Y(6)=0.6\)</span> and <span class="math inline">\(\mathbb{E}[X]=10, \mathbb{E}[Y]=4\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>One possible example would be</p>
+<table class="table">
+<thead><tr class="header">
+<th><span class="math inline">\(y\backslash x\)</span></th>
+<th>0</th>
+<th>20</th>
+<th><span class="math inline">\(p_Y(y)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.6</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p_X(x)\)</span></td>
+<td>0.5</td>
+<td>0.5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section><section id="section-7" class="level7"><p class="heading"></p>
+<p><strong>S7.</strong> Let <span class="math inline">\(X:\Omega\to\{1,2\}\)</span> and <span class="math inline">\(Y:\Omega\to\{0,1\}\)</span> be two discrete random variables. The following is a partial table of their joint and their marginal mass functions:</p>
+<table class="table">
+<thead><tr class="header">
+<th><span class="math inline">\(y\backslash x\)</span></th>
+<th>1</th>
+<th>2</th>
+<th><span class="math inline">\(p_Y(y)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><span class="math inline">\(1/6\)</span></td>
+<td><span class="math inline">\(1/2\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p_X(x)\)</span></td>
+<td><span class="math inline">\(5/12\)</span></td>
+<td></td>
+<td><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Fill in the missing values.</li>
+<li>Determine the joint distribution function of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+<li>Calculate <span class="math inline">\(\mathbb{P}(X+Y=2)\)</span>.</li>
+<li>Calculate <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\mathbb{E}[Y]\)</span>.</li>
+<li>Let <span class="math inline">\(Z = XY\)</span>. Calculate <span class="math inline">\(\mathbb{E}[Z]\)</span>.</li>
+<li>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>The missing entries in the probability table are determined by the requirement that summing the joint probabilities across a row or across a column in the table gives the corresponding marginal probability and by the requirement that the marginal probabilities for <span class="math inline">\(X\)</span> as well as those for <span class="math inline">\(Y\)</span> have to add up to <span class="math inline">\(1\)</span>. So first we determine <span class="math inline">\(p_Y(0)=1/6+1/2=2/3\)</span>. Then we can determine <span class="math inline">\(p_Y(1)=1-p_Y(0)=1-2/3=1/3\)</span> and <span class="math inline">\(p_X(2)=1-p_X(1)=1-5/12=7/12\)</span>. Finally we determine <span class="math inline">\(p_{X,Y}(1,1)=p_X(1)-p_{X,Y}(1,0)=5/12-1/6=1/4\)</span> and <span class="math inline">\(p_{X,Y}(2,1)=p_X(2)-p_{X,Y}(2,0)=7/12-1/2=1/12\)</span>.</li>
+</ol>
+<table class="table">
+<thead><tr class="header">
+<th><span class="math inline">\(y\backslash x\)</span></th>
+<th>1</th>
+<th>2</th>
+<th><span class="math inline">\(p_Y(y)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><span class="math inline">\(1/6\)</span></td>
+<td><span class="math inline">\(1/2\)</span></td>
+<td><span class="math inline">\(2/3\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><span class="math inline">\(1/4\)</span></td>
+<td><span class="math inline">\(1/12\)</span></td>
+<td><span class="math inline">\(1/3\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p_X(x)\)</span></td>
+<td><span class="math inline">\(5/12\)</span></td>
+<td><span class="math inline">\(7/12\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="a">
+<li><p>The joint distribution function <span class="math inline">\(F_{X,Y}(x,y)\)</span> is by definition given by <span class="math inline">\(\mathbb{P}(X\leq x,Y\leq y)\)</span>. So for example <span class="math display">\[
+F_{X,Y}(1.5,1.5)=p_{X,Y}(1,0)+p_{X,Y}(1,1)=\frac{1}{6}+\frac{1}{4}=\frac{5}{12}.
+\]</span> By doing more such calculations we find that <span class="math display">\[
+F_{X,Y}=\begin{cases}
+0 &amp;\text{ if }x&lt;1 \text{ or }y&lt;0\\
+1/6&amp;\text{ if }x\in[1,2) \text{ and }y\in[0,1)\\
+5/12&amp;\text{ if }x\in[1,2) \text{ and }y\geq 1\\
+2/3&amp;\text{ if }x\geq 2\text{ and }y\in[0,1)\\
+1&amp;\text{ if }x\geq 2 \text{ or }y\geq 1.
+\end{cases}
+\]</span></p></li>
+<li><p><span class="math inline">\(\mathbb{P}(X+Y=2)=\mathbb{P}(X=1,Y=1)+\mathbb{P}(X=2,Y=0)=1/4+1/2=3/4\)</span>.</p></li>
+<li><p>For calculating the expectations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> we can use their marginal mass functions: <span class="math display">\[
+\mathbb{E}[X]=1\cdot p_X(1)+2\cdot p_X(2)=1\cdot \frac{5}{12}+2\cdot \frac{7}{12}=\frac{19}{12}
+\]</span> and <span class="math display">\[
+\mathbb{E}[Y]=0\cdot p_Y(0)+1\cdot p_Y(1)=p_Y(1)=\frac{1}{3}\,.
+\]</span></p></li>
+<li><p>The random variable <span class="math inline">\(Z=XY\)</span> can take the possible values <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> and <span class="math inline">\(2\)</span> with probabilities <span class="math display">\[
+\begin{split}
+p_Z(0)&amp;=p_{X,Y}(1,0) + p_{X,Y}(2,0) = p_Y(0)=\frac23\\
+p_Z(1)&amp;=p_{X,Y}(1,1)=\frac14,
+~~~p_Z(2)=p_{X,Y}(2,1)=\frac{1}{12}.
+\end{split}
+\]</span> Thus <span class="math display">\[
+\mathbb{E}[Z]=1\cdot P_{Z}(1)+2\cdot P_{Z}(2)=\frac14+2\frac{1}{12}=\frac{5}{12}\,.
+\]</span></p></li>
+<li><p><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if and only if <span class="math inline">\(p_{X,Y}(x,y)=p_X(x)p_Y(y)\)</span> for all <span class="math inline">\(x,y\)</span>. Here however for example <span class="math display">\[
+p_{X,Y}(1,0)=\frac{1}{6}\neq p_X(1)p_Y(0)=\frac{5}{12}\cdot\frac{2}{3}=\frac{5}{18}\,.
+\]</span> So <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section><section id="section-8" class="level7"><p class="heading"></p>
+<p><strong>S8.</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables. Show that <span class="math inline">\(\textup{Cov}(X,Y)=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>We start from the definition of covariance, and use linearity of expectation: <span class="math display">\[
+\begin{split}
+\textup{Cov}(X,Y)&amp;=\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])] \\
+&amp;=\mathbb{E}[XY-X\mathbb{E}[Y]-\mathbb{E}[X]Y+\mathbb{E}[X]\mathbb{E}[Y]] \\
+&amp;=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]-\mathbb{E}[X]\mathbb{E}[Y]+\mathbb{E}[X]\mathbb{E}[Y] \\
+&amp;=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y].
+\end{split}
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="section-9" class="level22"><p class="heading"></p>
+</section></section></section><section id="main-course" class="level2"><h2 class="anchored" data-anchor-id="main-course">Main course</h2>
+<p><em>These are important, and cover some of the most substantial parts of the course.</em></p>
+<section id="section-10" class="level7"><p class="heading"></p>
+<p><strong>M1.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in (worth 10 marks)<br></strong> A married couple decide to have children until they have at least one child of each sex: let <span class="math inline">\(X\)</span> denote the total number of children that they have. The probability of any one child being a boy is <span class="math inline">\(p\)</span> (with the sex of each child being independent of all the others).</p>
+<ol type="a">
+<li><p>What is the mass function of <span class="math inline">\(X\)</span>? (I.e. write down <span class="math inline">\(\mathbb{P}(X=n)\)</span> for all <span class="math inline">\(n\in X(\Omega)\)</span>.)</p></li>
+<li><p>Show that <span class="math display">\[ \mathbb{E}[X] = \frac{1-p(1-p)}{p(1-p)} \,. \]</span> Hint: you may find it useful to refer to the result from lectures that if <span class="math inline">\(Y\sim\mbox{\textup{Geom}}(p)\)</span> then <span class="math inline">\(\mathbb{E}[Y] = 1/p\)</span>.</p></li>
+<li><p>For what value of <span class="math inline">\(p\)</span> is <span class="math inline">\(\mathbb{E}[X]\)</span> minimised?</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>Clearly the couple need to have at least two children, so <span class="math inline">\(X(\Omega) = \{2,3,4,\dots\}\)</span>. For <span class="math inline">\(n\geq 2\)</span>, there are two ways in which the couple can have exactly <span class="math inline">\(n\)</span> children: either they have <span class="math inline">\(n-1\)</span> boys in a row, and then a girl; or they have <span class="math inline">\(n-1\)</span> girls and then a boy. Thus <span class="math display">\[ \mathbb{P}(X=n) = p^{n-1}(1-p) + (1-p)^{n-1}p \,, \qquad n\geq 2 \,. \]</span> <strong>[3]</strong></p></li>
+<li><p>To calculate <span class="math inline">\(\mathbb{E}[X]\)</span> we use the usual formula for the expectation of a discrete random variable: <span id="eq-children"><span class="math display">\[
+\begin{split}
+           \mathbb{E}[X] &amp;= \sum_{n=2}^\infty n \mathbb{P}(X=n) \\
+                  &amp;= \sum_{n=2}^\infty n [p^{n-1}(1-p) + (1-p)^{n-1}p] \\
+                  &amp;= \sum_{n=2}^\infty n p^{n-1}(1-p)  + \sum_{n=2}^\infty n (1-p)^{n-1} p\,.
+\end{split}
+\tag{1}\]</span></span></p></li>
+</ol>
+<p><strong>[1]</strong></p>
+<p>Using the hint, we know that if <span class="math inline">\(Y \sim\mbox{\textup{Geom}}(p)\)</span> then <span class="math inline">\(\mathbb{E}[Y] = 1/p\)</span>. That is, <span class="math display">\[  \sum_{n=1}^\infty np (1-p)^{n-1} = \frac{1}{p}.\]</span></p>
+<p>We can use that result in the second sum in <a href="#eq-children">Equation&nbsp;1</a> by adding and subtracting the missing <span class="math inline">\(n=1\)</span> term in the sum: <span class="math display">\[  
+\sum_{n=2}^\infty np (1-p)^{n-1} = \sum_{n=1}^\infty np (1-p)^{n-1} - p
+            =  \frac{1}{p}- p.
+\]</span></p>
+<p><strong>[2]</strong></p>
+<p>The first sum in <a href="#eq-children">Equation&nbsp;1</a> is the same as the second, just with <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span> interchanged, so <span class="math display">\[  \sum_{n=2}^\infty np^{n-1}  (1-p)=   \frac{1}{1-p} -(1-p). \]</span> <strong>[1]</strong></p>
+<p>Adding these two results together we find <span class="math display">\[
+\mathbb{E}[X] =  \frac{1}{1-p} - (1-p)+\frac{1}{p} - p = \frac{1-p(1-p)}{p(1-p)} \,.
+\]</span> <strong>[1]</strong></p>
+<ol start="3" type="a">
+<li>Differentiating <span class="math inline">\(\mathbb{E}[X]\)</span> with respect to <span class="math inline">\(p\)</span> we get <span class="math inline">\((2p-1)/(p^2(1-p)^2)\)</span>. This is equal to zero when <span class="math inline">\(p=1/2\)</span>. (This is clearly where the minimum is obtained, since it is the only turning point and <span class="math inline">\(\mathbb{E}[X] \to \infty\)</span> as <span class="math inline">\(p\to 0\)</span> or <span class="math inline">\(p\to 1\)</span>.) <strong>[2]</strong>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</section><section id="section-11" class="level7"><p class="heading"></p>
+<p><strong>M2.</strong> Let <span class="math inline">\(X\sim\mbox{\textup{Exp}}(\lambda)\)</span>. Use proof by induction to show that <span class="math display">\[
+\mathbb{E}[X^m]=\frac{m!}{\lambda^m}
+\]</span> for all <span class="math inline">\(m\in\mathbb{N}\cup\{0\}\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The statement is true for <span class="math inline">\(m=0\)</span>: <span class="math display">\[
+\mathbb{E}[X^0]=\mathbb{E}[1]=1=\frac{0!}{\lambda^0}.
+\]</span></p>
+<p>We next show that if the statement holds for some <span class="math inline">\(k\in\mathbb{N}\cup\{0\}\)</span> then it holds for <span class="math inline">\(k+1\)</span>: <span class="math display">\[
+\begin{split}
+\mathbb{E}[X^{k+1}] &amp;=\int_{-\infty}^\infty x^{k+1}f_X(x)dx=\int_{0}^\infty x^{k+1}\lambda e^{-\lambda x}dx\\
+&amp;=\int_0^\infty x^{k+1}\frac{d}{dx}\left(-e^{-\lambda x}\right)dx\\
+&amp;=-\left[x^{k+1}e^{-\lambda x}\right]^\infty_0+\int_0^\infty(k+1)x^ke^{-\lambda x}dx\\
+&amp;=0+\frac{k+1}{\lambda}\int_0^\infty x^k\lambda e^{-\lambda x}dx\\
+&amp;=\frac{k+1}{\lambda}\mathbb{E}[X^k]=\frac{k+1}{\lambda}\frac{k!}{\lambda^k}~~\text{ by our induction hypothesis}\\
+&amp;=\frac{(k+1)!}{\lambda^{k+1}}.
+\end{split}
+\]</span> Thus the statement holds for all <span class="math inline">\(m\in\mathbb{N}\cup\{0\}\)</span> by induction.</p>
+</div>
+</div>
+</div>
+</section><section id="section-12" class="level7"><p class="heading"></p>
+<p><strong>M3.</strong> The joint probability mass function <span class="math inline">\(p_{X,Y}(x,y)\)</span> of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is summarised by the following table:</p>
+<table class="table">
+<thead><tr class="header">
+<th><span class="math inline">\(x\backslash y\)</span></th>
+<th>-1</th>
+<th>0</th>
+<th>1</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td><span class="math inline">\(\eta-1/16\)</span></td>
+<td><span class="math inline">\(1/4-\eta\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><span class="math inline">\(1/8\)</span></td>
+<td><span class="math inline">\(3/16\)</span></td>
+<td><span class="math inline">\(1/8\)</span></td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td><span class="math inline">\(\eta+1/16\)</span></td>
+<td><span class="math inline">\(1/16\)</span></td>
+<td><span class="math inline">\(1/4-\eta\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math inline">\(\eta\)</span> is a real number.</p>
+<ol type="a">
+<li><p>Extend the table by including also the marginal probabilities, i.e., the values of the probability mass functions <span class="math inline">\(p_X\)</span> and <span class="math inline">\(p_Y\)</span>.</p></li>
+<li><p>Which are the valid choices for <span class="math inline">\(\eta\)</span>?</p></li>
+<li><p>Is there a value of <span class="math inline">\(\eta\)</span> for which <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent?</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>We extend the probability table to also include the marginal probability mass functions <span class="math inline">\(p_X\)</span> and <span class="math inline">\(p_Y\)</span>:</li>
+</ol>
+<table class="table">
+<thead><tr class="header">
+<th><span class="math inline">\(x\backslash y\)</span></th>
+<th>-1</th>
+<th>0</th>
+<th>1</th>
+<th><span class="math inline">\(p_X(x)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td><span class="math inline">\(\eta-1/16\)</span></td>
+<td><span class="math inline">\(1/4-\eta\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(3/16\)</span></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><span class="math inline">\(1/8\)</span></td>
+<td><span class="math inline">\(3/16\)</span></td>
+<td><span class="math inline">\(1/8\)</span></td>
+<td><span class="math inline">\(7/16\)</span></td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td><span class="math inline">\(\eta+1/16\)</span></td>
+<td><span class="math inline">\(1/16\)</span></td>
+<td><span class="math inline">\(1/4-\eta\)</span></td>
+<td><span class="math inline">\(3/8\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p_Y(y)\)</span></td>
+<td><span class="math inline">\(2\eta+1/8\)</span></td>
+<td><span class="math inline">\(1/2-\eta\)</span></td>
+<td><span class="math inline">\(3/8-\eta\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="a">
+<li><p>All entries of the probability table must be non-negative and they must sum up to <span class="math inline">\(1\)</span>. In order for <span class="math inline">\(p_{X,Y}(4,-1)\)</span> to be non-negative we need <span class="math inline">\(\eta\geq 1/16\)</span>. In order for <span class="math inline">\(p_{X,Y}(4,0)\)</span> and <span class="math inline">\(p_{X,Y}(6,1)\)</span> to be non-negative we need <span class="math inline">\(\eta\leq 1/4\)</span>. The sum over all entries is not affected by the value of <span class="math inline">\(\eta\)</span>, so does not give any additional constraints. Therefore any <span class="math inline">\(\eta\in[1/16,1/4]\)</span> is a valid choice.</p></li>
+<li><p>It is easy to find counterexamples to the factorisation of the joint probability mass function that would have to hold if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> were independent. For example <span class="math display">\[
+p_X(4)p_Y(1)=\frac{3}{16}\left(\frac{3}{8}-\eta\right)\neq 0 =p_{X,Y}(4,1) \]</span> unless <span class="math inline">\(\eta=3/8\)</span>. However the value <span class="math inline">\(\eta=3/8\)</span> is not allowed, and hence <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can never be independent.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section><section id="section-13" class="level7"><p class="heading"></p>
+<p><strong>M4.</strong> Prove that binomial coefficients satisfy the identity <span class="math display">\[n{{n-1}\choose{r-1}} = r{n\choose r}.\]</span> Use this to find <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\textup{Var}(X)\)</span>, where <span class="math inline">\(X\sim\mbox{\textup{Bin}}(n,p)\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>First we prove the identity: <span class="math display">\[ n{{n-1}\choose{r-1}} = n \, \frac{(n-1)!}{(r-1)!(n-r)!} = r\, \frac{n!}{r!(n-r)!} = r{n\choose r} \,. \]</span></p>
+<p>For the mean and variance, remember that, since <span class="math inline">\(p_X(\cdot)\)</span> is a mass function, it must sum to one. That is,</p>
+<p><span id="eq-binomial_sum"><span class="math display">\[
+\sum_{k=0}^n \binom{n}{k}p^k(1-p)^{n-k} = 1\,.
+\tag{2}\]</span></span></p>
+<p>Now, <span class="math display">\[
+\begin{split}
+      \mathbb{E}[X] &amp;= \sum_{k=0}^n k {n\choose k}p^k(1-p)^{n-k} \\
+             &amp;= \sum_{k=1}^n n {{n-1}\choose{k-1}} p^k(1-p)^{n-k} \quad\text{(by our identity)} \\
+             &amp;= np \sum_{k=1}^n  {{n-1}\choose{k-1}} p^{k-1}(1-p)^{n-k} \\
+             &amp;= np \sum_{j=0}^{n-1}  {{n-1}\choose{j}} p^{j}(1-p)^{(n-1)-j} \quad\text{(putting $j=k-1$)} \\
+             &amp;= np \,,
+\end{split}
+\]</span> thanks to <a href="#eq-binomial_sum">Equation&nbsp;2</a>.</p>
+<p>Furthermore, <span class="math display">\[
+\begin{split}
+  \mathbb{E}[X(X-1)]&amp;=\sum_{k=0}^nk(k-1){n\choose k}p^k(1-p)^{n-k}\\
+             &amp;=\sum_{k=0}^nk(k-1)\frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}\\
+             &amp;=\sum_{k=0}^n\frac{n!}{(n-k)!(k-2)!}p^k(1-p)^{n-k}\\
+             &amp;=n(n-1)p^2\sum_{k=2}^n\frac{(n-2)!}{((n-2)-(k-2))!(k-2)!}p^{k-2}(1-p)^{(n-2)-(k-2)}\\
+             &amp;=n(n-1)p^2\sum_{j=0}^{n-2}{{n-2}\choose{j}}p^j(1-p)^{(n-2)-j}\quad\text{(putting $j=k-2$)} \\
+             &amp;=n(n-1)p^2,
+\end{split}
+\]</span> again thanks to <a href="#eq-binomial_sum">Equation&nbsp;2</a>. It follows that</p>
+<p><span class="math display">\[ \mathbb{E}[X^2]=n(n-1)p^2+np \,, \]</span></p>
+<p>and so <span class="math display">\[ \textup{Var}(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=np(1-p) \,. \]</span></p>
+</div>
+</div>
+</div>
+</section><section id="section-14" class="level7"><p class="heading"></p>
+<p><strong>M5.</strong> Show that if <span class="math inline">\(Z\)</span> is a standard normal random variable then, for <span class="math inline">\(x&gt;0\)</span>,</p>
+<ol type="a">
+<li>
+<span class="math inline">\(\mathbb{P}(Z&gt;x)=\mathbb{P}(Z&lt;-x)\)</span>;</li>
+<li>
+<span class="math inline">\(\mathbb{P}(|Z|&gt;x)=2\mathbb{P}(Z&gt;x)\)</span>;</li>
+<li>
+<span class="math inline">\(\mathbb{P}(|Z|&lt;x)=2\mathbb{P}(Z&lt;x)-1\)</span>.</li>
+</ol>
+<p>Hint: express the probabilities in terms of integrals over the density function <span class="math inline">\(\phi\)</span>, and use the fact that <span class="math inline">\(\phi\)</span> is a symmetric function (i.e.&nbsp;<span class="math inline">\(\phi(z) = \phi(-z)\)</span>).</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>There are many ways to show these identities. We use the hint about the symmetry of the density function of a standard normal random variable: <span class="math display">\[\phi(-z)=\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{(-z)^2}{2}\right)
+         =\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{z^2}{2}\right)=\phi(z).\]</span></p>
+<ol type="a">
+<li><p><span class="math display">\[\mathbb{P}(Z&gt;x)=\int_{x}^\infty \phi(z)dz=\int_{-\infty}^{-x} \phi(-u)du=\int_{-\infty}^{-x} \phi(u)du=\mathbb{P}(Z&lt;-x);\]</span></p></li>
+<li><p><span class="math display">\[\mathbb{P}(|Z|&gt;x)=\mathbb{P}(Z&gt;x)+\mathbb{P}(Z&lt;-x)=2\mathbb{P}(Z&gt;x)\,, \]</span> where the last equality follows from part (a).</p></li>
+<li><p><span class="math display">\[
+\begin{split}
+          \mathbb{P}(|Z|&lt;x)&amp;=1-\mathbb{P}(|Z|&gt;x)=1-2\mathbb{P}(Z&gt;x)\\
+          &amp;=1-2\left(1-\mathbb{P}(Z&lt;x)\right)=2\mathbb{P}(Z&lt;x)-1\,,
+\end{split}
+\]</span> where the second equality follows from part (b).</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section><section id="section-15" class="level7"><p class="heading"></p>
+<p><strong>M6.</strong> Let <span class="math inline">\(X\)</span> be a discrete random variable. Show that for all functions <span class="math inline">\(h_{1},h_{2}:\mathbb{R}\rightarrow \mathbb{R}\)</span>, <span class="math display">\[ \mathbb{E}[h_1(X) + h_2(X)] =\mathbb{E}[h_1(X)] + \mathbb{E}[h_2(X)]\,. \]</span></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(h(x)=h_1(x)+ h_2(x)\)</span>. From the formula for the expectation of a function of a discrete random variable it follows that <span class="math display">\[
+\begin{split}
+      \mathbb{E}[h(X)]&amp;=\sum_{k\in X(\Omega)}h(k)p_X(k)\\
+               &amp;=\sum_{k\in X(\Omega)}(h_1(k)+ h_2(k))p_X(k)\\
+               &amp;=\sum_{k\in X(\Omega)}h_1(k)p_X(k)+ \sum_{k\in X(\Omega)}h_2(k)p_X(k)\\
+               &amp;=\mathbb{E}[h_1(X)]+ \mathbb{E}[h_2(X)]\,.
+\end{split}
+\]</span></p>
+</div>
+</div>
+</div>
+</section><section id="section-16" class="level7"><p class="heading"></p>
+<p><strong>M7.</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables and let <span class="math inline">\(r,s,t,u\in\mathbb{R}\)</span>. Show that <span class="math display">\[
+\rho(rX+s,tY+u)=\begin{cases}\rho(X,Y)&amp;\text{ if }rt&gt;0\\
+                         0&amp;\text{ if }rt= 0\\-\rho(X,Y)&amp;\text{ if }rt&lt;0\\\end{cases}
+\]</span> where <span class="math inline">\(\rho(X,Y)\)</span> denotes the correlation coefficient of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Let us first assume that <span class="math inline">\(\textup{Var}(X)\textup{Var}(Y)&gt;0\)</span> and <span class="math inline">\(rt&gt;0\)</span>. Then the definition of the correlation coefficient gives <span id="eq-cov1"><span class="math display">\[
+\rho(rX+s,tY+u)=\frac{\textup{Cov}(rX+s,tY+u)}{\sqrt{\textup{Var}(rX+s)\textup{Var}(tY+u)}}.
+\tag{3}\]</span></span></p>
+<p>We already know that <span id="eq-cov2"><span class="math display">\[
+\textup{Var}(rX+s)=r^2\textup{Var}(X),~~~\textup{Var}(tY+u)=t^2\textup{Var}(Y).
+\tag{4}\]</span></span></p>
+<p>We need to derive a similar transformation rule for the covariance. <span id="eq-cov3"><span class="math display">\[
+\begin{split}
+\textup{Cov}(rX+s,tY+u)&amp;=\mathbb{E}[(rX+s-\mathbb{E}[rX+s])(tY+u-\mathbb{E}[tY+u])]\\
+&amp;=\mathbb{E}[(rX+s-(r\mathbb{E}[X]+s))(tY+u-(t\mathbb{E}[Y]+u))]\\
+&amp;=\mathbb{E}[r(X-\mathbb{E}[X])t(Y-\mathbb{E}[Y])]\\
+&amp;=rt\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]\\
+&amp;=rt\textup{Cov}(X,Y)\,,
+\end{split}
+\tag{5}\]</span></span> where we repeatedly used the linearity of expectation. Using the transformation rules <a href="#eq-cov2">Equation&nbsp;4</a> and <a href="#eq-cov3">Equation&nbsp;5</a> in <a href="#eq-cov1">Equation&nbsp;3</a> gives <span class="math display">\[
+\rho(rX+s,tY+u)=\frac{rt}{\sqrt{r^2t^2}}\frac{\textup{Cov}(X,Y)}{\sqrt{\textup{Var}(X)\textup{Var}(Y)}}.
+\]</span> The statement now follows from the observation that <span class="math display">\[
+\frac{rt}{\sqrt{r^2t^2}}=\begin{cases}1&amp;\text{ if }rt&gt;0\\-1&amp;\text{ if }rt&lt;0\,.\end{cases}
+\]</span> In case <span class="math inline">\(\textup{Var}(X)\textup{Var}(Y)=0\)</span> or <span class="math inline">\(rt=0\)</span> also <span class="math inline">\(\textup{Var}(rX+s)\textup{Var}(tY+u)=rt\textup{Var}(X)\textup{Var}(Y)=0\)</span>, and thus <span class="math inline">\(\rho(rX+s,tY+u)=0\)</span> by definition. This agrees with the statement because when <span class="math inline">\(\textup{Var}(X)\textup{Var}(Y)=0\)</span> also <span class="math inline">\(\rho(X,Y)=0\)</span>.</p>
+</div>
+</div>
+</div>
+</section><section id="section-17" class="level7"><p class="heading"></p>
+<p><strong>M8.</strong> Let <span class="math inline">\(X\sim \mbox{\textup{Uniform}}(0,a)\)</span> for some <span class="math inline">\(a&gt;0\)</span>. Show that for any <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[
+\mathbb{E}[X^n] =\frac{a^n}{n+1}.
+\]</span> Use this to determine <span class="math inline">\(\rho(X,X^2)\)</span>, and show that this does not depend upon the value of <span class="math inline">\(a\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>For <span class="math inline">\(n\in\mathbb{N}\)</span> we calculate <span class="math display">\[
+\mathbb{E}[X^n]=\int_{-\infty}^\infty x^nf_X(x)dx=\int_0^a\frac{x^n}{a}dx=\frac{1}{a}\left[\frac{x^{n+1}}{n+1}\right]^a_0=\frac{a^n}{n+1}.\]</span> Now we calculate the covariance of <span class="math inline">\(X\)</span> and <span class="math inline">\(X^2\)</span>: <span class="math display">\[
+\textup{Cov}(X,X^2)=\mathbb{E}[X^3]-\mathbb{E}[X]\mathbb{E}[X^2] = \frac{a^3}{4}-\frac{a^2}{3}\frac{a}{2}=\frac{a^3}{12}\,.
+\]</span> We also have <span class="math display">\[
+\textup{Var}(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=\frac{a^2}{3}-\left(\frac{a}{2}\right)^2=\frac{a^2}{12}
+\]</span> and <span class="math display">\[
+\textup{Var}(X^2)=\mathbb{E}[X^4]-\mathbb{E}[X^2]^2=\frac{a^4}{5}-\left(\frac{a^2}{3}\right)^2=\frac{4a^4}{45}.
+\]</span> Finally, we calculate <span class="math display">\[
+\rho(X,X^2)=\frac{\textup{Cov}(X,X^2)}{\sqrt{\textup{Var}(X)\textup{Var}(X^2)}}=\frac{a^3/12}{\sqrt{a^6/135}}=\frac{\sqrt{135}}{12}=\frac{\sqrt{15}}{4},
+\]</span> which doesn’t depend upon <span class="math inline">\(a\)</span>.</p>
+</div>
+</div>
+</div>
+</section><section id="section-18" class="level7"><p class="heading"></p>
+<p><strong>M9.</strong> A bag contains 3 cubes, 4 pyramids and 7 spheres. An object is drawn randomly from the bag and its type is recorded. Then the object is replaced. This is repeated 20 times.</p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(C_i\)</span> be the indicator random variable for the event that the <span class="math inline">\(i\)</span>-th draw gives a cube, for <span class="math inline">\(i=1,\dots,20\)</span>. Calculate <span class="math inline">\(\mathbb{E}[C_i], \mathbb{E}[C_i^2]\)</span> and <span class="math inline">\(\mathbb{E}[C_iC_j]\)</span> for <span class="math inline">\(i\neq j\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(C\)</span> be the number of times a cube was drawn, Use that <span class="math inline">\(C=\sum_{i=1}^{20}C_i\)</span> to calculate <span class="math inline">\(\mathbb{E}[C]\)</span> and <span class="math inline">\(\textup{Var}(C)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(S_i\)</span> be the indicator random variable for the event that the <span class="math inline">\(i\)</span>-th draw gives a sphere. Calculate <span class="math inline">\(\mathbb{E}[C_iS_i]\)</span> and <span class="math inline">\(\mathbb{E}[C_iS_j]\)</span> for <span class="math inline">\(i\neq j\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(S\)</span> be the number of times a sphere was drawn. Use the above results to calculate <span class="math inline">\(\mathbb{E}[CS]\)</span>, <span class="math inline">\(\textup{Cov}(C,S)\)</span>, <span class="math inline">\(\rho(C,S)\)</span>.</p></li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>As three of the 14 shapes are cubes, the probability to draw a cube is <span class="math inline">\(3/14\)</span>. Hence <span class="math inline">\(C_i\sim\mbox{\textup{Bern}}(3/14)\)</span>. This immediately gives <span class="math display">\[
+\mathbb{E}[C_i] =  \mathbb{E}[C_i^2] = \frac{3}{14}.
+\]</span> For <span class="math inline">\(i\neq j\)</span> the event that the <span class="math inline">\(i\)</span>-th draw gives a cube and the event that the <span class="math inline">\(j\)</span>-th cube gives a draw are independent (because we put the shape back after each draw). Thus the indicator random variables <span class="math inline">\(C_i\)</span> and <span class="math inline">\(C_j\)</span> for these events are also independent and thus <span class="math display">\[
+\mathbb{E}[C_iC_j]=\mathbb{E}[C_i]\mathbb{E}[C_j]=\left(\frac{3}{14}\right)^2=\frac{9}{196}.
+\]</span></p></li>
+<li><p>The linearity of expectation gives <span class="math display">\[
+\mathbb{E}[C]=\mathbb{E}[\sum_{i=1}^{20} C_i]=\sum_{i=1}^{20}\mathbb{E}[C_i] = 20\frac{3}{14}=\frac{30}{7}.
+\]</span> Because the <span class="math inline">\(C_i\)</span> are independent of each other, the variance of their sum equals the sum of their variances: <span class="math display">\[
+\textup{Var}(C)=\textup{Var}(\sum_{i=1}^{20} C_i)=\sum_{i=1}^{20} \textup{Var}(C_i)=20 \frac{3}{14}\frac{11}{14}=\frac{165}{49}.
+\]</span></p></li>
+<li><p>We observe that <span class="math inline">\(C_iS_i=0\)</span> because on the same draw one can not simultaneously have a cube and a sphere. Thus also <span class="math inline">\(\mathbb{E}[C_iS_i]=0\)</span>. If <span class="math inline">\(i\neq j\)</span> we can use independence to factorise the expectation: <span class="math display">\[
+\mathbb{E}[C_iS_j]=\mathbb{E}[C_i]\mathbb{E}[S_j]=\frac{3}{14}\frac{1}{2}=\frac{3}{28}\,,
+\]</span> where we used that the probability of drawing a sphere is <span class="math inline">\(1/2\)</span>.</p></li>
+<li><p>We have <span class="math display">\[
+\mathbb{E}[CS]=\mathbb{E}[\sum_{i=1}^{20} C_i \sum_{j=1}^{20} S_j]=\sum_{i=1}^{20} \sum_{j=1}^{20} \mathbb{E}[C_i S_j].
+\]</span> We split the sum over all pairs <span class="math inline">\((i,j)\)</span> into the pairs where <span class="math inline">\(i\neq j\)</span> and the pairs <span class="math inline">\((i,i)\)</span>, so <span class="math display">\[
+\mathbb{E}[CS]=\sum_{i=1}^{20} \sum_{\stackrel{j=1}{j\neq i}}^{20} \mathbb{E}[C_i S_j] + \sum_{i=1}^{20}  \mathbb{E}[C_i S_i]\,.
+\]</span> Using our above results for <span class="math inline">\(\mathbb{E}[C_iS_i]\)</span> and <span class="math inline">\(\mathbb{E}[C_i S_j]\)</span> and recognising that there are <span class="math inline">\(20\cdot 19=380\)</span> pairs where <span class="math inline">\(i\neq j\)</span> this gives us <span class="math display">\[
+\mathbb{E}[CS]=\sum_{i=1}^{20} \sum_{\stackrel{j=1}{j\neq i}}^{20}\frac{3}{28}+ \sum_{i=1}^{20} 0=380\frac{3}{28}=\frac{285}{7}\,.
+\]</span> We also calculate <span class="math display">\[
+\mathbb{E}[S]=\mathbb{E}[\sum_{i=1}^{20} S_i]=\sum_{i=1}^{20}\mathbb{E}[S_i] = 20\frac{1}{2}=10.
+\]</span> The covariance can then be calculated as <span class="math display">\[
+\textup{Cov}(C,S)=\mathbb{E}[CS]-\mathbb{E}[C]\mathbb{E}[S]=\frac{285}{7}-\frac{30}{7}10=-\frac{15}{7}.
+\]</span> To calculate the correlation coefficient we also need <span class="math display">\[
+\textup{Var}(S)=\textup{Var}(\sum_{i=1}^{20} S_i)=\sum_{i=1}^{20} \textup{Var}(S_i)=20 \frac12\frac12=5.
+\]</span> The correlation coefficient is <span class="math display">\[
+\rho(C,S)=\frac{\textup{Cov}(C,S)}{\sqrt{\textup{Var}(C)\textup{Var}(S)}}=-\sqrt{\frac{3}{11}}\approx -0.5222.
+\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<section id="section-19" class="level22"><p class="heading"></p>
+</section></section></section><section id="dessert" class="level2"><h2 class="anchored" data-anchor-id="dessert">Dessert</h2>
+<p><em>Still hungry for more? Try these if you want to push yourself further.</em></p>
+<section id="section-20" class="level7"><p class="heading"></p>
+<p><strong>D1.</strong> Consider a random variable <span class="math inline">\(X\sim\mbox{\textup{Uniform}}[a,b]\)</span>, where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are unknown. You are told that <span class="math display">\[
+        \mathbb{P}(X&lt;2) = 1/3 \quad \text{and} \quad \mathbb{P}(1&lt;X\leq 3) = 1/2 \,.
+\]</span> Given this information, find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.<br></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>From the first equation we immediately know that <span class="math inline">\(a&lt;2&lt;b\)</span>. Now, for a continuous random variable, we obtain the probability that it lies in an interval <span class="math inline">\((c,d)\)</span> by integrating the density function over that interval, i.e.&nbsp;<span class="math display">\[ \mathbb{P}(c\leq X\leq d) = \int_c^d f_X(x) dx \,. \]</span> Since <span class="math inline">\(X\sim\mbox{\textup{Uniform}}[a,b]\)</span>, we know that <span class="math display">\[ f_X(x) = \begin{cases}
+        1/(b-a) &amp;\quad x\in[a,b] \\
+        0 &amp;\quad\text{otherwise.}
+      \end{cases}
+\]</span> Thus we obtain <span id="eq-sim1"><span class="math display">\[
+1/3 = \mathbb{P}(X&lt;2) = \mathbb{P}(a\leq X&lt;2) =  \int_a^2 1/(b-a) dx = (2-a)/(b-a) \,.
+\tag{6}\]</span></span></p>
+<p>In order to use the second equation (<span class="math inline">\(\mathbb{P}(1&lt;X\leq 3) = 1/2\)</span>) in the same way, we have two possibilities to consider:</p>
+<ol type="1">
+<li><span class="math inline">\(a&lt;1\)</span></li>
+<li><span class="math inline">\(1\leq a&lt;2\)</span></li>
+</ol>
+<p>Suppose first that <span class="math inline">\(a&lt;1\)</span>. Then <span id="eq-sim2"><span class="math display">\[
+1/2 = \mathbb{P}(1&lt;X\leq 3) = \int_1^3 1/(b-a) dx = 2/(b-a) \,,
+\tag{7}\]</span></span> since the density function <span class="math inline">\(f_X\)</span> is equal to <span class="math inline">\(1/(b-a)\)</span> for all <span class="math inline">\(x\in[1,3]\)</span> if <span class="math inline">\(a&lt;1\)</span>.</p>
+<p>If <span class="math inline">\(1\leq a\)</span> however, then instead we obtain <span id="eq-sim3"><span class="math display">\[
+1/2 = \mathbb{P}(1&lt;X\leq 3) = \int_1^a 0\, dx + \int_a^3 1/(b-a)dx = (3-a)/(b-a) \,.
+\tag{8}\]</span></span></p>
+<p>We now have to solve these simultaneous equations in order to find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. If we assume that <span class="math inline">\(1\leq a&lt;2\)</span>, then we must try to solve <a href="#eq-sim1">Equation&nbsp;6</a> and <a href="#eq-sim3">Equation&nbsp;8</a> together; but this gives <span class="math display">\[ 2(3-a) = 3(2-a)\,, \]</span> resulting in <span class="math inline">\(a=0\)</span>. But this contradicts our assumption that <span class="math inline">\(1\leq a\)</span>!</p>
+<p>So it must be the case that <span class="math inline">\(a&lt;1\)</span>: now we must solve <a href="#eq-sim1">Equation&nbsp;6</a> and <a href="#eq-sim2">Equation&nbsp;7</a>, and this <em>is</em> possible, with <span class="math inline">\(a=2/3\)</span> and <span class="math inline">\(b=14/3\)</span>.</p>
+</div>
+</div>
+</div>
+</section><section id="section-21" class="level7"><p class="heading"></p>
+<p><strong>D2.</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two independent geometrically distributed random variables with parameter <span class="math inline">\(p\)</span>, i.e., <span class="math inline">\(X\sim\mbox{\textup{Geom}}(p)\)</span> and <span class="math inline">\(Y\sim\mbox{\textup{Geom}}(p)\)</span>. For any natural numbers <span class="math inline">\(i\)</span> and <span class="math inline">\(n\)</span> with <span class="math inline">\(i&lt;n\)</span> calculate the conditional probability <span class="math inline">\(\mathbb{P}(X=i\,|\,X+Y=n)\)</span>. Describe in words the meaning in terms of Bernoulli trials of what you just calculated.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>According to the definition of conditional probability, <span class="math display">\[
+\mathbb{P}(X=i\,|\,X+Y=n)=\frac{\mathbb{P}(X=i,\,X+Y=n)}{\mathbb{P}(X+Y=n)}.
+\]</span></p>
+<p>For the numerator we can use that the event <span class="math inline">\(\{X=i,X+Y=n\}\)</span> is the event <span class="math inline">\(\{X=i,Y=n-i\}\)</span>. We then know that the independence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> implies the factorisation of that probability: <span class="math display">\[
+\mathbb{P}(X=i,\,X+Y=n)=\mathbb{P}(X=i,Y=n-i)=\mathbb{P}(X=i)\mathbb{P}(Y=n-i).
+\]</span> We can now substitute in the probability mass function for the geometric distribution with parameter <span class="math inline">\(p\)</span>: <span class="math display">\[ \mathbb{P}(X=i)=(1-p)^{i-1}p\]</span> and thus <span class="math display">\[ \mathbb{P}(Y=n-i)=(1-p)^{n-i-1}p.\]</span></p>
+<p>This gives <span class="math display">\[\mathbb{P}(X=i,\,X+Y=n)=(1-p)^{i-1}p(1-p)^{n-i-1}p=(1-p)^{n-2}p^2.
+\]</span> Note that this is independent of <span class="math inline">\(i\)</span>.</p>
+<p>For the denominator we use the partition theorem to write <span class="math display">\[
+\mathbb{P}(X+Y=n)=\sum_{i=1}^{n-1}\mathbb{P}(X=i,X+Y=n).
+\]</span> From our calculation above we see that every term in the sum is the same, so <span class="math display">\[ \mathbb{P}(X+Y=n)=(n-1)\mathbb{P}(X=i,X+Y=n).
+\]</span> Putting this all together we finally find that <span class="math display">\[
+\mathbb{P}(X=i\,|\,X+Y=n)=\frac{\mathbb{P}(X=i,X+Y=n)}{\mathbb{P}(X+Y=n)}=\frac{1}{n-1}.
+\]</span></p>
+<p>A geometric random variable counts the number of turns until the first success in repeated Bernoulli trials. Therefore the sum <span class="math inline">\(X+Y\)</span> of two identical and independent geometric random variables counts the number of turns until the <em>second</em> success. So the conditional probability we calculated is the probability that the first success happens on a particular trial <span class="math inline">\(i\)</span> given that the second success happens on the <span class="math inline">\(n\)</span>-th trial. The result shows that the first success is then equally likely to occur on any of the <span class="math inline">\(n-1\)</span> trials before the <span class="math inline">\(n\)</span>-th trial.</p>
+</div>
+</div>
+</div>
+</section><section id="section-22" class="level7"><p class="heading"></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A stick of length 1 is snapped into two at a point <span class="math inline">\(U\sim\mbox{\textup{Uniform}}(0,1)\)</span>. What is the expected length of the piece containing the point <span class="math inline">\(s\)</span>, where <span class="math inline">\(s\)</span> is some fixed number between 0 and 1? For what values of <span class="math inline">\(s\)</span> is this expected length maximised/minimised? How does the variance of this length depend upon <span class="math inline">\(s\)</span>?</p>
+</div>
+</div>
+</section></section></main><!-- /main column --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
