@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 </section><section id="starter" class="level2"><h2 class="anchored" data-anchor-id="starter">Starter</h2>
 <p><em>These questions should help you to gain confidence with the basics.</em></p>
 <section id="section-1" class="level7"><p class="heading"></p>
-<p><strong>S1.</strong> Let <span class="math inline">\(X\)</span> be a random variable with <span class="math inline">\(\mathbb{E}[X]=5\)</span>. What is the expectation of <span class="math inline">\(3X+5\)</span>? If furthermore <span class="math inline">\(\mathbb{E}[X^2]=30\)</span>, what is the variance of <span class="math inline">\(X\)</span>?</p>
+<p><strong>S1.</strong> Let <span class="math inline">\(X\)</span> be a random variable with <span class="math inline">\(\mathbb{E}\left[X\right]=5\)</span>. What is the expectation of <span class="math inline">\(3X+5\)</span>? If furthermore <span class="math inline">\(\mathbb{E}\left[X^2\right]=30\)</span>, what is the variance of <span class="math inline">\(X\)</span>?</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -92,7 +92,7 @@ Answer
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>We can use the linearity of expectation to find that <span class="math inline">\(\mathbb{E}[3X+5] =3\mathbb{E}[X]+5=20\)</span>. The variance is <span class="math inline">\(\textup{Var}(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=30-5^2=5\)</span>.</p>
+<p>We can use the linearity of expectation to find that <span class="math inline">\(\mathbb{E}\left[3X+5\right] =3\mathbb{E}\left[X\right]+5=20\)</span>. The variance is <span class="math inline">\(\textup{Var}\left(X\right)=\mathbb{E}\left[X^2\right]-\mathbb{E}\left[X\right]^2=30-5^2=5\)</span>.</p>
 </div>
 </div>
 </div>
@@ -119,7 +119,7 @@ Answer
 <li>They will wait less than 5 minutes if and only <span class="math inline">\(15\leq Y\leq 20\)</span> or <span class="math inline">\(35\leq Y\leq 40\)</span>. This occurs with probability</li>
 </ol>
 <p><span class="math display">\[
-\mathbb{P}(15\leq Y\leq 20) + \mathbb{P}(35\leq Y\leq 40) = \int_{15}^{20}\frac{1}{45}dy + \int_{35}^{40}\frac{1}{45}dy = \frac{2}{9}\,.
+\mathbb{P}\left(15\leq Y\leq 20\right) + \mathbb{P}\left(35\leq Y\leq 40\right) = \int_{15}^{20}\frac{1}{45}dy + \int_{35}^{40}\frac{1}{45}dy = \frac{2}{9}\,.
 \]</span></p>
 <p><strong>[2]</strong></p>
 <ol start="2" type="a">
@@ -135,7 +135,7 @@ f_Z(x) = \begin{cases}
   \frac{6}{5675}(5x^2+3x+11)&amp; \qquad \text{for } 3\leq x\leq 8\\
   0&amp; \qquad \text{otherwise.}
   \end{cases}
-\]</span> Would you expect <span class="math inline">\(\mathbb{E}[Z]\)</span> to lie closer to 3 or to 8? Calculate <span class="math inline">\(\mathbb{E}[Z]\)</span> and check whether your intuition was correct.</p>
+\]</span> Would you expect <span class="math inline">\(\mathbb{E}\left[Z\right]\)</span> to lie closer to 3 or to 8? Calculate <span class="math inline">\(\mathbb{E}\left[Z\right]\)</span> and check whether your intuition was correct.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -148,12 +148,12 @@ Answer
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Since <span class="math inline">\(f_Z\)</span> is increasing on the interval <span class="math inline">\([3, 8]\)</span> we know from the interpretation of expectation as centre of gravity that the expectation should lie closer to 8 than to 3. The computation: <span class="math display">\[\mathbb{E}[Z] = \int_3^8 x f_Z(x) dx = \frac{6}{5675}\int_3^8 \left(5x^3+3x^2+11x\right) dx = \frac{2787}{454} = 6.14.\]</span></p>
+<p>Since <span class="math inline">\(f_Z\)</span> is increasing on the interval <span class="math inline">\([3, 8]\)</span> we know from the interpretation of expectation as centre of gravity that the expectation should lie closer to 8 than to 3. The computation: <span class="math display">\[\mathbb{E}\left[Z\right] = \int_3^8 x f_Z(x) dx = \frac{6}{5675}\int_3^8 \left(5x^3+3x^2+11x\right) dx = \frac{2787}{454} = 6.14.\]</span></p>
 </div>
 </div>
 </div>
 </section><section id="section-4" class="level7"><p class="heading"></p>
-<p><strong>S4.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br></strong> Let <span class="math inline">\(X\sim\mbox{\textup{Geom}}(p)\)</span>. Calculate <span class="math inline">\(\mathbb{E}[h(X)]\)</span>, where <span class="math inline">\(h(x) = e^{tx}\)</span> for some <span class="math inline">\(t&gt;0\)</span>. For what values of <span class="math inline">\(t\)</span> is <span class="math inline">\(\mathbb{E}[h(X)]&lt;\infty\)</span>?<br>
+<p><strong>S4.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in<br></strong> Let <span class="math inline">\(X\sim\mbox{\textup{Geom}}(p)\)</span>. Calculate <span class="math inline">\(\mathbb{E}\left[h(X)\right]\)</span>, where <span class="math inline">\(h(x) = e^{tx}\)</span> for some <span class="math inline">\(t&gt;0\)</span>. For what values of <span class="math inline">\(t\)</span> is <span class="math inline">\(\mathbb{E}\left[h(X)\right]&lt;\infty\)</span>?<br>
 Hint: use the result for infinite geometric series.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
@@ -169,8 +169,8 @@ Answer
 <div class="callout-body-container callout-body">
 <p>We use the formula for the expectation of a function of a discrete random variable: <span class="math display">\[
 \begin{split}
-\mathbb{E}[h(X)] &amp;= \sum_{k=1}^\infty h(k)p(1-p)^{k-1} = \sum_{k=1}^\infty e^{tk}p(1-p)^{k-1} \\
-                    &amp;= pe^t \sum_{k=1}^\infty [e^t(1-p)]^{k-1} = pe^t \sum_{k=0}^\infty [e^t(1-p)]^k \\
+\mathbb{E}\left[h(X)\right] &amp;= \sum_{k=1}^\infty h(k)p(1-p)^{k-1} = \sum_{k=1}^\infty e^{tk}p(1-p)^{k-1} \\
+                    &amp;= pe^t \sum_{k=1}^\infty \left[e^t(1-p)\right]^{k-1} = pe^t \sum_{k=0}^\infty \left[e^t(1-p)\right]^k \\
                     &amp;= \frac{pe^t}{1-e^t(1-p)}\,.
 \end{split}
 \]</span> <strong>[4]</strong></p>
@@ -179,7 +179,7 @@ Answer
 </div>
 </div>
 </section><section id="section-5" class="level7"><p class="heading"></p>
-<p><strong>S5.</strong> Suppose that you have a lecture at 14.00, and that the time taken to travel from your room to the lecture theatre is normally distributed with mean 30 minutes and standard deviation 4 minutes. What is the latest time you should leave your room if you want to be 99% certain that you will not miss the start of the lecture? (Hint: if <span class="math inline">\(Z\sim\mbox{\textup{N}}(0,1)\)</span> then the R function <code>qnorm(p)</code> returns the value <span class="math inline">\(z\in\mathbb{R}\)</span> such that <span class="math inline">\(\mathbb{P}(Z\le z) = p\)</span>.)</p>
+<p><strong>S5.</strong> Suppose that you have a lecture at 14.00, and that the time taken to travel from your room to the lecture theatre is normally distributed with mean 30 minutes and standard deviation 4 minutes. What is the latest time you should leave your room if you want to be 99% certain that you will not miss the start of the lecture? (Hint: if <span class="math inline">\(Z\sim\mbox{\textup{N}}(0,1)\)</span> then the R function <code>qnorm(p)</code> returns the value <span class="math inline">\(z\in\mathbb{R}\)</span> such that <span class="math inline">\(\mathbb{P}\left(Z\le z\right) = p\)</span>.)</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -192,15 +192,15 @@ Answer
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\)</span> denote the travel time to the lecture: <span class="math inline">\(X\sim\mbox{\textup{N}}(30,16)\)</span>. We wish to find <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mathbb{P}(X\leq x) = 0.99\)</span>. Now, <span class="math display">\[
-\mathbb{P}(X\leq x) = \mathbb{P}(\frac{X-30}{4} \leq \frac{x-30}{4}) = \mathbb{P}(Z\leq \frac{x-30}{4})
+<p>Let <span class="math inline">\(X\)</span> denote the travel time to the lecture: <span class="math inline">\(X\sim\mbox{\textup{N}}(30,16)\)</span>. We wish to find <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mathbb{P}\left(X\leq x\right) = 0.99\)</span>. Now, <span class="math display">\[
+\mathbb{P}\left(X\leq x\right) = \mathbb{P}\left(\frac{X-30}{4} \leq \frac{x-30}{4}\right) = \mathbb{P}\left(Z\leq \frac{x-30}{4}\right)
 \]</span> where <span class="math inline">\(Z\sim\mbox{\textup{N}}(0,1)\)</span>.</p>
-<p>We can get hold of this value of <span class="math inline">\(x\)</span> by using R (or by consulting statistical tables): <code>qnorm(0.99)</code> gives the value 2.326, meaning that <span class="math inline">\(\mathbb{P}(Z\leq 2.326) = 0.99\)</span>. Thus we require <span class="math inline">\((x-30)/4 = 2.326 \iff x=39.3\)</span>. Thus the latest you should leave your room is 39.3 minutes before the start of the lecture: i.e.&nbsp;at 13:20.</p>
+<p>We can get hold of this value of <span class="math inline">\(x\)</span> by using R (or by consulting statistical tables): <code>qnorm(0.99)</code> gives the value 2.326, meaning that <span class="math inline">\(\mathbb{P}\left(Z\leq 2.326\right) = 0.99\)</span>. Thus we require <span class="math inline">\((x-30)/4 = 2.326 \iff x=39.3\)</span>. Thus the latest you should leave your room is 39.3 minutes before the start of the lecture: i.e.&nbsp;at 13:20.</p>
 </div>
 </div>
 </div>
 </section><section id="section-6" class="level7"><p class="heading"></p>
-<p><strong>S6.</strong> Give an example of a joint probability table for two discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, each having only two possible values, so that <span class="math inline">\(F_{X,Y}(5,6)=0.4, F_X(5)=0.5, F_Y(6)=0.6\)</span> and <span class="math inline">\(\mathbb{E}[X]=10, \mathbb{E}[Y]=4\)</span>.</p>
+<p><strong>S6.</strong> Give an example of a joint probability table for two discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, each having only two possible values, so that <span class="math inline">\(F_{X,Y}(5,6)=0.4, F_X(5)=0.5, F_Y(6)=0.6\)</span> and <span class="math inline">\(\mathbb{E}\left[X\right]=10, \mathbb{E}\left[Y\right]=4\)</span>.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -278,9 +278,9 @@ Answer
 <ol type="a">
 <li>Fill in the missing values.</li>
 <li>Determine the joint distribution function of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
-<li>Calculate <span class="math inline">\(\mathbb{P}(X+Y=2)\)</span>.</li>
-<li>Calculate <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\mathbb{E}[Y]\)</span>.</li>
-<li>Let <span class="math inline">\(Z = XY\)</span>. Calculate <span class="math inline">\(\mathbb{E}[Z]\)</span>.</li>
+<li>Calculate <span class="math inline">\(\mathbb{P}\left(X+Y=2\right)\)</span>.</li>
+<li>Calculate <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> and <span class="math inline">\(\mathbb{E}\left[Y\right]\)</span>.</li>
+<li>Let <span class="math inline">\(Z = XY\)</span>. Calculate <span class="math inline">\(\mathbb{E}\left[Z\right]\)</span>.</li>
 <li>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
@@ -327,7 +327,7 @@ Answer
 </tbody>
 </table>
 <ol start="2" type="a">
-<li><p>The joint distribution function <span class="math inline">\(F_{X,Y}(x,y)\)</span> is by definition given by <span class="math inline">\(\mathbb{P}(X\leq x,Y\leq y)\)</span>. So for example <span class="math display">\[
+<li><p>The joint distribution function <span class="math inline">\(F_{X,Y}(x,y)\)</span> is by definition given by <span class="math inline">\(\mathbb{P}\left(X\leq x,Y\leq y\right)\)</span>. So for example <span class="math display">\[
 F_{X,Y}(1.5,1.5)=p_{X,Y}(1,0)+p_{X,Y}(1,1)=\frac{1}{6}+\frac{1}{4}=\frac{5}{12}.
 \]</span> By doing more such calculations we find that <span class="math display">\[
 F_{X,Y}=\begin{cases}
@@ -335,14 +335,14 @@ F_{X,Y}=\begin{cases}
 1/6&amp;\text{ if }x\in[1,2) \text{ and }y\in[0,1)\\
 5/12&amp;\text{ if }x\in[1,2) \text{ and }y\geq 1\\
 2/3&amp;\text{ if }x\geq 2\text{ and }y\in[0,1)\\
-1&amp;\text{ if }x\geq 2 \text{ or }y\geq 1.
+1&amp;\text{ if }x\geq 2 \text{ and }y\geq 1.
 \end{cases}
 \]</span></p></li>
-<li><p><span class="math inline">\(\mathbb{P}(X+Y=2)=\mathbb{P}(X=1,Y=1)+\mathbb{P}(X=2,Y=0)=1/4+1/2=3/4\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}\left(X+Y=2\right)=\mathbb{P}\left(X=1,Y=1\right)+\mathbb{P}\left(X=2,Y=0\right)=1/4+1/2=3/4\)</span>.</p></li>
 <li><p>For calculating the expectations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> we can use their marginal mass functions: <span class="math display">\[
-\mathbb{E}[X]=1\cdot p_X(1)+2\cdot p_X(2)=1\cdot \frac{5}{12}+2\cdot \frac{7}{12}=\frac{19}{12}
+\mathbb{E}\left[X\right]=1\cdot p_X(1)+2\cdot p_X(2)=1\cdot \frac{5}{12}+2\cdot \frac{7}{12}=\frac{19}{12}
 \]</span> and <span class="math display">\[
-\mathbb{E}[Y]=0\cdot p_Y(0)+1\cdot p_Y(1)=p_Y(1)=\frac{1}{3}\,.
+\mathbb{E}\left[Y\right]=0\cdot p_Y(0)+1\cdot p_Y(1)=p_Y(1)=\frac{1}{3}\,.
 \]</span></p></li>
 <li><p>The random variable <span class="math inline">\(Z=XY\)</span> can take the possible values <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> and <span class="math inline">\(2\)</span> with probabilities <span class="math display">\[
 \begin{split}
@@ -351,7 +351,7 @@ p_Z(1)&amp;=p_{X,Y}(1,1)=\frac14,
 ~~~p_Z(2)=p_{X,Y}(2,1)=\frac{1}{12}.
 \end{split}
 \]</span> Thus <span class="math display">\[
-\mathbb{E}[Z]=1\cdot P_{Z}(1)+2\cdot P_{Z}(2)=\frac14+2\frac{1}{12}=\frac{5}{12}\,.
+\mathbb{E}\left[Z\right]=1\cdot P_{Z}(1)+2\cdot P_{Z}(2)=\frac14+2\frac{1}{12}=\frac{5}{12}\,.
 \]</span></p></li>
 <li><p><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if and only if <span class="math inline">\(p_{X,Y}(x,y)=p_X(x)p_Y(y)\)</span> for all <span class="math inline">\(x,y\)</span>. Here however for example <span class="math display">\[
 p_{X,Y}(1,0)=\frac{1}{6}\neq p_X(1)p_Y(0)=\frac{5}{12}\cdot\frac{2}{3}=\frac{5}{18}\,.
@@ -361,7 +361,7 @@ p_{X,Y}(1,0)=\frac{1}{6}\neq p_X(1)p_Y(0)=\frac{5}{12}\cdot\frac{2}{3}=\frac{5}{
 </div>
 </div>
 </section><section id="section-8" class="level7"><p class="heading"></p>
-<p><strong>S8.</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables. Show that <span class="math inline">\(\textup{Cov}(X,Y)=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]\)</span>.</p>
+<p><strong>S8.</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables. Show that <span class="math inline">\(\textup{Cov}\left(X,Y\right)=\mathbb{E}\left[XY\right]-\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right]\)</span>.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -376,10 +376,10 @@ Answer
 <div class="callout-body-container callout-body">
 <p>We start from the definition of covariance, and use linearity of expectation: <span class="math display">\[
 \begin{split}
-\textup{Cov}(X,Y)&amp;=\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])] \\
-&amp;=\mathbb{E}[XY-X\mathbb{E}[Y]-\mathbb{E}[X]Y+\mathbb{E}[X]\mathbb{E}[Y]] \\
-&amp;=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]-\mathbb{E}[X]\mathbb{E}[Y]+\mathbb{E}[X]\mathbb{E}[Y] \\
-&amp;=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y].
+\textup{Cov}\left(X,Y\right)&amp;=\mathbb{E}\left[\left(X-\mathbb{E}\left[X\right]\right)\left(Y-\mathbb{E}\left[Y\right]\right)\right] \\
+&amp;=\mathbb{E}\left[XY-X\mathbb{E}\left[Y\right]-\mathbb{E}\left[X\right]Y+\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right]\right] \\
+&amp;=\mathbb{E}\left[XY\right]-\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right]-\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right]+\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right] \\
+&amp;=\mathbb{E}\left[XY\right]-\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right].
 \end{split}
 \]</span></p>
 </div>
@@ -391,9 +391,9 @@ Answer
 <section id="section-10" class="level7"><p class="heading"></p>
 <p><strong>M1.</strong> <i class="fa-solid fa-cloud-upload-alt" aria-label="cloud-upload-alt"></i> <strong>Hand-in (worth 10 marks)<br></strong> A married couple decide to have children until they have at least one child of each sex: let <span class="math inline">\(X\)</span> denote the total number of children that they have. The probability of any one child being a boy is <span class="math inline">\(p\)</span> (with the sex of each child being independent of all the others).</p>
 <ol type="a">
-<li><p>What is the mass function of <span class="math inline">\(X\)</span>? (I.e. write down <span class="math inline">\(\mathbb{P}(X=n)\)</span> for all <span class="math inline">\(n\in X(\Omega)\)</span>.)</p></li>
-<li><p>Show that <span class="math display">\[ \mathbb{E}[X] = \frac{1-p(1-p)}{p(1-p)} \,. \]</span> Hint: you may find it useful to refer to the result from lectures that if <span class="math inline">\(Y\sim\mbox{\textup{Geom}}(p)\)</span> then <span class="math inline">\(\mathbb{E}[Y] = 1/p\)</span>.</p></li>
-<li><p>For what value of <span class="math inline">\(p\)</span> is <span class="math inline">\(\mathbb{E}[X]\)</span> minimised?</p></li>
+<li><p>What is the mass function of <span class="math inline">\(X\)</span>? (I.e. write down <span class="math inline">\(\mathbb{P}\left(X=n\right)\)</span> for all <span class="math inline">\(n\in X(\Omega)\)</span>.)</p></li>
+<li><p>Show that <span class="math display">\[ \mathbb{E}\left[X\right] = \frac{1-p(1-p)}{p(1-p)} \,. \]</span> Hint: you may find it useful to refer to the result from lectures that if <span class="math inline">\(Y\sim\mbox{\textup{Geom}}(p)\)</span> then <span class="math inline">\(\mathbb{E}\left[Y\right] = 1/p\)</span>.</p></li>
+<li><p>For what value of <span class="math inline">\(p\)</span> is <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> minimised?</p></li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
@@ -408,17 +408,17 @@ Answer
 <div id="callout-9" class="callout-9-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ol type="a">
-<li><p>Clearly the couple need to have at least two children, so <span class="math inline">\(X(\Omega) = \{2,3,4,\dots\}\)</span>. For <span class="math inline">\(n\geq 2\)</span>, there are two ways in which the couple can have exactly <span class="math inline">\(n\)</span> children: either they have <span class="math inline">\(n-1\)</span> boys in a row, and then a girl; or they have <span class="math inline">\(n-1\)</span> girls and then a boy. Thus <span class="math display">\[ \mathbb{P}(X=n) = p^{n-1}(1-p) + (1-p)^{n-1}p \,, \qquad n\geq 2 \,. \]</span> <strong>[3]</strong></p></li>
-<li><p>To calculate <span class="math inline">\(\mathbb{E}[X]\)</span> we use the usual formula for the expectation of a discrete random variable: <span id="eq-children"><span class="math display">\[
+<li><p>Clearly the couple need to have at least two children, so <span class="math inline">\(X(\Omega) = \{2,3,4,\dots\}\)</span>. For <span class="math inline">\(n\geq 2\)</span>, there are two ways in which the couple can have exactly <span class="math inline">\(n\)</span> children: either they have <span class="math inline">\(n-1\)</span> boys in a row, and then a girl; or they have <span class="math inline">\(n-1\)</span> girls and then a boy. Thus <span class="math display">\[ \mathbb{P}\left(X=n\right) = p^{n-1}(1-p) + (1-p)^{n-1}p \,, \qquad n\geq 2 \,. \]</span> <strong>[3]</strong></p></li>
+<li><p>To calculate <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> we use the usual formula for the expectation of a discrete random variable: <span id="eq-children"><span class="math display">\[
 \begin{split}
-           \mathbb{E}[X] &amp;= \sum_{n=2}^\infty n \mathbb{P}(X=n) \\
-                  &amp;= \sum_{n=2}^\infty n [p^{n-1}(1-p) + (1-p)^{n-1}p] \\
+           \mathbb{E}\left[X\right] &amp;= \sum_{n=2}^\infty n \mathbb{P}\left(X=n\right) \\
+                  &amp;= \sum_{n=2}^\infty n \left[p^{n-1}(1-p) + (1-p)^{n-1}p\right] \\
                   &amp;= \sum_{n=2}^\infty n p^{n-1}(1-p)  + \sum_{n=2}^\infty n (1-p)^{n-1} p\,.
 \end{split}
 \tag{1}\]</span></span></p></li>
 </ol>
 <p><strong>[1]</strong></p>
-<p>Using the hint, we know that if <span class="math inline">\(Y \sim\mbox{\textup{Geom}}(p)\)</span> then <span class="math inline">\(\mathbb{E}[Y] = 1/p\)</span>. That is, <span class="math display">\[  \sum_{n=1}^\infty np (1-p)^{n-1} = \frac{1}{p}.\]</span></p>
+<p>Using the hint, we know that if <span class="math inline">\(Y \sim\mbox{\textup{Geom}}(p)\)</span> then <span class="math inline">\(\mathbb{E}\left[Y\right] = 1/p\)</span>. That is, <span class="math display">\[  \sum_{n=1}^\infty np (1-p)^{n-1} = \frac{1}{p}.\]</span></p>
 <p>We can use that result in the second sum in <a href="#eq-children">Equation&nbsp;1</a> by adding and subtracting the missing <span class="math inline">\(n=1\)</span> term in the sum: <span class="math display">\[  
 \sum_{n=2}^\infty np (1-p)^{n-1} = \sum_{n=1}^\infty np (1-p)^{n-1} - p
             =  \frac{1}{p}- p.
@@ -426,10 +426,10 @@ Answer
 <p><strong>[2]</strong></p>
 <p>The first sum in <a href="#eq-children">Equation&nbsp;1</a> is the same as the second, just with <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span> interchanged, so <span class="math display">\[  \sum_{n=2}^\infty np^{n-1}  (1-p)=   \frac{1}{1-p} -(1-p). \]</span> <strong>[1]</strong></p>
 <p>Adding these two results together we find <span class="math display">\[
-\mathbb{E}[X] =  \frac{1}{1-p} - (1-p)+\frac{1}{p} - p = \frac{1-p(1-p)}{p(1-p)} \,.
+\mathbb{E}\left[X\right] =  \frac{1}{1-p} - (1-p)+\frac{1}{p} - p = \frac{1-p(1-p)}{p(1-p)} \,.
 \]</span> <strong>[1]</strong></p>
 <ol start="3" type="a">
-<li>Differentiating <span class="math inline">\(\mathbb{E}[X]\)</span> with respect to <span class="math inline">\(p\)</span> we get <span class="math inline">\((2p-1)/(p^2(1-p)^2)\)</span>. This is equal to zero when <span class="math inline">\(p=1/2\)</span>. (This is clearly where the minimum is obtained, since it is the only turning point and <span class="math inline">\(\mathbb{E}[X] \to \infty\)</span> as <span class="math inline">\(p\to 0\)</span> or <span class="math inline">\(p\to 1\)</span>.) <strong>[2]</strong>
+<li>Differentiating <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> with respect to <span class="math inline">\(p\)</span> we get <span class="math inline">\((2p-1)/(p^2(1-p)^2)\)</span>. This is equal to zero when <span class="math inline">\(p=1/2\)</span>. (This is clearly where the minimum is obtained, since it is the only turning point and <span class="math inline">\(\mathbb{E}\left[X\right] \to \infty\)</span> as <span class="math inline">\(p\to 0\)</span> or <span class="math inline">\(p\to 1\)</span>.) <strong>[2]</strong>
 </li>
 </ol>
 </div>
@@ -437,7 +437,7 @@ Answer
 </div>
 </section><section id="section-11" class="level7"><p class="heading"></p>
 <p><strong>M2.</strong> Let <span class="math inline">\(X\sim\mbox{\textup{Exp}}(\lambda)\)</span>. Use proof by induction to show that <span class="math display">\[
-\mathbb{E}[X^m]=\frac{m!}{\lambda^m}
+\mathbb{E}\left[X^m\right]=\frac{m!}{\lambda^m}
 \]</span> for all <span class="math inline">\(m\in\mathbb{N}\cup\{0\}\)</span>.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
@@ -452,15 +452,15 @@ Answer
 <div id="callout-10" class="callout-10-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>The statement is true for <span class="math inline">\(m=0\)</span>: <span class="math display">\[
-\mathbb{E}[X^0]=\mathbb{E}[1]=1=\frac{0!}{\lambda^0}.
+\mathbb{E}\left[X^0\right]=\mathbb{E}\left[1\right]=1=\frac{0!}{\lambda^0}.
 \]</span></p>
 <p>We next show that if the statement holds for some <span class="math inline">\(k\in\mathbb{N}\cup\{0\}\)</span> then it holds for <span class="math inline">\(k+1\)</span>: <span class="math display">\[
 \begin{split}
-\mathbb{E}[X^{k+1}] &amp;=\int_{-\infty}^\infty x^{k+1}f_X(x)dx=\int_{0}^\infty x^{k+1}\lambda e^{-\lambda x}dx\\
+\mathbb{E}\left[X^{k+1}\right] &amp;=\int_{-\infty}^\infty x^{k+1}f_X(x)dx=\int_{0}^\infty x^{k+1}\lambda e^{-\lambda x}dx\\
 &amp;=\int_0^\infty x^{k+1}\frac{d}{dx}\left(-e^{-\lambda x}\right)dx\\
 &amp;=-\left[x^{k+1}e^{-\lambda x}\right]^\infty_0+\int_0^\infty(k+1)x^ke^{-\lambda x}dx\\
 &amp;=0+\frac{k+1}{\lambda}\int_0^\infty x^k\lambda e^{-\lambda x}dx\\
-&amp;=\frac{k+1}{\lambda}\mathbb{E}[X^k]=\frac{k+1}{\lambda}\frac{k!}{\lambda^k}~~\text{ by our induction hypothesis}\\
+&amp;=\frac{k+1}{\lambda}\mathbb{E}\left[X^k\right]=\frac{k+1}{\lambda}\frac{k!}{\lambda^k}~~\text{ by our induction hypothesis}\\
 &amp;=\frac{(k+1)!}{\lambda^{k+1}}.
 \end{split}
 \]</span> Thus the statement holds for all <span class="math inline">\(m\in\mathbb{N}\cup\{0\}\)</span> by induction.</p>
@@ -566,7 +566,7 @@ p_X(4)p_Y(1)=\frac{3}{16}\left(\frac{3}{8}-\eta\right)\neq 0 =p_{X,Y}(4,1) \]</s
 </div>
 </div>
 </section><section id="section-13" class="level7"><p class="heading"></p>
-<p><strong>M4.</strong> Prove that binomial coefficients satisfy the identity <span class="math display">\[n{{n-1}\choose{r-1}} = r{n\choose r}.\]</span> Use this to find <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\textup{Var}(X)\)</span>, where <span class="math inline">\(X\sim\mbox{\textup{Bin}}(n,p)\)</span>.</p>
+<p><strong>M4.</strong> Prove that binomial coefficients satisfy the identity <span class="math display">\[n{{n-1}\choose{r-1}} = r{n\choose r}.\]</span> Use this to find <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> and <span class="math inline">\(\textup{Var}\left(X\right)\)</span>, where <span class="math inline">\(X\sim\mbox{\textup{Bin}}(n,p)\)</span>.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -586,7 +586,7 @@ Answer
 \tag{2}\]</span></span></p>
 <p>Now, <span class="math display">\[
 \begin{split}
-      \mathbb{E}[X] &amp;= \sum_{k=0}^n k {n\choose k}p^k(1-p)^{n-k} \\
+      \mathbb{E}\left[X\right] &amp;= \sum_{k=0}^n k {n\choose k}p^k(1-p)^{n-k} \\
              &amp;= \sum_{k=1}^n n {{n-1}\choose{k-1}} p^k(1-p)^{n-k} \quad\text{(by our identity)} \\
              &amp;= np \sum_{k=1}^n  {{n-1}\choose{k-1}} p^{k-1}(1-p)^{n-k} \\
              &amp;= np \sum_{j=0}^{n-1}  {{n-1}\choose{j}} p^{j}(1-p)^{(n-1)-j} \quad\text{(putting $j=k-1$)} \\
@@ -595,7 +595,7 @@ Answer
 \]</span> thanks to <a href="#eq-binomial_sum">Equation&nbsp;2</a>.</p>
 <p>Furthermore, <span class="math display">\[
 \begin{split}
-  \mathbb{E}[X(X-1)]&amp;=\sum_{k=0}^nk(k-1){n\choose k}p^k(1-p)^{n-k}\\
+  \mathbb{E}\left[X(X-1)\right]&amp;=\sum_{k=0}^nk(k-1){n\choose k}p^k(1-p)^{n-k}\\
              &amp;=\sum_{k=0}^nk(k-1)\frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}\\
              &amp;=\sum_{k=0}^n\frac{n!}{(n-k)!(k-2)!}p^k(1-p)^{n-k}\\
              &amp;=n(n-1)p^2\sum_{k=2}^n\frac{(n-2)!}{((n-2)-(k-2))!(k-2)!}p^{k-2}(1-p)^{(n-2)-(k-2)}\\
@@ -603,8 +603,8 @@ Answer
              &amp;=n(n-1)p^2,
 \end{split}
 \]</span> again thanks to <a href="#eq-binomial_sum">Equation&nbsp;2</a>. It follows that</p>
-<p><span class="math display">\[ \mathbb{E}[X^2]=n(n-1)p^2+np \,, \]</span></p>
-<p>and so <span class="math display">\[ \textup{Var}(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=np(1-p) \,. \]</span></p>
+<p><span class="math display">\[ \mathbb{E}\left[X^2\right]=n(n-1)p^2+np \,, \]</span></p>
+<p>and so <span class="math display">\[ \textup{Var}\left(X\right)=\mathbb{E}\left[X^2\right]-\mathbb{E}\left[X\right]^2=np(1-p) \,. \]</span></p>
 </div>
 </div>
 </div>
@@ -612,11 +612,11 @@ Answer
 <p><strong>M5.</strong> Show that if <span class="math inline">\(Z\)</span> is a standard normal random variable then, for <span class="math inline">\(x&gt;0\)</span>,</p>
 <ol type="a">
 <li>
-<span class="math inline">\(\mathbb{P}(Z&gt;x)=\mathbb{P}(Z&lt;-x)\)</span>;</li>
+<span class="math inline">\(\mathbb{P}\left(Z&gt;x\right)=\mathbb{P}\left(Z&lt;-x\right)\)</span>;</li>
 <li>
-<span class="math inline">\(\mathbb{P}(|Z|&gt;x)=2\mathbb{P}(Z&gt;x)\)</span>;</li>
+<span class="math inline">\(\mathbb{P}\left(|Z|&gt;x\right)=2\mathbb{P}\left(Z&gt;x\right)\)</span>;</li>
 <li>
-<span class="math inline">\(\mathbb{P}(|Z|&lt;x)=2\mathbb{P}(Z&lt;x)-1\)</span>.</li>
+<span class="math inline">\(\mathbb{P}\left(|Z|&lt;x\right)=2\mathbb{P}\left(Z&lt;x\right)-1\)</span>.</li>
 </ol>
 <p>Hint: express the probabilities in terms of integrals over the density function <span class="math inline">\(\phi\)</span>, and use the fact that <span class="math inline">\(\phi\)</span> is a symmetric function (i.e.&nbsp;<span class="math inline">\(\phi(z) = \phi(-z)\)</span>).</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
@@ -634,12 +634,12 @@ Answer
 <p>There are many ways to show these identities. We use the hint about the symmetry of the density function of a standard normal random variable: <span class="math display">\[\phi(-z)=\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{(-z)^2}{2}\right)
          =\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{z^2}{2}\right)=\phi(z).\]</span></p>
 <ol type="a">
-<li><p><span class="math display">\[\mathbb{P}(Z&gt;x)=\int_{x}^\infty \phi(z)dz=\int_{-\infty}^{-x} \phi(-u)du=\int_{-\infty}^{-x} \phi(u)du=\mathbb{P}(Z&lt;-x);\]</span></p></li>
-<li><p><span class="math display">\[\mathbb{P}(|Z|&gt;x)=\mathbb{P}(Z&gt;x)+\mathbb{P}(Z&lt;-x)=2\mathbb{P}(Z&gt;x)\,, \]</span> where the last equality follows from part (a).</p></li>
+<li><p><span class="math display">\[\mathbb{P}\left(Z&gt;x\right)=\int_{x}^\infty \phi(z)dz=\int_{-\infty}^{-x} \phi(-u)du=\int_{-\infty}^{-x} \phi(u)du=\mathbb{P}\left(Z&lt;-x\right);\]</span></p></li>
+<li><p><span class="math display">\[\mathbb{P}\left(|Z|&gt;x\right)=\mathbb{P}\left(Z&gt;x\right)+\mathbb{P}\left(Z&lt;-x\right)=2\mathbb{P}\left(Z&gt;x\right)\,, \]</span> where the last equality follows from part (a).</p></li>
 <li><p><span class="math display">\[
 \begin{split}
-          \mathbb{P}(|Z|&lt;x)&amp;=1-\mathbb{P}(|Z|&gt;x)=1-2\mathbb{P}(Z&gt;x)\\
-          &amp;=1-2\left(1-\mathbb{P}(Z&lt;x)\right)=2\mathbb{P}(Z&lt;x)-1\,,
+          \mathbb{P}\left(|Z|&lt;x\right)&amp;=1-\mathbb{P}\left(|Z|&gt;x\right)=1-2\mathbb{P}\left(Z&gt;x\right)\\
+          &amp;=1-2\left(1-\mathbb{P}\left(Z&lt;x\right)\right)=2\mathbb{P}\left(Z&lt;x\right)-1\,,
 \end{split}
 \]</span> where the second equality follows from part (b).</p></li>
 </ol>
@@ -647,7 +647,7 @@ Answer
 </div>
 </div>
 </section><section id="section-15" class="level7"><p class="heading"></p>
-<p><strong>M6.</strong> Let <span class="math inline">\(X\)</span> be a discrete random variable. Show that for all functions <span class="math inline">\(h_{1},h_{2}:\mathbb{R}\rightarrow \mathbb{R}\)</span>, <span class="math display">\[ \mathbb{E}[h_1(X) + h_2(X)] =\mathbb{E}[h_1(X)] + \mathbb{E}[h_2(X)]\,. \]</span></p>
+<p><strong>M6.</strong> Let <span class="math inline">\(X\)</span> be a discrete random variable. Show that for all functions <span class="math inline">\(h_{1},h_{2}:\mathbb{R}\rightarrow \mathbb{R}\)</span>, <span class="math display">\[ \mathbb{E}\left[h_1(X) + h_2(X)\right] =\mathbb{E}\left[h_1(X)\right] + \mathbb{E}\left[h_2(X)\right]\,. \]</span></p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -662,10 +662,10 @@ Answer
 <div class="callout-body-container callout-body">
 <p>Let <span class="math inline">\(h(x)=h_1(x)+ h_2(x)\)</span>. From the formula for the expectation of a function of a discrete random variable it follows that <span class="math display">\[
 \begin{split}
-      \mathbb{E}[h(X)]&amp;=\sum_{k\in X(\Omega)}h(k)p_X(k)\\
+      \mathbb{E}\left[h(X)\right]&amp;=\sum_{k\in X(\Omega)}h(k)p_X(k)\\
                &amp;=\sum_{k\in X(\Omega)}(h_1(k)+ h_2(k))p_X(k)\\
                &amp;=\sum_{k\in X(\Omega)}h_1(k)p_X(k)+ \sum_{k\in X(\Omega)}h_2(k)p_X(k)\\
-               &amp;=\mathbb{E}[h_1(X)]+ \mathbb{E}[h_2(X)]\,.
+               &amp;=\mathbb{E}\left[h_1(X)\right]+ \mathbb{E}\left[h_2(X)\right]\,.
 \end{split}
 \]</span></p>
 </div>
@@ -688,31 +688,31 @@ Answer
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Let us first assume that <span class="math inline">\(\textup{Var}(X)\textup{Var}(Y)&gt;0\)</span> and <span class="math inline">\(rt&gt;0\)</span>. Then the definition of the correlation coefficient gives <span id="eq-cov1"><span class="math display">\[
-\rho(rX+s,tY+u)=\frac{\textup{Cov}(rX+s,tY+u)}{\sqrt{\textup{Var}(rX+s)\textup{Var}(tY+u)}}.
+<p>Let us first assume that <span class="math inline">\(\textup{Var}\left(X\right)\textup{Var}\left(Y\right)&gt;0\)</span> and <span class="math inline">\(rt&gt;0\)</span>. Then the definition of the correlation coefficient gives <span id="eq-cov1"><span class="math display">\[
+\rho(rX+s,tY+u)=\frac{\textup{Cov}\left(rX+s,tY+u\right)}{\sqrt{\textup{Var}\left(rX+s\right)\textup{Var}\left(tY+u\right)}}.
 \tag{3}\]</span></span></p>
 <p>We already know that <span id="eq-cov2"><span class="math display">\[
-\textup{Var}(rX+s)=r^2\textup{Var}(X),~~~\textup{Var}(tY+u)=t^2\textup{Var}(Y).
+\textup{Var}\left(rX+s\right)=r^2\textup{Var}\left(X\right),~~~\textup{Var}\left(tY+u\right)=t^2\textup{Var}\left(Y\right).
 \tag{4}\]</span></span></p>
 <p>We need to derive a similar transformation rule for the covariance. <span id="eq-cov3"><span class="math display">\[
 \begin{split}
-\textup{Cov}(rX+s,tY+u)&amp;=\mathbb{E}[(rX+s-\mathbb{E}[rX+s])(tY+u-\mathbb{E}[tY+u])]\\
-&amp;=\mathbb{E}[(rX+s-(r\mathbb{E}[X]+s))(tY+u-(t\mathbb{E}[Y]+u))]\\
-&amp;=\mathbb{E}[r(X-\mathbb{E}[X])t(Y-\mathbb{E}[Y])]\\
-&amp;=rt\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]\\
-&amp;=rt\textup{Cov}(X,Y)\,,
+\textup{Cov}\left(rX+s,tY+u\right)&amp;=\mathbb{E}\left[\left(rX+s-\mathbb{E}\left[rX+s\right]\right)\left(tY+u-\mathbb{E}\left[tY+u\right]\right)\right]\\
+&amp;=\mathbb{E}\left[\left(rX+s-(r\mathbb{E}\left[X\right]+s)\right)\left(tY+u-(t\mathbb{E}\left[Y\right]+u)\right)\right]\\
+&amp;=\mathbb{E}\left[r\left(X-\mathbb{E}\left[X\right]\right)t\left(Y-\mathbb{E}\left[Y\right]\right)\right]\\
+&amp;=rt\mathbb{E}\left[\left(X-\mathbb{E}\left[X\right]\right)\left(Y-\mathbb{E}\left[Y\right]\right)\right]\\
+&amp;=rt\textup{Cov}\left(X,Y\right)\,,
 \end{split}
 \tag{5}\]</span></span> where we repeatedly used the linearity of expectation. Using the transformation rules <a href="#eq-cov2">Equation&nbsp;4</a> and <a href="#eq-cov3">Equation&nbsp;5</a> in <a href="#eq-cov1">Equation&nbsp;3</a> gives <span class="math display">\[
-\rho(rX+s,tY+u)=\frac{rt}{\sqrt{r^2t^2}}\frac{\textup{Cov}(X,Y)}{\sqrt{\textup{Var}(X)\textup{Var}(Y)}}.
+\rho(rX+s,tY+u)=\frac{rt}{\sqrt{r^2t^2}}\frac{\textup{Cov}\left(X,Y\right)}{\sqrt{\textup{Var}\left(X\right)\textup{Var}\left(Y\right)}}.
 \]</span> The statement now follows from the observation that <span class="math display">\[
 \frac{rt}{\sqrt{r^2t^2}}=\begin{cases}1&amp;\text{ if }rt&gt;0\\-1&amp;\text{ if }rt&lt;0\,.\end{cases}
-\]</span> In case <span class="math inline">\(\textup{Var}(X)\textup{Var}(Y)=0\)</span> or <span class="math inline">\(rt=0\)</span> also <span class="math inline">\(\textup{Var}(rX+s)\textup{Var}(tY+u)=rt\textup{Var}(X)\textup{Var}(Y)=0\)</span>, and thus <span class="math inline">\(\rho(rX+s,tY+u)=0\)</span> by definition. This agrees with the statement because when <span class="math inline">\(\textup{Var}(X)\textup{Var}(Y)=0\)</span> also <span class="math inline">\(\rho(X,Y)=0\)</span>.</p>
+\]</span> In case <span class="math inline">\(\textup{Var}\left(X\right)\textup{Var}\left(Y\right)=0\)</span> or <span class="math inline">\(rt=0\)</span> also <span class="math inline">\(\textup{Var}\left(rX+s\right)\textup{Var}\left(tY+u\right)=rt\textup{Var}\left(X\right)\textup{Var}\left(Y\right)=0\)</span>, and thus <span class="math inline">\(\rho(rX+s,tY+u)=0\)</span> by definition. This agrees with the statement because when <span class="math inline">\(\textup{Var}\left(X\right)\textup{Var}\left(Y\right)=0\)</span> also <span class="math inline">\(\rho(X,Y)=0\)</span>.</p>
 </div>
 </div>
 </div>
 </section><section id="section-17" class="level7"><p class="heading"></p>
 <p><strong>M8.</strong> Let <span class="math inline">\(X\sim \mbox{\textup{Uniform}}(0,a)\)</span> for some <span class="math inline">\(a&gt;0\)</span>. Show that for any <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[
-\mathbb{E}[X^n] =\frac{a^n}{n+1}.
+\mathbb{E}\left[X^n\right] =\frac{a^n}{n+1}.
 \]</span> Use this to determine <span class="math inline">\(\rho(X,X^2)\)</span>, and show that this does not depend upon the value of <span class="math inline">\(a\)</span>.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="true" aria-label="Toggle callout">
@@ -727,14 +727,14 @@ Answer
 <div id="callout-16" class="callout-16-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>For <span class="math inline">\(n\in\mathbb{N}\)</span> we calculate <span class="math display">\[
-\mathbb{E}[X^n]=\int_{-\infty}^\infty x^nf_X(x)dx=\int_0^a\frac{x^n}{a}dx=\frac{1}{a}\left[\frac{x^{n+1}}{n+1}\right]^a_0=\frac{a^n}{n+1}.\]</span> Now we calculate the covariance of <span class="math inline">\(X\)</span> and <span class="math inline">\(X^2\)</span>: <span class="math display">\[
-\textup{Cov}(X,X^2)=\mathbb{E}[X^3]-\mathbb{E}[X]\mathbb{E}[X^2] = \frac{a^3}{4}-\frac{a^2}{3}\frac{a}{2}=\frac{a^3}{12}\,.
+\mathbb{E}\left[X^n\right]=\int_{-\infty}^\infty x^nf_X(x)dx=\int_0^a\frac{x^n}{a}dx=\frac{1}{a}\left[\frac{x^{n+1}}{n+1}\right]^a_0=\frac{a^n}{n+1}.\]</span> Now we calculate the covariance of <span class="math inline">\(X\)</span> and <span class="math inline">\(X^2\)</span>: <span class="math display">\[
+\textup{Cov}\left(X,X^2\right)=\mathbb{E}\left[X^3\right]-\mathbb{E}\left[X\right]\mathbb{E}\left[X^2\right] = \frac{a^3}{4}-\frac{a^2}{3}\frac{a}{2}=\frac{a^3}{12}\,.
 \]</span> We also have <span class="math display">\[
-\textup{Var}(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=\frac{a^2}{3}-\left(\frac{a}{2}\right)^2=\frac{a^2}{12}
+\textup{Var}\left(X\right)=\mathbb{E}\left[X^2\right]-\mathbb{E}\left[X\right]^2=\frac{a^2}{3}-\left(\frac{a}{2}\right)^2=\frac{a^2}{12}
 \]</span> and <span class="math display">\[
-\textup{Var}(X^2)=\mathbb{E}[X^4]-\mathbb{E}[X^2]^2=\frac{a^4}{5}-\left(\frac{a^2}{3}\right)^2=\frac{4a^4}{45}.
+\textup{Var}\left(X^2\right)=\mathbb{E}\left[X^4\right]-\mathbb{E}\left[X^2\right]^2=\frac{a^4}{5}-\left(\frac{a^2}{3}\right)^2=\frac{4a^4}{45}.
 \]</span> Finally, we calculate <span class="math display">\[
-\rho(X,X^2)=\frac{\textup{Cov}(X,X^2)}{\sqrt{\textup{Var}(X)\textup{Var}(X^2)}}=\frac{a^3/12}{\sqrt{a^6/135}}=\frac{\sqrt{135}}{12}=\frac{\sqrt{15}}{4},
+\rho(X,X^2)=\frac{\textup{Cov}\left(X,X^2\right)}{\sqrt{\textup{Var}\left(X\right)\textup{Var}\left(X^2\right)}}=\frac{a^3/12}{\sqrt{a^6/135}}=\frac{\sqrt{135}}{12}=\frac{\sqrt{15}}{4},
 \]</span> which doesn’t depend upon <span class="math inline">\(a\)</span>.</p>
 </div>
 </div>
@@ -742,10 +742,10 @@ Answer
 </section><section id="section-18" class="level7"><p class="heading"></p>
 <p><strong>M9.</strong> A bag contains 3 cubes, 4 pyramids and 7 spheres. An object is drawn randomly from the bag and its type is recorded. Then the object is replaced. This is repeated 20 times.</p>
 <ol type="a">
-<li><p>Let <span class="math inline">\(C_i\)</span> be the indicator random variable for the event that the <span class="math inline">\(i\)</span>-th draw gives a cube, for <span class="math inline">\(i=1,\dots,20\)</span>. Calculate <span class="math inline">\(\mathbb{E}[C_i], \mathbb{E}[C_i^2]\)</span> and <span class="math inline">\(\mathbb{E}[C_iC_j]\)</span> for <span class="math inline">\(i\neq j\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(C\)</span> be the number of times a cube was drawn, Use that <span class="math inline">\(C=\sum_{i=1}^{20}C_i\)</span> to calculate <span class="math inline">\(\mathbb{E}[C]\)</span> and <span class="math inline">\(\textup{Var}(C)\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(S_i\)</span> be the indicator random variable for the event that the <span class="math inline">\(i\)</span>-th draw gives a sphere. Calculate <span class="math inline">\(\mathbb{E}[C_iS_i]\)</span> and <span class="math inline">\(\mathbb{E}[C_iS_j]\)</span> for <span class="math inline">\(i\neq j\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(S\)</span> be the number of times a sphere was drawn. Use the above results to calculate <span class="math inline">\(\mathbb{E}[CS]\)</span>, <span class="math inline">\(\textup{Cov}(C,S)\)</span>, <span class="math inline">\(\rho(C,S)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(C_i\)</span> be the indicator random variable for the event that the <span class="math inline">\(i\)</span>-th draw gives a cube, for <span class="math inline">\(i=1,\dots,20\)</span>. Calculate <span class="math inline">\(\mathbb{E}\left[C_i\right], \mathbb{E}\left[C_i^2\right]\)</span> and <span class="math inline">\(\mathbb{E}\left[C_iC_j\right]\)</span> for <span class="math inline">\(i\neq j\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(C\)</span> be the number of times a cube was drawn, Use that <span class="math inline">\(C=\sum_{i=1}^{20}C_i\)</span> to calculate <span class="math inline">\(\mathbb{E}\left[C\right]\)</span> and <span class="math inline">\(\textup{Var}\left(C\right)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(S_i\)</span> be the indicator random variable for the event that the <span class="math inline">\(i\)</span>-th draw gives a sphere. Calculate <span class="math inline">\(\mathbb{E}\left[C_iS_i\right]\)</span> and <span class="math inline">\(\mathbb{E}\left[C_iS_j\right]\)</span> for <span class="math inline">\(i\neq j\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(S\)</span> be the number of times a sphere was drawn. Use the above results to calculate <span class="math inline">\(\mathbb{E}\left[CS\right]\)</span>, <span class="math inline">\(\textup{Cov}\left(C,S\right)\)</span>, <span class="math inline">\(\rho(C,S)\)</span>.</p></li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="true" aria-label="Toggle callout">
@@ -761,32 +761,32 @@ Answer
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li><p>As three of the 14 shapes are cubes, the probability to draw a cube is <span class="math inline">\(3/14\)</span>. Hence <span class="math inline">\(C_i\sim\mbox{\textup{Bern}}(3/14)\)</span>. This immediately gives <span class="math display">\[
-\mathbb{E}[C_i] =  \mathbb{E}[C_i^2] = \frac{3}{14}.
+\mathbb{E}\left[C_i\right] =  \mathbb{E}\left[C_i^2\right] = \frac{3}{14}.
 \]</span> For <span class="math inline">\(i\neq j\)</span> the event that the <span class="math inline">\(i\)</span>-th draw gives a cube and the event that the <span class="math inline">\(j\)</span>-th cube gives a draw are independent (because we put the shape back after each draw). Thus the indicator random variables <span class="math inline">\(C_i\)</span> and <span class="math inline">\(C_j\)</span> for these events are also independent and thus <span class="math display">\[
-\mathbb{E}[C_iC_j]=\mathbb{E}[C_i]\mathbb{E}[C_j]=\left(\frac{3}{14}\right)^2=\frac{9}{196}.
+\mathbb{E}\left[C_iC_j\right]=\mathbb{E}\left[C_i\right]\mathbb{E}\left[C_j\right]=\left(\frac{3}{14}\right)^2=\frac{9}{196}.
 \]</span></p></li>
 <li><p>The linearity of expectation gives <span class="math display">\[
-\mathbb{E}[C]=\mathbb{E}[\sum_{i=1}^{20} C_i]=\sum_{i=1}^{20}\mathbb{E}[C_i] = 20\frac{3}{14}=\frac{30}{7}.
+\mathbb{E}\left[C\right]=\mathbb{E}\left[\sum_{i=1}^{20} C_i\right]=\sum_{i=1}^{20}\mathbb{E}\left[C_i\right] = 20\frac{3}{14}=\frac{30}{7}.
 \]</span> Because the <span class="math inline">\(C_i\)</span> are independent of each other, the variance of their sum equals the sum of their variances: <span class="math display">\[
-\textup{Var}(C)=\textup{Var}(\sum_{i=1}^{20} C_i)=\sum_{i=1}^{20} \textup{Var}(C_i)=20 \frac{3}{14}\frac{11}{14}=\frac{165}{49}.
+\textup{Var}\left(C\right)=\textup{Var}\left(\sum_{i=1}^{20} C_i\right)=\sum_{i=1}^{20} \textup{Var}\left(C_i\right)=20 \frac{3}{14}\frac{11}{14}=\frac{165}{49}.
 \]</span></p></li>
-<li><p>We observe that <span class="math inline">\(C_iS_i=0\)</span> because on the same draw one can not simultaneously have a cube and a sphere. Thus also <span class="math inline">\(\mathbb{E}[C_iS_i]=0\)</span>. If <span class="math inline">\(i\neq j\)</span> we can use independence to factorise the expectation: <span class="math display">\[
-\mathbb{E}[C_iS_j]=\mathbb{E}[C_i]\mathbb{E}[S_j]=\frac{3}{14}\frac{1}{2}=\frac{3}{28}\,,
+<li><p>We observe that <span class="math inline">\(C_iS_i=0\)</span> because on the same draw one can not simultaneously have a cube and a sphere. Thus also <span class="math inline">\(\mathbb{E}\left[C_iS_i\right]=0\)</span>. If <span class="math inline">\(i\neq j\)</span> we can use independence to factorise the expectation: <span class="math display">\[
+\mathbb{E}\left[C_iS_j\right]=\mathbb{E}\left[C_i\right]\mathbb{E}\left[S_j\right]=\frac{3}{14}\frac{1}{2}=\frac{3}{28}\,,
 \]</span> where we used that the probability of drawing a sphere is <span class="math inline">\(1/2\)</span>.</p></li>
 <li><p>We have <span class="math display">\[
-\mathbb{E}[CS]=\mathbb{E}[\sum_{i=1}^{20} C_i \sum_{j=1}^{20} S_j]=\sum_{i=1}^{20} \sum_{j=1}^{20} \mathbb{E}[C_i S_j].
+\mathbb{E}\left[CS\right]=\mathbb{E}\left[\sum_{i=1}^{20} C_i \sum_{j=1}^{20} S_j\right]=\sum_{i=1}^{20} \sum_{j=1}^{20} \mathbb{E}\left[C_i S_j\right].
 \]</span> We split the sum over all pairs <span class="math inline">\((i,j)\)</span> into the pairs where <span class="math inline">\(i\neq j\)</span> and the pairs <span class="math inline">\((i,i)\)</span>, so <span class="math display">\[
-\mathbb{E}[CS]=\sum_{i=1}^{20} \sum_{\stackrel{j=1}{j\neq i}}^{20} \mathbb{E}[C_i S_j] + \sum_{i=1}^{20}  \mathbb{E}[C_i S_i]\,.
-\]</span> Using our above results for <span class="math inline">\(\mathbb{E}[C_iS_i]\)</span> and <span class="math inline">\(\mathbb{E}[C_i S_j]\)</span> and recognising that there are <span class="math inline">\(20\cdot 19=380\)</span> pairs where <span class="math inline">\(i\neq j\)</span> this gives us <span class="math display">\[
-\mathbb{E}[CS]=\sum_{i=1}^{20} \sum_{\stackrel{j=1}{j\neq i}}^{20}\frac{3}{28}+ \sum_{i=1}^{20} 0=380\frac{3}{28}=\frac{285}{7}\,.
+\mathbb{E}\left[CS\right]=\sum_{i=1}^{20} \sum_{\stackrel{j=1}{j\neq i}}^{20} \mathbb{E}\left[C_i S_j\right] + \sum_{i=1}^{20}  \mathbb{E}\left[C_i S_i\right]\,.
+\]</span> Using our above results for <span class="math inline">\(\mathbb{E}\left[C_iS_i\right]\)</span> and <span class="math inline">\(\mathbb{E}\left[C_i S_j\right]\)</span> and recognising that there are <span class="math inline">\(20\cdot 19=380\)</span> pairs where <span class="math inline">\(i\neq j\)</span> this gives us <span class="math display">\[
+\mathbb{E}\left[CS\right]=\sum_{i=1}^{20} \sum_{\stackrel{j=1}{j\neq i}}^{20}\frac{3}{28}+ \sum_{i=1}^{20} 0=380\frac{3}{28}=\frac{285}{7}\,.
 \]</span> We also calculate <span class="math display">\[
-\mathbb{E}[S]=\mathbb{E}[\sum_{i=1}^{20} S_i]=\sum_{i=1}^{20}\mathbb{E}[S_i] = 20\frac{1}{2}=10.
+\mathbb{E}\left[S\right]=\mathbb{E}\left[\sum_{i=1}^{20} S_i\right]=\sum_{i=1}^{20}\mathbb{E}\left[S_i\right] = 20\frac{1}{2}=10.
 \]</span> The covariance can then be calculated as <span class="math display">\[
-\textup{Cov}(C,S)=\mathbb{E}[CS]-\mathbb{E}[C]\mathbb{E}[S]=\frac{285}{7}-\frac{30}{7}10=-\frac{15}{7}.
+\textup{Cov}\left(C,S\right)=\mathbb{E}\left[CS\right]-\mathbb{E}\left[C\right]\mathbb{E}\left[S\right]=\frac{285}{7}-\frac{30}{7}10=-\frac{15}{7}.
 \]</span> To calculate the correlation coefficient we also need <span class="math display">\[
-\textup{Var}(S)=\textup{Var}(\sum_{i=1}^{20} S_i)=\sum_{i=1}^{20} \textup{Var}(S_i)=20 \frac12\frac12=5.
+\textup{Var}\left(S\right)=\textup{Var}\left(\sum_{i=1}^{20} S_i\right)=\sum_{i=1}^{20} \textup{Var}\left(S_i\right)=20 \frac12\frac12=5.
 \]</span> The correlation coefficient is <span class="math display">\[
-\rho(C,S)=\frac{\textup{Cov}(C,S)}{\sqrt{\textup{Var}(C)\textup{Var}(S)}}=-\sqrt{\frac{3}{11}}\approx -0.5222.
+\rho(C,S)=\frac{\textup{Cov}\left(C,S\right)}{\sqrt{\textup{Var}\left(C\right)\textup{Var}\left(S\right)}}=-\sqrt{\frac{3}{11}}\approx -0.5222.
 \]</span></p></li>
 </ol>
 </div>
@@ -797,7 +797,7 @@ Answer
 <p><em>Still hungry for more? Try these if you want to push yourself further.</em></p>
 <section id="section-20" class="level7"><p class="heading"></p>
 <p><strong>D1.</strong> Consider a random variable <span class="math inline">\(X\sim\mbox{\textup{Uniform}}[a,b]\)</span>, where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are unknown. You are told that <span class="math display">\[
-        \mathbb{P}(X&lt;2) = 1/3 \quad \text{and} \quad \mathbb{P}(1&lt;X\leq 3) = 1/2 \,.
+        \mathbb{P}\left(X&lt;2\right) = 1/3 \quad \text{and} \quad \mathbb{P}\left(1&lt;X\leq 3\right) = 1/2 \,.
 \]</span> Given this information, find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.<br></p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="true" aria-label="Toggle callout">
@@ -811,23 +811,23 @@ Answer
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>From the first equation we immediately know that <span class="math inline">\(a&lt;2&lt;b\)</span>. Now, for a continuous random variable, we obtain the probability that it lies in an interval <span class="math inline">\((c,d)\)</span> by integrating the density function over that interval, i.e.&nbsp;<span class="math display">\[ \mathbb{P}(c\leq X\leq d) = \int_c^d f_X(x) dx \,. \]</span> Since <span class="math inline">\(X\sim\mbox{\textup{Uniform}}[a,b]\)</span>, we know that <span class="math display">\[ f_X(x) = \begin{cases}
+<p>From the first equation we immediately know that <span class="math inline">\(a&lt;2&lt;b\)</span>. Now, for a continuous random variable, we obtain the probability that it lies in an interval <span class="math inline">\((c,d)\)</span> by integrating the density function over that interval, i.e.&nbsp;<span class="math display">\[ \mathbb{P}\left(c\leq X\leq d\right) = \int_c^d f_X(x) dx \,. \]</span> Since <span class="math inline">\(X\sim\mbox{\textup{Uniform}}[a,b]\)</span>, we know that <span class="math display">\[ f_X(x) = \begin{cases}
         1/(b-a) &amp;\quad x\in[a,b] \\
         0 &amp;\quad\text{otherwise.}
       \end{cases}
 \]</span> Thus we obtain <span id="eq-sim1"><span class="math display">\[
-1/3 = \mathbb{P}(X&lt;2) = \mathbb{P}(a\leq X&lt;2) =  \int_a^2 1/(b-a) dx = (2-a)/(b-a) \,.
+1/3 = \mathbb{P}\left(X&lt;2\right) = \mathbb{P}\left(a\leq X&lt;2\right) =  \int_a^2 1/(b-a) dx = (2-a)/(b-a) \,.
 \tag{6}\]</span></span></p>
-<p>In order to use the second equation (<span class="math inline">\(\mathbb{P}(1&lt;X\leq 3) = 1/2\)</span>) in the same way, we have two possibilities to consider:</p>
+<p>In order to use the second equation (<span class="math inline">\(\mathbb{P}\left(1&lt;X\leq 3\right) = 1/2\)</span>) in the same way, we have two possibilities to consider:</p>
 <ol type="1">
 <li><span class="math inline">\(a&lt;1\)</span></li>
 <li><span class="math inline">\(1\leq a&lt;2\)</span></li>
 </ol>
 <p>Suppose first that <span class="math inline">\(a&lt;1\)</span>. Then <span id="eq-sim2"><span class="math display">\[
-1/2 = \mathbb{P}(1&lt;X\leq 3) = \int_1^3 1/(b-a) dx = 2/(b-a) \,,
+1/2 = \mathbb{P}\left(1&lt;X\leq 3\right) = \int_1^3 1/(b-a) dx = 2/(b-a) \,,
 \tag{7}\]</span></span> since the density function <span class="math inline">\(f_X\)</span> is equal to <span class="math inline">\(1/(b-a)\)</span> for all <span class="math inline">\(x\in[1,3]\)</span> if <span class="math inline">\(a&lt;1\)</span>.</p>
 <p>If <span class="math inline">\(1\leq a\)</span> however, then instead we obtain <span id="eq-sim3"><span class="math display">\[
-1/2 = \mathbb{P}(1&lt;X\leq 3) = \int_1^a 0\, dx + \int_a^3 1/(b-a)dx = (3-a)/(b-a) \,.
+1/2 = \mathbb{P}\left(1&lt;X\leq 3\right) = \int_1^a 0\, dx + \int_a^3 1/(b-a)dx = (3-a)/(b-a) \,.
 \tag{8}\]</span></span></p>
 <p>We now have to solve these simultaneous equations in order to find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. If we assume that <span class="math inline">\(1\leq a&lt;2\)</span>, then we must try to solve <a href="#eq-sim1">Equation&nbsp;6</a> and <a href="#eq-sim3">Equation&nbsp;8</a> together; but this gives <span class="math display">\[ 2(3-a) = 3(2-a)\,, \]</span> resulting in <span class="math inline">\(a=0\)</span>. But this contradicts our assumption that <span class="math inline">\(1\leq a\)</span>!</p>
 <p>So it must be the case that <span class="math inline">\(a&lt;1\)</span>: now we must solve <a href="#eq-sim1">Equation&nbsp;6</a> and <a href="#eq-sim2">Equation&nbsp;7</a>, and this <em>is</em> possible, with <span class="math inline">\(a=2/3\)</span> and <span class="math inline">\(b=14/3\)</span>.</p>
@@ -835,7 +835,7 @@ Answer
 </div>
 </div>
 </section><section id="section-21" class="level7"><p class="heading"></p>
-<p><strong>D2.</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two independent geometrically distributed random variables with parameter <span class="math inline">\(p\)</span>, i.e., <span class="math inline">\(X\sim\mbox{\textup{Geom}}(p)\)</span> and <span class="math inline">\(Y\sim\mbox{\textup{Geom}}(p)\)</span>. For any natural numbers <span class="math inline">\(i\)</span> and <span class="math inline">\(n\)</span> with <span class="math inline">\(i&lt;n\)</span> calculate the conditional probability <span class="math inline">\(\mathbb{P}(X=i\,|\,X+Y=n)\)</span>. Describe in words the meaning in terms of Bernoulli trials of what you just calculated.</p>
+<p><strong>D2.</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two independent geometrically distributed random variables with parameter <span class="math inline">\(p\)</span>, i.e., <span class="math inline">\(X\sim\mbox{\textup{Geom}}(p)\)</span> and <span class="math inline">\(Y\sim\mbox{\textup{Geom}}(p)\)</span>. For any natural numbers <span class="math inline">\(i\)</span> and <span class="math inline">\(n\)</span> with <span class="math inline">\(i&lt;n\)</span> calculate the conditional probability <span class="math inline">\(\mathbb{P}\left(X=i\,|\,X+Y=n\right)\)</span>. Describe in words the meaning in terms of Bernoulli trials of what you just calculated.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -849,18 +849,18 @@ Answer
 <div id="callout-19" class="callout-19-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>According to the definition of conditional probability, <span class="math display">\[
-\mathbb{P}(X=i\,|\,X+Y=n)=\frac{\mathbb{P}(X=i,\,X+Y=n)}{\mathbb{P}(X+Y=n)}.
+\mathbb{P}\left(X=i\,|\,X+Y=n\right)=\frac{\mathbb{P}\left(X=i,\,X+Y=n\right)}{\mathbb{P}\left(X+Y=n\right)}.
 \]</span></p>
 <p>For the numerator we can use that the event <span class="math inline">\(\{X=i,X+Y=n\}\)</span> is the event <span class="math inline">\(\{X=i,Y=n-i\}\)</span>. We then know that the independence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> implies the factorisation of that probability: <span class="math display">\[
-\mathbb{P}(X=i,\,X+Y=n)=\mathbb{P}(X=i,Y=n-i)=\mathbb{P}(X=i)\mathbb{P}(Y=n-i).
-\]</span> We can now substitute in the probability mass function for the geometric distribution with parameter <span class="math inline">\(p\)</span>: <span class="math display">\[ \mathbb{P}(X=i)=(1-p)^{i-1}p\]</span> and thus <span class="math display">\[ \mathbb{P}(Y=n-i)=(1-p)^{n-i-1}p.\]</span></p>
-<p>This gives <span class="math display">\[\mathbb{P}(X=i,\,X+Y=n)=(1-p)^{i-1}p(1-p)^{n-i-1}p=(1-p)^{n-2}p^2.
+\mathbb{P}\left(X=i,\,X+Y=n\right)=\mathbb{P}\left(X=i,Y=n-i\right)=\mathbb{P}\left(X=i\right)\mathbb{P}\left(Y=n-i\right).
+\]</span> We can now substitute in the probability mass function for the geometric distribution with parameter <span class="math inline">\(p\)</span>: <span class="math display">\[ \mathbb{P}\left(X=i\right)=(1-p)^{i-1}p\]</span> and thus <span class="math display">\[ \mathbb{P}\left(Y=n-i\right)=(1-p)^{n-i-1}p.\]</span></p>
+<p>This gives <span class="math display">\[\mathbb{P}\left(X=i,\,X+Y=n\right)=(1-p)^{i-1}p(1-p)^{n-i-1}p=(1-p)^{n-2}p^2.
 \]</span> Note that this is independent of <span class="math inline">\(i\)</span>.</p>
 <p>For the denominator we use the partition theorem to write <span class="math display">\[
-\mathbb{P}(X+Y=n)=\sum_{i=1}^{n-1}\mathbb{P}(X=i,X+Y=n).
-\]</span> From our calculation above we see that every term in the sum is the same, so <span class="math display">\[ \mathbb{P}(X+Y=n)=(n-1)\mathbb{P}(X=i,X+Y=n).
+\mathbb{P}\left(X+Y=n\right)=\sum_{i=1}^{n-1}\mathbb{P}\left(X=i,X+Y=n\right).
+\]</span> From our calculation above we see that every term in the sum is the same, so <span class="math display">\[ \mathbb{P}\left(X+Y=n\right)=(n-1)\mathbb{P}\left(X=i,X+Y=n\right).
 \]</span> Putting this all together we finally find that <span class="math display">\[
-\mathbb{P}(X=i\,|\,X+Y=n)=\frac{\mathbb{P}(X=i,X+Y=n)}{\mathbb{P}(X+Y=n)}=\frac{1}{n-1}.
+\mathbb{P}\left(X=i\,|\,X+Y=n\right)=\frac{\mathbb{P}\left(X=i,X+Y=n\right)}{\mathbb{P}\left(X+Y=n\right)}=\frac{1}{n-1}.
 \]</span></p>
 <p>A geometric random variable counts the number of turns until the first success in repeated Bernoulli trials. Therefore the sum <span class="math inline">\(X+Y\)</span> of two identical and independent geometric random variables counts the number of turns until the <em>second</em> success. So the conditional probability we calculated is the probability that the first success happens on a particular trial <span class="math inline">\(i\)</span> given that the second success happens on the <span class="math inline">\(n\)</span>-th trial. The result shows that the first success is then equally likely to occur on any of the <span class="math inline">\(n-1\)</span> trials before the <span class="math inline">\(n\)</span>-th trial.</p>
 </div>

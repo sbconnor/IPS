@@ -160,6 +160,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 4: Sampling distributions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: Smarties</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item">
@@ -533,7 +539,7 @@ Your turn
 </div>
 <p>Suppose that we now choose one of the respondents in the <code>cdc</code> dataset at random: let</p>
 <p><span class="math display">\[A = \{\text{the BMI of our randomly chosen respondent is greater than 34}\}\,.\]</span></p>
-<p>What is <span class="math inline">\(\mathbb{P}(A)\)</span>? Since each person in the dataset is equally likely to be chosen, we can calculate this probability by counting how many respondents have a BMI greater than 34, and dividing by the total number of respondents:</p>
+<p>What is <span class="math inline">\(\mathbb{P}\left(A\right)\)</span>? Since each person in the dataset is equally likely to be chosen, we can calculate this probability by counting how many respondents have a BMI greater than 34, and dividing by the total number of respondents:</p>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">bmi</span> <span class="op">&gt;</span> <span class="fl">34</span><span class="op">)</span><span class="op">/</span><span class="fl">20000</span></span>
 <span><span class="co">#&gt; [1] 0.0756</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

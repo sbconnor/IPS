@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<link href="../assignments/assignments.html" rel="next">
+<link href="../labs/lab5.html" rel="next">
 <link href="../labs/lab3.html" rel="prev">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -160,6 +160,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 4: Sampling distributions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: Smarties</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item">
@@ -260,15 +266,15 @@ Remember!
 </div>
 <p>Now let us assume we did not already know that this sample was from an exponential distribution with parameter 1. Let us instead assume that we were just given these 100 numbers, and believe that they come from an <span class="math inline">\(\mbox{\textup{Exp}}(\lambda)\)</span> distribution: we want to use these numbers to estimate <span class="math inline">\(\lambda\)</span>.</p>
 </section><section id="estimating-the-expectation" class="level2"><h2 class="anchored" data-anchor-id="estimating-the-expectation">Estimating the expectation</h2>
-<p>In this lab we will in particular look at estimating the expectation of the underlying distribution. We of course know that an exponentially distributed random variable <span class="math inline">\(X\)</span> with parameter <span class="math inline">\(\lambda\)</span> has an expectation <span class="math inline">\(\mathbb{E}[X]=1/\lambda\)</span>. So if we can estimate <span class="math inline">\(\mathbb{E}[X]\)</span> we can also estimate the parameter <span class="math inline">\(\lambda\)</span>.</p>
-<p>We have seen that the sample mean <span class="math display">\[\bar{X}_{n}=(X_1+\cdots +X_{n})/n\]</span> is going to be a good estimator of the expectation of <span class="math inline">\(X\)</span>. The <strong>law of large numbers</strong> says that this estimator gets better and better as <span class="math inline">\(n\to\infty\)</span>. But for finite sample size <span class="math inline">\(n\)</span> there will be some uncertainty in the estimate of <span class="math inline">\(\mathbb{E}[X]\)</span>.</p>
-<p>Let us calculate the value <span class="math inline">\(\bar{x}_{100}\)</span> that the sample mean <span class="math inline">\(\bar{X}_{100}\)</span> takes in the realisation of the sample that we simulated above. When I ran <code>mean(x)</code> on my computer I obtained <span class="math inline">\(\bar{x}_{100}=\)</span> 0.980413. However, you will get a different estimate for <span class="math inline">\(\mathbb{E}[X]\)</span> because the random number generator will have given you a different set of numbers <span class="math inline">\(x_1,\dots, x_{100}\)</span>. As you know, you will get different random numbers each time you ask R for random numbers, <em>except</em> if you set the <strong>seed</strong> of the random number generator to a specific value right before you ask R for the random numbers. So if we run the code</p>
+<p>In this lab we will in particular look at estimating the expectation of the underlying distribution. We of course know that an exponentially distributed random variable <span class="math inline">\(X\)</span> with parameter <span class="math inline">\(\lambda\)</span> has an expectation <span class="math inline">\(\mathbb{E}\left[X\right]=1/\lambda\)</span>. So if we can estimate <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> we can also estimate the parameter <span class="math inline">\(\lambda\)</span>.</p>
+<p>We have seen that the sample mean <span class="math display">\[\bar{X}_{n}=(X_1+\cdots +X_{n})/n\]</span> is going to be a good estimator of the expectation of <span class="math inline">\(X\)</span>. The <strong>law of large numbers</strong> says that this estimator gets better and better as <span class="math inline">\(n\to\infty\)</span>. But for finite sample size <span class="math inline">\(n\)</span> there will be some uncertainty in the estimate of <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>.</p>
+<p>Let us calculate the value <span class="math inline">\(\bar{x}_{100}\)</span> that the sample mean <span class="math inline">\(\bar{X}_{100}\)</span> takes in the realisation of the sample that we simulated above. When I ran <code>mean(x)</code> on my computer I obtained <span class="math inline">\(\bar{x}_{100}=\)</span> 1.1970338. However, you will get a different estimate for <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> because the random number generator will have given you a different set of numbers <span class="math inline">\(x_1,\dots, x_{100}\)</span>. As you know, you will get different random numbers each time you ask R for random numbers, <em>except</em> if you set the <strong>seed</strong> of the random number generator to a specific value right before you ask R for the random numbers. So if we run the code</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> </span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">100</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>we will all get the same set of values <span class="math inline">\(x_1,\dots,x_{100}\)</span>, and thus the same estimate <span class="math inline">\(\mathbb{E}[X]\approx\)</span> 1.0306764.</p>
+<p>we will all get the same set of values <span class="math inline">\(x_1,\dots,x_{100}\)</span>, and thus the same estimate <span class="math inline">\(\mathbb{E}\left[X\right]\approx\)</span> 1.0306764.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -344,7 +350,7 @@ Your turn
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sample_means50</span>, breaks <span class="op">=</span> <span class="fl">25</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The sampling distribution that we computed tells us much about estimating <span class="math inline">\(\mathbb{E}[X]\)</span>. By looking at the histogram we see that most of the time we are going to get an estimate close to the true value of 1 but that there is some non-negligible probability of getting an estimate that is off by as much as 0.2.</p>
+<p>The sampling distribution that we computed tells us much about estimating <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>. By looking at the histogram we see that most of the time we are going to get an estimate close to the true value of 1 but that there is some non-negligible probability of getting an estimate that is off by as much as 0.2.</p>
 <p>Indeed we can estimate the probability that the estimate is off by as much as 0.2 from the sampling distribution by calculating the proportion of the 50,000 values in <code>sample_means50</code> that are more than 0.2 away from 1.</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">sample_means50</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0.2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -370,11 +376,11 @@ Note
 <p>The name <code>ecdf</code> stands for “empirical cumulative distribution function”. That it is called <em>cumulative</em> contains no extra information, it just so happens that some people refer to the distribution function as the “cumulative” distribution function to highlight the fact that a distribution function at <span class="math inline">\(x\)</span> accumulates all the contributions from values up to <span class="math inline">\(x\)</span>.</p>
 </div>
 </div>
-<p>We can now for example look at the probability that, when using a sample of size 50, we are going to get an estimate for <span class="math inline">\(\mathbb{E}[X]\)</span> that is more than 0.2 away from the true value of <span class="math inline">\(\mathbb{E}[X]=1\)</span>.</p>
+<p>We can now for example look at the probability that, when using a sample of size 50, we are going to get an estimate for <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> that is more than 0.2 away from the true value of <span class="math inline">\(\mathbb{E}\left[X\right]=1\)</span>.</p>
 <p><span class="math display">\[
   \begin{split}
-    \mathbb{P}(|\bar{X}_{50}-\mathbb{E}[X]|&gt;0.2) &amp;= \mathbb{P}(\bar{X}_{50}&lt;0.8)+\mathbb{P}(\bar{X}_{50}&gt;1.2) \\
-    &amp;= \mathbb{P}(\bar{X}_{50}&lt;0.8)+1-\mathbb{P}(\bar{X}_{50}\leq 1.2) \\
+    \mathbb{P}\left(|\bar{X}_{50}-\mathbb{E}\left[X\right]|&gt;0.2\right) &amp;= \mathbb{P}\left(\bar{X}_{50}&lt;0.8\right)+\mathbb{P}\left(\bar{X}_{50}&gt;1.2\right) \\
+    &amp;= \mathbb{P}\left(\bar{X}_{50}&lt;0.8\right)+1-\mathbb{P}\left(\bar{X}_{50}\leq 1.2\right) \\
     &amp;=F_{\bar{X}_{50}}(0.8)+1-F_{\bar{X}_{50}}(1.2).
   \end{split}
 \]</span></p>
@@ -382,7 +388,7 @@ Note
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">F50</span><span class="op">(</span><span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu">F50</span><span class="op">(</span><span class="fl">1.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Thus, if we want to estimate <span class="math inline">\(\mathbb{E}[X]\)</span> with a precision of better than <span class="math inline">\(\pm 0.2\)</span> we should use a larger sample, because the chance of getting an answer outside the desired precision is about 16%.</p>
+<p>Thus, if we want to estimate <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> with a precision of better than <span class="math inline">\(\pm 0.2\)</span> we should use a larger sample, because the chance of getting an answer outside the desired precision is about 16%.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -442,7 +448,7 @@ Your turn
 </div>
 <p>Looking at the histogram for the sample mean of size 200, one gets the impression that it looks very much like a normal distribution. Why would the sample mean for the exponential distribution have a normal distribution? This is the <strong>Central Limit Theorem</strong> in action!</p>
 </section></section><section id="estimating-the-variance" class="level2"><h2 class="anchored" data-anchor-id="estimating-the-variance">Estimating the variance</h2>
-<p>As we will see in lectures, we can also estimate the variance <span class="math inline">\(\textup{Var}(X)\)</span> of a random variable from the sample variance. The sample variance is calculated with the R function <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>:</p>
+<p>As we will see in lectures, we can also estimate the variance <span class="math inline">\(\textup{Var}\left(X\right)\)</span> of a random variable from the sample variance. The sample variance is calculated with the R function <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">50</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -468,7 +474,7 @@ Your turn
 <!-- **Answer quiz question 6.**\ -->
 <!-- ::: -->
 </section><section id="real-estate-data" class="level2"><h2 class="anchored" data-anchor-id="real-estate-data">Real-estate data</h2>
-<p>Now let’s look at some real data. This week we’ll consider real estate data from the city of Ames, Iowa. The details of every real estate transaction in Ames is recorded by the City Assessor’s office.<br>
+<p>Now let’s look at some real data. This week we’ll consider real-estate data from the city of Ames, Iowa. The details of every real estate transaction in Ames is recorded by the City Assessor’s office.<br>
 Our particular focus for this lab will be all residential home sales in Ames between 2006 and 2010. Let’s load the data.</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"http://www.openintro.org/stat/data/ames.RData"</span>, </span>
@@ -582,11 +588,11 @@ Your turn
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Farea50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html">ecdf</a></span><span class="op">(</span><span class="va">area_sample_means50</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">Farea50</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can now for example look at the probability that, when using a sample of size 50, we are going to get an estimate for <span class="math inline">\(\mathbb{E}[X]\)</span> that is more than 100 away from the true population mean area of 1499.69:</p>
+<p>We can now for example look at the probability that, when using a sample of size 50, we are going to get an estimate for <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> that is more than 100 away from the true population mean area of 1499.69:</p>
 <p><span class="math display">\[
   \begin{split}
-    \mathbb{P}(|\bar{X}_{50}-1499.69|&gt;100) &amp;= \mathbb{P}(\bar{X}_{50}&lt;1399.69)+ \mathbb{P}(\bar{X}_{50}&gt;1599.69) \\
-    &amp;= \mathbb{P}(\bar{X}_{50}&lt;1399.69)+1-\mathbb{P}(\bar{X}_{50}\leq 1599.69) \\
+    \mathbb{P}\left(|\bar{X}_{50}-1499.69|&gt;100\right) &amp;= \mathbb{P}\left(\bar{X}_{50}&lt;1399.69\right)+ \mathbb{P}\left(\bar{X}_{50}&gt;1599.69\right) \\
+    &amp;= \mathbb{P}\left(\bar{X}_{50}&lt;1399.69\right)+1-\mathbb{P}\left(\bar{X}_{50}\leq 1599.69\right) \\
     &amp;= F_{\bar{X}_{50}}(1399.69)+1-F_{\bar{X}_{50}}(1599.69).
   \end{split}
 \]</span></p>
@@ -595,7 +601,7 @@ Your turn
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">Farea50</span><span class="op">(</span><span class="fl">1399.69</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu">Farea50</span><span class="op">(</span><span class="fl">1599.69</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; [1] 0.1612</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(If you used a different random seed before producing <code>area_sample_means50</code> then you’ll get a slightly different answer here, of course.) Thus, if we want to estimate <span class="math inline">\(\mathbb{E}[X]\)</span> with a precision of better than <span class="math inline">\(\pm\)</span> 100 we should use a larger sample, because the chance of getting an answer outside the desired accuracy is about 16%.</p>
+<p>(If you used a different random seed before producing <code>area_sample_means50</code> then you’ll get a slightly different answer here, of course.) Thus, if we want to estimate <span class="math inline">\(\mathbb{E}\left[X\right]\)</span> with a precision of better than <span class="math inline">\(\pm\)</span> 100 we should use a larger sample, because the chance of getting an answer outside the desired accuracy is about 16%.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1009,8 +1015,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../assignments/assignments.html" class="pagination-link">
-        <span class="nav-page-text">Written assignments</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/lab5.html" class="pagination-link">
+        <span class="nav-page-text">Lab 5: Smarties</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

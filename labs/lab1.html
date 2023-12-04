@@ -160,6 +160,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 4: Sampling distributions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: Smarties</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item">
@@ -366,7 +372,7 @@ Note
 <p>Now that we have our sample space, we can use the <code>sample</code> function, as we saw above. The following produces a sample of size 30:</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">30</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 3 4 6 5 1 4 3 5 3 5 4 1 1 2 3 4 1 3 5 2 2 4 2 4 5 4 4 1 3 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  [1] 6 1 5 1 4 3 6 3 3 2 3 2 5 1 1 1 3 4 4 6 3 6 2 2 1 1 5 1 6 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Go ahead and put this command into a new R script file and send the command to the console repeatedly. A different random sample is produced each time.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -444,7 +450,7 @@ Note
 </div>
 </section><section id="estimating-probabilities-from-a-random-sample" class="level3"><h3 class="anchored" data-anchor-id="estimating-probabilities-from-a-random-sample">Estimating probabilities from a random sample</h3>
 <p>Next let’s estimate probabilities of various events by counting how frequently they occur in the sample.</p>
-<p>Let’s start by calculating the probability of the event that the die shows a number less or equal to 3. So our sample space is <span class="math inline">\(\Omega = \{1,2,3,4,5,6\}\)</span>, and our event of interest is <span class="math inline">\(E=\{1,2,3\}\)</span>: we want to estimate <span class="math inline">\(\mathbb{P}(E)\)</span>. We will use a trick that you met already in the first lab when you counted how many years had more newborn boys than girls. We create a vector of 0s and 1s in which a 1 in a particular place indicates that the event has taken place in that particular repetition of the experiment:</p>
+<p>Let’s start by calculating the probability of the event that the die shows a number less or equal to 3. So our sample space is <span class="math inline">\(\Omega = \{1,2,3,4,5,6\}\)</span>, and our event of interest is <span class="math inline">\(E=\{1,2,3\}\)</span>: we want to estimate <span class="math inline">\(\mathbb{P}\left(E\right)\)</span>. We will use a trick that you met already in the first lab when you counted how many years had more newborn boys than girls. We create a vector of 0s and 1s in which a 1 in a particular place indicates that the event has taken place in that particular repetition of the experiment:</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;=</span> <span class="fl">3</span><span class="op">)</span>; <span class="va">y</span></span>
 <span><span class="co">#&gt;  [1] 1 0 1 1 0 1 0 1 1 1 1 0 0 1 0 0 1 1 0 0 1 1 0 0 0 1 1 0 1 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -454,7 +460,7 @@ Note
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">/</span><span class="va">n</span></span>
 <span><span class="co">#&gt; [1] 0.5333333</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This gives the best approximation to the probability <span class="math inline">\(\mathbb{P}(E)\)</span> that we can obtain from this sample. It is close to but not exactly equal to the theoretical value of 0.5.</p>
+<p>This gives the best approximation to the probability <span class="math inline">\(\mathbb{P}\left(E\right)\)</span> that we can obtain from this sample. It is close to but not exactly equal to the theoretical value of 0.5.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -481,7 +487,7 @@ Your turn
 <p>This shows that while the values in the random sample keep fluctuating, the estimate of the probability settles down towards its true value as the sample size increases.</p>
 <p>The first line of the code above produces a vector of values whose i<sup>th</sup> entry is the proportion of 1s in the first i values in the vector <code>y</code>. It then assigns this vector of proportions to the variable <code>yn</code>. You do not have to understand the command in detail, unless you want to.</p>
 <p>The second line produces the plot of the values, where we have asked R to show both the points and the straight lines joining them, and to limit the range of the y-axis to the interval (0,1). We’ve also added more informative labels to the axes.</p>
-<p>Finally, the last line <code>abline(h = 1/2, lty = "dotted")</code> draws a dotted horizontal line at the height 0.5 to indicate the theoretical answer to <span class="math inline">\(\mathbb{P}(E)\)</span>.</p>
+<p>Finally, the last line <code>abline(h = 1/2, lty = "dotted")</code> draws a dotted horizontal line at the height 0.5 to indicate the theoretical answer to <span class="math inline">\(\mathbb{P}\left(E\right)\)</span>.</p>
 <p>Now play around by producing similar plots for larger sample size.</p>
 <p>We can similarly calculate the probability that the die shows a six with</p>
 <div class="cell">
@@ -520,7 +526,7 @@ Your turn
 <p>Set the seed to 12. Produce a sample of size 1,000,000 for the experiment of rolling a fair 6-sided die. What proportion of rolls give the outcome 6?<br><strong>Answer quiz question 4.</strong></p>
 </div>
 </div>
-<p>We can also use our sample to approximate the probability of more complicated events. For example, suppose that we wish to consider the event that the outcome of a fair die roll is a 2 or a 3. That is, we want to estimate <span class="math inline">\(\mathbb{P}(\{2,3\})\)</span>. We can do this by counting the numbers of 2s and 3s in our sample</p>
+<p>We can also use our sample to approximate the probability of more complicated events. For example, suppose that we wish to consider the event that the outcome of a fair die roll is a 2 or a 3. That is, we want to estimate <span class="math inline">\(\mathbb{P}\left(\{2,3\}\right)\)</span>. We can do this by counting the numbers of 2s and 3s in our sample</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">|</span> <span class="va">x</span> <span class="op">==</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 316</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -634,12 +640,12 @@ What answer should we expect here?
 <div class="callout-body-container callout-body">
 <p>If <span class="math inline">\(X\)</span> is the number of defective lamps in a batch of size 1,000, then you may already know that <span class="math inline">\(X\)</span> will follow a <strong>binomial distribution</strong> with parameters 1,000 and 0.001: <span class="math inline">\(X\sim\mbox{\textup{Bin}}(1000,0.001)\)</span>. (Don’t worry if this doesn’t mean anything to you: we’ll be learning about this properly later in the course!)</p>
 <p>We can write</p>
-<p><span class="math display">\[\mathbb{P}(X&gt;2) = 1-\mathbb{P}(X=0)-\mathbb{P}(X=1)-\mathbb{P}(X=2)\,. \]</span> So to calculate this we need to be able to evaluate the probability mass function of this binomially distributed random variable. Of course R has a function for this, called <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code>. So we can calculate the probability that a batch has more than 2 defective lamps as</p>
+<p><span class="math display">\[\mathbb{P}\left(X&gt;2\right) = 1-\mathbb{P}\left(X=0\right)-\mathbb{P}\left(X=1\right)-\mathbb{P}\left(X=2\right)\,. \]</span> So to calculate this we need to be able to evaluate the probability mass function of this binomially distributed random variable. Of course R has a function for this, called <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code>. So we can calculate the probability that a batch has more than 2 defective lamps as</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1000</span>, <span class="fl">0.001</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1000</span>, <span class="fl">0.001</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1000</span>, <span class="fl">0.001</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.08020934</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In fact, R also has a function <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> for calculating the <em>distribution function</em>. So we could also have calculated <span class="math inline">\(\mathbb{P}(X&gt;2) = 1- \mathbb{P}(X\le 2)\)</span> with</p>
+<p>In fact, R also has a function <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> for calculating the <em>distribution function</em>. So we could also have calculated <span class="math inline">\(\mathbb{P}\left(X&gt;2\right) = 1- \mathbb{P}\left(X\le 2\right)\)</span> with</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1000</span>, <span class="fl">0.001</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.08020934</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

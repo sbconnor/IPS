@@ -160,6 +160,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 4: Sampling distributions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: Smarties</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item">
@@ -769,7 +775,7 @@ Your turn
 </section><section id="normal-probabilities" class="level3"><h3 class="anchored" data-anchor-id="normal-probabilities">Normal probabilities</h3>
 <p>Once we decide that the distribution of values of a variable is approximately normal, we can answer all sorts of questions about that variable related to probability by modelling that variable as a normally distributed random variable. Take, for example, the question of, “What is the probability that a randomly chosen young adult female is taller than 164 cm?” <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>If we assume that female heights are normally distributed (a very close approximation is also okay), we can model the height in cm as a normally distributed random variable <span class="math inline">\(H\)</span> with the mean given by the sample mean and the variance given by the sample variance. Then the probability that a randomly chosen young adult female is taller than 164 cm is given by <span class="math display">\[
-\mathbb{P}(H&gt;164) = 1-\mathbb{P}(H\leq 164) = 1 - F_H(164)\,.
+\mathbb{P}\left(H&gt;164\right) = 1-\mathbb{P}\left(H\leq 164\right) = 1 - F_H(164)\,.
 \]</span></p>
 <p>In R, the distribution function of a normal random variable is calculated with the function <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> and thus we obtain the desired probability with</p>
 <div class="cell">
